@@ -33,8 +33,8 @@ class Takeoff extends MY_Controller
 		$data = array();
 		$where = array();
                
-        $order_by = array('display_order' => 'asc');
-		$data_row = $this->modeltakeoff->select_row('takeoff',$where,$order_by);
+        $order_by = array('id' => 'asc');
+		$data_row = $this->modeltakeoff->select_row('bh_taskoff',$where,$order_by);
 		$data['records']= $data_row;
 		$this->load->view('kaizen/takeoff/takeoff_list',$data);		
 	}
@@ -55,6 +55,100 @@ class Takeoff extends MY_Controller
     
 	public function addedit()
 	{
+		echo "<pre>";print_r($_POST);
+		$add_data = array(            
+								'project_no'			=>	$this->input->post('takeoff_project_no'),
+								'quote_no'				=>	$this->input->post('takeoff_quate_no'),
+								'date'					=>	$this->input->post('takeoff_start_date'),
+								'addenda'				=>	$this->input->post('takeoff_addenda'),
+								'pricing_units'			=>	$this->input->post('pricing_units'),
+								'project_title'			=>	$this->input->post('takeoff_project_title'),
+								'erect'					=>	$this->input->post('erect'),
+								'fob'					=>	$this->input->post('takeoff_fob'),
+								'location'				=>	$this->input->post('takeoff_location'),
+								'legal'					=>	$this->input->post('takeoff_legal'),
+								'owner'					=>	$this->input->post('takeoff_owner'),
+								'place'					=>	$this->input->post('takeoff_place'),
+								'tel'					=>	$this->input->post('takeoff_tel'),
+								'fax'					=>	$this->input->post('takeoff_fax'),
+								'mobile'				=>	$this->input->post('takeoff_mobile'),
+								'contact'				=>	$this->input->post('takeoff_contact'),
+								'closing_bid_depository'=>	$this->input->post('closing_bid_depository'),
+								'clo_rulings'			=>	$this->input->post('takeoff_rulings'),
+								'clo_date_time'			=>	$this->input->post('takeoff_datetime'),
+								'clo_place'				=>	$this->input->post('takeoff_clo_place'),
+								'clo_GST'				=>	$this->input->post('takeoff_GST'),
+								'clo_PST'				=>	$this->input->post('takeoff_GST'),
+								'clo_other_tax'			=>  $this->input->post('takeoff_othertax'),
+								'bid_bond'				=>	$this->input->post('bid_bond'),
+								'perform_bond'			=>	$this->input->post('perform_bond'),
+								'lab_mat_bond'			=>	$this->input->post('lab_mat_bond'),
+								'holdback'				=>	$this->input->post('takeoff_holdback'),
+								'architect_name'		=>	$this->input->post('takeoff_holdback'),
+								'architect_place'		=>	$this->input->post('takeoff_architect_place'),
+								'architect_contact'		=>	$this->input->post('takeoff_architect_contact'),
+								'architect_tel'			=>	$this->input->post('takeoff_architect_tel'),
+								'architect_fax'			=>	$this->input->post('takeoff_architect_fax'),
+								'engineer_name'			=>	$this->input->post('takeoff_engineer_name'),
+								'engineer_place'		=>	$this->input->post('takeoff_engineer_place'),
+								'engineer_contact'		=>	$this->input->post('takeoff_engineer_contact'),
+								'engineer_tel'			=>	$this->input->post('takeoff_engineer_tel'),
+								'engineer_fax'			=>	$this->input->post('takeoff_engineer_fax'),
+								'status'				=>	'1'
+                                    //'title' 			        => $this->title,
+                                    //'page_link'                 => name_replaceCat('home_block',$this->title),
+                                    //'is_active'                 => $this->is_active
+                                );
+print_r($add_data);
+		$id = $this->modeltakeoff->insert_row('taskoff',$add_data);
+		if($id) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
+		{echo "Home Block Inserted Successfully.";exit;
+			$session_data = array("SUCC_MSG"  => "Home Block Inserted Successfully.");
+			$this->session->set_userdata($session_data);					
+		}	
+
+/*
+'project_no'			=>	takeoff_project_no,
+'quote_no'				=>	takeoff_quate_no,
+'date'					=>	takeoff_start_date,
+'addenda'				=>	takeoff_addenda,
+'pricing_units'			=>	pricing_units,
+'project_title'			=>	takeoff_project_title,
+'erect'					=>	erect,
+'fob'					=>	fob,
+'location'				=>	location,
+'legal'					=>	legal,
+'owner'					=>	takeoff_owner,
+'place'					=>	takeoff_place,
+'tel'					=>	takeoff_tel,
+'fax'					=>	takeoff_fax,
+'mobile'				=>	takeoff_mobile,
+'contact'				=>	takeoff_contact,
+'closing_bid_depository'=>	closing_bid_depository,
+'clo_rulings'			=>	takeoff_rulings,
+'clo_date_time'			=>	takeoff_datetime,
+'clo_place'				=>	takeoff_clo_place,
+'clo_GST'				=>	takeoff_GST,
+'clo_PST'				=>	takeoff_GST,
+'clo_other_tax'			=>  takeoff_othertax,
+'bid_bond'				=>	bid_bond,
+'perform_bond'			=>	perform_bond,
+'lab_mat_bond'			=>	lab_mat_bond,
+'holdback'				=>	takeoff_holdback,
+'architect_name'		=>	takeoff_holdback,
+'architect_place'		=>	takeoff_architect_place,
+'architect_contact'		=>	takeoff_architect_contact,
+'architect_tel'			=>	takeoff_architect_tel,
+'architect_fax'			=>	takeoff_architect_fax,
+'engineer_name'			=>	takeoff_engineer_name,
+'engineer_place'		=>	takeoff_engineer_place,
+'engineer_contact'		=>	takeoff_engineer_contact,
+'engineer_tel'			=>	takeoff_engineer_tel,
+'engineer_fax'			=>	takeoff_engineer_fax,
+'status'				=>	'1'
+*/
+
+
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('takeoff_title', 'Title', 'trim|required|xss_clean');
 		
@@ -64,7 +158,7 @@ class Takeoff extends MY_Controller
 	 	$takeoff_detls ='';
 	 	$uplod_img='';
 		if($this->form_validation->run() == TRUE) // IF MENDATORY FIELDS VALIDATION TRUE(SERVER SIDE)  
-		{	
+		{
 			$where = array(
                            
                             'id' => $id
