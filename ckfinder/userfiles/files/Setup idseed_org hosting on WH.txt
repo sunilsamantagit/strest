@@ -1,0 +1,49 @@
+Setup idseed.org hosting on WHC
+
++++++++++CWH+++++++++++
+http://67.231.17.220:2086/  -- Canadian Web hosting
+
+root / BPnow723#
+
+Help Desk:
+support@2webdesign / Cool2WebCWH
+
++++++++++++++++++++++++++++
+
+Jaymin [11:27 AM]
+idseed.org
+
+UserName: idseedweb
+Password:  g.m)[E-6H]dD
+
+admin@2webdesign.com
+
+Dns Zone check is enabled.
++===================================+
+| New Account Info                  |
++===================================+
+| Domain: idseed.org
+| Ip: 67.231.17.220 (n)
+| HasCgi: y
+| UserName: idseedweb
+| PassWord: g.m)[E-6H]dD
+| CpanelMod: paper_lantern
+| HomeRoot: /home
+| Quota: 4.88 GB
+| NameServer1: ns1.surplushosting.com
+| NameServer2: ns2.surplushosting.com
+| NameServer3: 
+| NameServer4: 
+| Contact Email: admin@2webdesign.com
+| Package: Gold
+| Feature List: default
+| Language: en
++===================================+
+...Done
+
+
+Email Account:
+
+Ruojing.wang@idseed.org
+Password:   OnQ1yw[%xK-T
+

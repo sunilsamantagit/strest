@@ -1,0 +1,103 @@
+@charset "utf-8";
+/* CSS Document */
+.rslides {
+  	position: relative;
+  	list-style: none;
+  	overflow: hidden;
+  	width: 100%;
+  	padding: 0;
+  	margin: 0;
+}
+.rslides li {
+  	-webkit-backface-visibility: hidden;
+  	position: absolute;
+  	display: none;
+  	width: 100%;
+  	left: 0;
+  	top: 0;
+}
+.rslides li:first-child {
+  	position: relative;
+  	display: block;
+  	float: left;
+}
+.rslides img {
+  	display: block;
+  	height: auto;
+  	border: 0;
+	width: 100%;
+	position: relative;
+	z-index: 1;
+}
+.rslides_tabs{
+	background:none;
+	z-index:10;
+	float: right;
+}
+.rslides_tabs li{
+	list-style:none;
+	float: left;
+	width:25px;
+	height: 25px;
+	vertical-align:top;
+	margin: 0 18px 0 0;
+}
+.rslides_tabs li:last-child{
+	background: none;
+	margin: 0;
+}
+.rslides_tabs li a{
+	text-indent:-20000px;
+	display:block;
+	width:24px;
+	height:24px;
+	border: 1px solid #007541;
+	background-color: #FFF;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+.rslides_tabs li.rslides_here a, .rslides_tabs li a:hover{
+	background-color: #007541;
+}
+.rslides_nav{
+	display: block;
+}
+.banner .prev{
+	width:36px;
+	height:89px;
+	left:0;
+	top: 50%;
+	margin-top: -44px;
+	position:absolute;
+	display:block;
+	text-indent:-200000px;
+	background: url(../images/banner_prev.png) no-repeat 0 0;
+	z-index:100;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+.banner .next{
+	width:36px;
+	height:89px;
+	right: 0;
+	top: 50%;
+	margin-top: -44px;
+	position:absolute;
+	display:block;
+	text-indent:-200000px;
+	background: url(../images/banner_next.png) no-repeat 0 0;
+	z-index:100;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+

@@ -1,0 +1,225 @@
+
+#calendar td {
+	font-family: "Trebuchet MS", Arial, sans-serif;
+}
+.selectable{
+	background:#444444;
+	color:#FFFFFF !important;
+	font-weight:bold !important;
+}
+.selectable a{
+	color:#FFFFFF !important;
+	font-weight:bold !important;
+}
+div.calendar tr.days td.selectable:hover
+{
+  background-color: #eb9600;
+	 color:#fff!important;
+  cursor: pointer;
+	font-weight:bold !important;
+}
+
+a.prev_cal{
+width: 10px;
+height: 10px;
+background: url('images/calLeft.gif') no-repeat 0 0;
+display:block; 
+float:left;
+}
+a.center_cal{
+width: 10px;
+height: 10px;
+background: url('images/calCenter.gif') no-repeat 0 0;
+display:block; 
+float:left;
+}
+a.next_cal{
+width: 10px;
+height: 10px;
+background: url('images/calRight.gif') no-repeat 0 0;
+display:block; 
+float:left;
+}
+a.jump_cal{
+width: 10px;
+height: 10px;
+background: url('images/calDown.gif') no-repeat 0 0;
+display:block; 
+float:left;
+}
+#calback {
+	clear: both;
+	width: 100%;
+	height: 100%;
+	background: url('images/calWaiting.gif') no-repeat center;
+}
+
+#calendar {
+	
+	width: 100%;
+	height: 100%;
+}
+
+.cal {
+background-color: #EAF9FF;
+    border-collapse: collapse;
+    color: #494949;
+    font: 12px/17px Arial,Helvetica,sans-serif;
+    height: 180px;
+    padding: 5px;
+    width: 220px;
+}
+
+.cal a {
+	color: #000000;
+	text-decoration: none;	
+	font-size: 14px;
+}
+a.cur_cal{
+	color: #ffffff;
+	text-decoration: none;	
+	font-size: 14px;
+}
+
+.cal a:hover {
+	color: #BBBBBB;
+	text-decoration: underline;	
+}
+
+.calhead {
+	border-collapse: collapse;
+    color: #494949;
+    font: 12px/17px Arial,Helvetica,sans-serif;
+}
+
+.calhead img {
+	border: none;
+}
+
+.calhead table {
+	width: 100%;
+}
+
+.calhead a {
+	text-decoration: none;
+	border: none;
+}
+
+.dayhead {
+	height: 25px;
+	background: #FFFFFF;
+}
+
+.dayhead td {
+background: none repeat scroll 0 0 #1C65D2;
+    border-bottom: 1px solid #E6E6E7;
+    border-right: 1px solid #E6E6E7;
+    border-top: 1px solid #E6E6E7;
+    color: #ffffff;
+    font-weight: bold;
+	padding: 3px;
+    text-align: center;
+}
+
+.dayrow {
+	background: #FFF;
+	height: 25px;
+}
+
+.dayrow td {
+	background-color: #F3F3F3;
+    border: 1px solid #CBCDD0;
+    color: #383C3D;
+    cursor: pointer;
+    text-align: center;
+}
+
+.day {
+	float: right;
+	font-size: 12px;
+	text-align: center;
+}
+
+.dayover {
+	background: #DCF6EE;
+}
+
+.dayout {
+	background: #FFF;
+}
+
+#event {
+	font-family: Arial, sans-serif;
+	width: 100%;
+	height: 100%;
+	border-top: 1px solid #727260;
+	border-bottom: 1px solid #727260;
+}
+
+#event .heading {
+	padding: 10px;
+	position: relative;
+	background: url('images/calEvent.gif') repeat-x top left;
+	border-bottom: 1px dotted #CCC;
+}
+
+#event .title {
+	color: #656551;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+#event .posted {
+	color: #8C8C73;
+	font-size: 10px;
+}
+
+#event .back {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+#event .back a {
+	color: #0C0;
+	text-decoration: underline;
+	border: none;
+	font-size: 10px;
+}
+
+#event .back a:hover {
+	color: #0E0;
+}
+
+#event .line {
+	padding: 10px;
+	overflow: auto;
+}
+
+.error {
+	color: #C00;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#jump {
+	z-index: 100;
+	line-height: 30px;
+	padding: 5px;
+	background: #F6F6F6;
+	border: 1px solid #888;
+}
+
+#jump a {
+	text-decoration: none;
+	border: none;
+}
+
+#jump img {
+	border: none;
+}
+.div.cal table {
+    border-collapse: collapse;
+    color: #494949;
+    font: 12px/17px Arial,Helvetica,sans-serif;
+}
