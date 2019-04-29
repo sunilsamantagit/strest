@@ -8,13 +8,34 @@ div.dataTables_length {
     div.dataTables_filter {
         padding-top: 0.55em;
     }
+
+	#pagi {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+  
+#pagi td, #pagi th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+
+
+#pagi th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #0B94FA;
+  color: black; */
+
 </style>
 <script type='text/javascript' src='<?php echo base_url(); ?>public/js/jquery.dataTables.min.js'></script> 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>public/css/jquery.dataTables.min.css" />
 <div class="rightDiv">
 	<div class="right-outer">
     	<div class="right-outer">
-		<h3 class="title">Takeoff List</h3>
+		<h3 class="title">Takeoff - Listing</h3>
         <div class="clear"></div>
         
         <!--Search area end-->
@@ -34,15 +55,15 @@ div.dataTables_length {
 		?>
            <div ><h2 align="center" style="color:#31B12c;"  id="status_mesage"></h2></div>
                     <table cellspacing="0" cellpadding="0" border="0" id="pagi">
-						<thead><tr>
-                            <th>Title<span class=""></span></th>
-                            <th>Display Order<span class=""></span></th>
-                            <th>Status<span class=""></span></th>
-							<th>Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        
+						<thead>
+              <tr>
+                    <th style="text-align: center;">No.<span class=""></span></th>
+                    <th width="50%">Quote No.<span class=""></span></th>
+                    <th>Date<span class=""></span></th>
+							      <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>                        
         							<?php
         			  if(empty($records)){
         				  ?>
@@ -56,30 +77,35 @@ div.dataTables_length {
         			  foreach($records as $row){
         				  $i++;				  
         			  ?>
-        					<tr>
-                            
-                               
-                             <td><?php if(!empty($row->title)) echo $row->title; ?></td>
-                                                   <td><?php if(!empty($row->display_order)){echo $row->display_order; }?></td>
-        			         <td>    <span id="status_td<?php echo $row->id; ?>"><?php if($row->is_active==1){ ?>
-	<a href="javascript:void(0)" onclick="change_status('<?php echo $row->id; ?>','0','status_td','home_block','home_block')" title="Active"> <img src="<?php echo site_url("public/images/unlock_icon.gif");?>" alt="Active"/> </a>
-												<?php } else{ ?>
-<a href="javascript:void(0)" onclick="change_status('<?php echo $row->id; ?>','1','status_td','home_block','home_block')" title="Inactive"> <img src="<?php echo site_url("public/images/locked_icon.gif");?>" alt="Inactive"/></a>
-												<?php } ?>
-								     </span>
-													</td>		
-                							<td>
-                								<a class="block-btn edit-btn" href="<?php echo site_url("kaizen/home_block/doedit/".$row->id);?>"><span>Edit</span></a> <a href="javascript:void(0);" title="Delete" onclick="rowdelete('<?php echo $row->id; ?>','home_block');" class="delete3 delete-red-btn"><span>Delete</span></a>
-                                </a>
-                              </td>		</tr>
+  <tr>
+      <td><?php echo $i; ?></td>        
+			<td><?php if(!empty($row->quote_no)) echo $row->quote_no; ?></td>
+      <td><?php if(!empty($row->date)){echo $row->date; }?></td>					
+      <td>
+         <a class="block-btn" href="<?php echo site_url("kaizen/takeoff/takeoff_view/".$row->id);?>"><span>View</span></a> | 
+         <a class="block-btn" href="<?php echo site_url("kaizen/takeoff/doedit/".$row->id);?>"><span>Edit</span></a> |
+         <a class="block-btn" href="<?php echo site_url("kaizen/takeoff/takeoff_duplicate/".$row->id);?>"><span>Duplicate</span></a> | 
+         <a class="block-btn" href="<?php echo site_url("kaizen/takeoff/takeoff_Print/".$row->id);?>"><span>Print</span></a> |
+         <a class="block-btn" href="<?php echo site_url("kaizen/takeoff/takeoff_view/".$row->id);?>"><span>Delete</span></a>
+<!--
+				  <a class="block-btn edit-btn" href="<?php echo site_url("kaizen/takeoff/takeoff_view/".$row->id);?>"><span>View</span></a>
+          <a class="block-btn edit-btn" href="<?php echo site_url("kaizen/takeoff/takeoff_edit/".$row->id);?>"><span>Edit</span></a>
+					<a class="block-btn edit-btn" href="<?php echo site_url("kaizen/takeoff/takeoff_duplicate/".$row->id);?>"><span>Duplicate</span></a>
+					<a class="block-btn edit-btn" href="<?php echo site_url("kaizen/takeoff/takeoff_Print/".$row->id);?>"><span>Print</span></a>
+					<a href="javascript:void(0);" title="Delete" onclick="rowdelete('<?php echo $row->id; ?>','home_block');" class="delete3 delete-red-btn"><span>Delete</span></a>
+
+  -->
+      </td>
+						
+							</tr>
         									
-        							<?php
+        			<?php
         			  }
         			  }
         			  ?>        
                         
-						
-                    </tbody></table>
+                    </tbody>
+					</table>
             	</div>
                  <?php $this->load->view($footer); ?>
           </div>
