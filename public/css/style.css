@@ -7203,3 +7203,38 @@ a {
 .sizetxt{
 	font-size: 11px!important;
 }
+
+#member-form form{    
+	display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+    box-sizing: border-box;
+}
+ #webcont-form form .single-column {
+ 	width: 50%;
+    padding: 0 15px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+#webcont-form .single-column label{
+	width:100px;
+    float: left !important;
+    padding-right: 10px;
+     box-sizing: border-box;
+}
+#webcont-form .single-column .inputinpt {
+    width: calc(100% - 100px) !important;
+    float: right;
+}
+#webcont-form .single-column #takeoff_start_date.inputinpt + img,
+#webcont-form .single-column  #takeoff_datetime.inputinpt + img
+{ position: absolute; right: 25px; top: 5px;}
+.bottonserright{ display: flex; flex-wrap: wrap;  width: 100%; margin-top: 20px;}
+.bottonserright .back_dash{ margin-right: auto; }
+.bottonserright .web-red-btn{ padding: 12px 40px; }
+.bottonserright .web-red-btn.cancil{  background: #fff;  border: 1px solid #333; color: #333;}
+.bottonserright .web-red-btn.save{ background: #159bd5; color: #fff;  border: 1px solid #159bd5; }
+.bottonserright .web-red-btn.next{ background: #159bd5; color: #fff;   border: 1px solid #159bd5;}
