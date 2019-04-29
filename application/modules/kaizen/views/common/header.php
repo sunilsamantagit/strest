@@ -1,4 +1,4 @@
-<?php // pre($this->session->userdata['web_admin_user_id']);
+<?php  pre($this->session->userdata['web_admin_user_id']);
 $user_detls = $this->model_home->selectOne('admin',array('id'=>$this->session->userdata['web_admin_user_id']));
 // pre($user_detls);
 ?>
