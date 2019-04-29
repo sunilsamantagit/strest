@@ -79,7 +79,7 @@ function form_submit(){
               <input type="text" name="takeoff_title" id="takeoff_title" value="<?php if(isset($details->title)){echo $details->title;}?>" class="inputinpt validate[required]" />
             </div>
               
-              
+              <? echo "asd"; hbhghjgjhggjgjgjgjggjg?>
       
 
             <div class="single-column" >
