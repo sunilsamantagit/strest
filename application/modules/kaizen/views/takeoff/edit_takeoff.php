@@ -68,7 +68,7 @@ function form_submit(){
     </h3>
     <?php }
     else {?>
-    <h3 class="title">Add Takeoff</h3>
+    <h3 class="title">Takeoff - Description</h3>
     <?php } ?>
     <div class="clear"></div>
     <div class="padbot40">
@@ -112,9 +112,9 @@ function form_submit(){
             <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
               <label class="question-label">Start Date</label>
-              <input type="text" name="takeoff_start_date" id="takeoff_start_date" placeholder="MM / DD / YYYY" value="<?php if(isset($details->date)){echo $details->date;}?>" class="inputinpt datepicker" />
+              <input type="text" name="takeoff_start_date" id="takeoff_start_date" placeholder="MM / DD / YYYY" value="<?php if(isset($details->date)){echo $details->date;}?>" class="inputinpt datepicker validate[required]" />
               <img src="<?php echo base_url(); ?>application/modules/kaizen/views/takeoff/u212.png"></img>
-                          </div>
+            </div>
 
 
             <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
@@ -126,6 +126,7 @@ function form_submit(){
               </select>
             </div>
             <div class="clear"></div>
+
             <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
               <label class="question-label">Project Title</label>
@@ -138,14 +139,9 @@ function form_submit(){
               <label class="question-label">Erect?</label>
               <select id="erect" name="erect" class="inputinpt">
 
-              <!--  <option value="Yes" <?php if(isset($details->addenda)){ if($details->addenda=="Yes"){?> selected<?php } }?> >Yes</option>
-                <option value="No" <?php if(isset($details->addenda)){ if($details->addenda=="No"){?> selected<?php } }?>>No</option>
-              -->
-                <?php if(isset($details->addenda)){?>
-                    <option value="Yes"<?php if($details->addenda=="Yes"){?> selected<?php }>Yes</option>
-                    <option value="No"<?php if($details->addenda=="No"){?> selected<?php }>No</option>
-                <?php } ?>
-
+              <option value="Yes" <?php if(isset($details->addenda)){ if($details->addenda=="Yes"){?> selected<?php } }?> >Yes</option>
+              <option value="No" <?php if(isset($details->addenda)){ if($details->addenda=="No"){?> selected<?php } }?>>No</option>
+              
               </select>
              </div>
 
@@ -156,49 +152,49 @@ function form_submit(){
             </div>
             </div>
 
-<?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
-            <div class="single-column">
+            <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
+              <div class="single-column">
               <label class="question-label">Location</label>
               <input type="text" name="takeoff_location" id="takeoff_location" value="<?php if(isset($details->location)){echo $details->location;}?>" class="inputinpt" />
             </div>
 
-<?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
+            <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
               <label class="question-label"> =   Legal</label>
               <input type="text" name="takeoff_legal" id="takeoff_legal" value="<?php if(isset($details->legal)){echo $details->legal;}?>" class="inputinpt" />
             </div>
 
-<?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
+            <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
               <label class="question-label">Owner</label>
               <input type="text" name="takeoff_owner" id="takeoff_owner" value="<?php if(isset($details->owner)){echo $details->owner;}?>" class="inputinpt" />
             </div>
 
-<?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
+          <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
               <label class="question-label">Place</label>
               <input type="text" name="takeoff_place" id="takeoff_place" value="<?php if(isset($details->place)){echo $details->place;}?>" class="inputinpt" />
             </div>
 
-<?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
+            <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
               <label class="question-label">Tel.</label>
               <input type="text" name="takeoff_tel" id="takeoff_tel" placeholder="(000) - 000 - 0000" value="<?php if(isset($details->tel)){echo $details->tel;}?>" class="inputinpt phone_us" />
             </div>
 
-<?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
+            <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
               <label class="question-label">Fax</label>
               <input type="text" name="takeoff_fax" id="takeoff_fax" placeholder="(000) - 000 - 0000" value="<?php if(isset($details->fax)){echo $details->fax;}?>" class="inputinpt phone_us" />
             </div>
 
-<?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
+            <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
               <label class="question-label">Mobile</label>
               <input type="text" name="takeoff_mobile" id="takeoff_mobile" placeholder="(000) - 000 - 0000" value="<?php if(isset($details->mobile)){echo $details->mobile;}?>" class="inputinpt phone_us" />
             </div>
 
-<?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
+            <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
               <label class="question-label">Contact</label>
               <input type="text" name="takeoff_contact" id="takeoff_contact" value="<?php if(isset($details->contact)){echo $details->contact;}?>" class="inputinpt" />
@@ -215,7 +211,7 @@ function form_submit(){
               </select>
             </div>
 
-<?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
+            <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
               <label class="question-label">Rulings</label>
               <input type="text" name="takeoff_rulings" id="takeoff_rulings" value="<?php if(isset($details->clo_rulings)){echo $details->clo_rulings;}?>" class="inputinpt" />
@@ -224,7 +220,7 @@ function form_submit(){
             <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
               <label class="question-label">Date - Time</label>
-              <input type="text" name="takeoff_datetime" id="takeoff_datetime" placeholder="MM / DD / YYYY HH : MM" value="<?php if(isset($details->clo_date_time)){echo $details->clo_date_time;}?>" class="inputinpt datepicker" />
+              <input type="text" name="takeoff_datetime" id="takeoff_datetime" placeholder="MM / DD / YYYY HH : MM" value="<?php if(isset($details->clo_date_time)){echo $details->clo_date_time;}?>" class="inputinpt datepicker validate[required]" />
               <img src="<?php echo base_url(); ?>application/modules/kaizen/views/takeoff/u212.png"></img>
             </div>
 
@@ -254,7 +250,7 @@ function form_submit(){
 
             <div class="hr_line"></div>
 
-<?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
+            <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
               <label class="question-label">Bid Bond</label>
               <select id="bid_bond" name="bid_bond" class="inputinpt">
@@ -272,7 +268,7 @@ function form_submit(){
               </select>
             </div>
 
-<?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
+            <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
               <label class="question-label">Lab./Mat. Bond</label>
               <select id="lab_mat_bond" name="lab_mat_bond" class="inputinpt">
@@ -281,7 +277,7 @@ function form_submit(){
               </select>
             </div>
 
-<?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
+            <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
               <label class="question-label">Holdback</label>
               <input type="text" name="takeoff_holdback" id="takeoff_holdback" value="<?php if(isset($details->holdback)){echo $details->holdback;}?>" class="inputinpt" />%
@@ -289,25 +285,25 @@ function form_submit(){
 
             <div class="hr_line"></div>
 
-<?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
+            <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
               <label class="question-label">Architect</label>
               <input type="text" name="takeoff_architect_name" id="takeoff_architect_name" value="<?php if(isset($details->architect_name)){echo $details->architect_name;}?>" class="inputinpt" />
             </div>
 
-<?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
+            <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
               <label class="question-label">Engineer</label>
               <input type="text" name="takeoff_engineer_name" id="takeoff_engineer_name" value="<?php if(isset($details->engineer_name)){echo $details->engineer_name;}?>" class="inputinpt" />
             </div>
 
-<?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
+            <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
               <label class="question-label">Place</label>
               <input type="text" name="takeoff_architect_place" id="takeoff_architect_place" value="<?php if(isset($details->architect_place)){echo $details->architect_place;}?>" class="inputinpt" />
             </div>
 
-<?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
+            <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
               <label class="question-label">Place</label>
               <input type="text" name="takeoff_engineer_place" id="takeoff_engineer_place" value="<?php if(isset($details->engineer_place)){echo $details->engineer_place;}?>" class="inputinpt" />
@@ -354,18 +350,16 @@ function form_submit(){
 <div class="bottonserright" style="padding-bottom:20px;"> 
 <a href="#" class="back_dash">Back to Dashboard</a>
 
-<a href="javascript:void(0);" title="Delete"
-             onClick="rowdelete('<?php echo $details->id; ?>','home_block');" class="web-red-btn" <?php if(isset($details->id) && $details->id >0){}else{echo 'style="display:none;"';}?>> <span>Delete</span> </a> <a href="javascript:void(0);" class="web-red-btn cancil" onClick="form_submit();">
-                          <span>Cancel</span></a> <?php //echo form_close();?>
+<a href="<?php echo site_url();?>/kaizen/takeoff" title="Cancel" class="web-red-btn cancil" 
+ <?php if(isset($details->id) && ($details->id >0)){echo '<span>Cancel</span>';}else{echo '<span>Cancel</span>';} ?></a>
 
- <a href="javascript:void(0);" title="Save"
-             onClick="rowdelete('<?php echo $details->id; ?>','home_block');" class="web-red-btn" <?php if(isset($details->id) && $details->id >0){}else{echo 'style="display:none;"';}?>> <span>Delete</span> </a> <a href="javascript:void(0);" class="web-red-btn save" onClick="form_submit();">
-                          <span>Save</span></a> <?php echo form_close();?> 
+ <a href="javascript:void(0);" title="Save" onClick="form_submit();");" class="web-red-btn save" 
+ <?php if(isset($details->id) && ($details->id >0)){echo '<span>Update</span>';}else{echo '<span>Save</span>';} ?></a>
 
- <a href="javascript:void(0);" title="Delete"
-             onClick="rowdelete('<?php echo $details->id; ?>','home_block');" class="web-red-btn" <?php if(isset($details->id) && $details->id >0){}else{echo 'style="display:none;"';}?>> <span>Delete</span> </a> <a href="javascript:void(0);" class="web-red-btn next" onClick="form_submit();">
-                          <span>Next >></span></a> <?php echo form_close();?>
- </div>
+
+<a href="#" title="Next"class="web-red-btn next" 
+ <?php if(isset($details->id) && ($details->id >0)){echo '<span>Next</span>';}else{echo '<span>Next</span>';} ?> >></a>
+
 
 
 
@@ -383,10 +377,7 @@ function form_submit(){
 
         <div class="bodybottom"> </div>
       </div>
-    </div>
-    <div class="rt-block">
-  <?php $this->load->view($right); ?>
-</div>
+    </div>    
   </div>
   <div class="clear"></div>
   <?php $this->load->view($footer); ?>

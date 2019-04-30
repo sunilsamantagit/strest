@@ -3336,6 +3336,7 @@ display:block !important;
     text-transform: uppercase;
     transition-duration: 0.3s;
     width: 100px;
+    color:#fff;
 }
 .make-featured-btn-blue{
  background: #fefefe url("../images/review-bg.png") repeat-x scroll left bottom;
@@ -3352,22 +3353,23 @@ display:block !important;
 
 .new-survey-btn-blue span {
     background: rgba(0, 0, 0, 0) url("../images/add-ico-blue.png") no-repeat scroll 9px center;
-    color: #14abd8;
+    color: #fff;
     display: block;
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 400;
-    padding: 7px 0 7px 11px;
+    padding: 9px 0 7px 11px;
     transition-duration: 0.3s;
 }
 
 .new-survey-btn-blue:hover {
-    background: #f3f3f3 none repeat scroll 0 0;
+        background: #15abd8 none repeat scroll 0 0;
     transition-duration: 0.3s;
+      border-radius: 4px;
 }
 
 
 .new-survey-btn-blue:hover span {
-    background: #14abd8 url("../images/add-ico-blue-hov.png") no-repeat scroll 9px center;
+    /*background: #14abd8 url("../images/add-ico-blue-hov.png") no-repeat scroll 9px center;*/
 	color:#fff;
 }
 
@@ -7234,7 +7236,7 @@ a {
 .bottonserright{ display: flex; flex-wrap: wrap;  width: 100%; margin-top: 20px;}
 .bottonserright .back_dash{ margin-right: auto; }
 .bottonserright .web-red-btn{ padding: 12px 40px; }
-.bottonserright .web-red-btn.cancil{  background: #fff;  border: 1px solid #333; color: #333;}
+.bottonserright .web-red-btn.cancil{background: #159bd5; color: #fff;  border: 1px solid #159bd5;}
 .bottonserright .web-red-btn.save{ background: #159bd5; color: #fff;  border: 1px solid #159bd5; }
 .bottonserright .web-red-btn.next{ background: #159bd5; color: #fff;   border: 1px solid #159bd5;}
 #webcont-form .single-column select{ height:26px; }
@@ -7243,3 +7245,22 @@ a {
 .single-column .inner_column{ width: 50%; box-sizing: border-box; display: flex; align-items: center; }
 .hr_line{ height: 1px; width: 100%; background: #999; margin-bottom: 15px;}
 
+.rt-bg-block{ background: transparent!important; box-shadow: none; border: none; }
+.rt-block {float: right; margin-left: 30px; width: 21%;}
+.rt-column {
+     padding: 0px; 
+     background-color:transparent!important; 
+}
+.new-survey-btn-blue {
+    border-width: 0px;
+    left: 0px;
+    top: 0px;
+    width: 183px;
+    height: 40px;
+    background: inherit;
+    background-color: rgba(22, 155, 213, 1);
+    border: none;
+    border-radius: 5px;
+    color: #fff!important;
+}
+}

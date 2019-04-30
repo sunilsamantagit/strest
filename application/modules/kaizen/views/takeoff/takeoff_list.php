@@ -27,7 +27,43 @@ div.dataTables_length {
   padding-bottom: 12px;
   text-align: center;
   background-color: #0B94FA;
-  color: black; */
+  color: black;
+}
+
+
+.page_title .rt-bg-block{
+background: none;
+   border: 0;
+   box-shadow: none;
+float: right;
+}
+.page_title .rt-column{
+padding: 0;
+   background: none;
+}
+.page_title .rt-bg-block br{ display:none;}
+.page_title .new-survey-btn-blue{
+background: #169bd5;
+   color: #fff;
+   width: auto;
+}
+.page_title .new-survey-btn-blue span{    
+color: #fff;
+   background: none;
+   padding: 10px 30px;
+   font-size: 12px;
+}
+.lumb_sumb_table{   
+display: flex;
+   flex-wrap: wrap;
+}
+.lumb_sumb_table .mid-block{ width:100%;}
+.action_btn{ text-align:center !important;}
+.action_btn a{ display:inline-block;color: #169bd5;position:relative; padding: 0 5px;}
+.action_btn a:not(:last-child):after{ content:"|"; position:absolute; right:-6px; color:#333;}
+.lumb_sumb_table table thead tr th{ background: #169bd5; border: 1px solid #333 !important;}
+.lumb_sumb_table table tbody tr td{ border: 1px solid #333 !important;}
+
 
 </style>
 <script type='text/javascript' src='<?php echo base_url(); ?>public/js/jquery.dataTables.min.js'></script> 
@@ -37,9 +73,12 @@ div.dataTables_length {
     	<div class="right-outer">
 		<h3 class="title">Takeoff - Listing</h3>
         <div class="clear"></div>
-        
+          <div class="rt-block">
+                <?php $this->load->view($right); ?>
+        </div>
+          <div class="clear"></div>
         <!--Search area end-->
-        <div class="application-table-area">
+        <div class="application-table-area lumb_sumb_table">
         	<div class="mid-block">
             	<div class="members-table member-group">
 						<?php
@@ -58,7 +97,7 @@ div.dataTables_length {
 						<thead>
               <tr>
                     <th style="text-align: center;">No.<span class=""></span></th>
-                    <th width="50%">Quote No.<span class=""></span></th>
+                    <th width="35%">Quote No.<span class=""></span></th>
                     <th>Date<span class=""></span></th>
 							      <th>Action</th>
               </tr>
@@ -81,12 +120,12 @@ div.dataTables_length {
       <td><?php echo $i; ?></td>        
 			<td><?php if(!empty($row->quote_no)) echo $row->quote_no; ?></td>
       <td><?php if(!empty($row->date)){echo $row->date; }?></td>					
-      <td>
-         <a class="block-btn" href="<?php echo site_url("kaizen/takeoff/takeoff_view/".$row->id);?>"><span>View</span></a> | 
-         <a class="block-btn" href="<?php echo site_url("kaizen/takeoff/doedit/".$row->id);?>"><span>Edit</span></a> |
-         <a class="block-btn" href="<?php echo site_url("kaizen/takeoff/takeoff_duplicate/".$row->id);?>"><span>Duplicate</span></a> | 
-         <a class="block-btn" href="<?php echo site_url("kaizen/takeoff/takeoff_Print/".$row->id);?>"><span>Print</span></a> |
-         <a class="block-btn" href="<?php echo site_url("kaizen/takeoff/takeoff_view/".$row->id);?>"><span>Delete</span></a>
+      <td class="action_btn">
+         <a class="" href="<?php echo site_url("kaizen/takeoff/takeoff_view/".$row->id);?>"><span>View</span></a>  
+         <a class="" href="<?php echo site_url("kaizen/takeoff/doedit/".$row->id);?>"><span>Edit</span></a> 
+         <a class="" href="<?php echo site_url("kaizen/takeoff/doduplicate/".$row->id);?>"><span>Duplicate</span></a> 
+         <a class="" href="<?php echo site_url("kaizen/takeoff/takeoff_Print/".$row->id);?>"><span>Print</span></a>
+        <a class="" href="javascript:void(0);" title="Delete" onclick="rowdelete('<?php echo $row->id; ?>','bh_takeoff');" class=""><span>Delete</span></a>
 <!--
 				  <a class="block-btn edit-btn" href="<?php echo site_url("kaizen/takeoff/takeoff_view/".$row->id);?>"><span>View</span></a>
           <a class="block-btn edit-btn" href="<?php echo site_url("kaizen/takeoff/takeoff_edit/".$row->id);?>"><span>Edit</span></a>
@@ -108,12 +147,7 @@ div.dataTables_length {
 					</table>
             	</div>
                  <?php $this->load->view($footer); ?>
-          </div>
-             
-             <div class="rt-block">
-             	  <?php $this->load->view($right); ?>
-        </div>
-        
+          </div>        
     </div>
     </div>
 </div>
