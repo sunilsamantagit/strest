@@ -15,6 +15,17 @@ $('.fancybox').fancybox({
 $(document).ready(function(){
 	$("#cont").validationEngine();
 
+$('#takeoff_GST').keyup(function (){
+    this.value = this.value.replace(/[^0-9\.]/g,'');
+});
+
+$('#takeoff_PST').keyup(function (){
+    this.value = this.value.replace(/[^0-9\.]/g,'');
+});
+
+$('#takeoff_othertax').keyup(function (){
+    this.value = this.value.replace(/[^0-9\.]/g,'');
+});
   
 	});
         
@@ -196,7 +207,7 @@ function form_submit(){
             <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
               <label class="question-label">Date - Time</label>
-              <input type="text" name="takeoff_datetime" id="takeoff_datetime" value="<?php if(isset($details->title)){echo $details->title;}?>" class="inputinpt validate[required]" />
+              <input type="text" name="takeoff_datetime" id="takeoff_datetime" value="<?php if(isset($details->title)){echo $details->title;}?>" class="inputinpt validate[required] datepicker" />
               <img src="<?php echo base_url(); ?>application/modules/kaizen/views/takeoff/u212.png"></img>
             </div>
 
