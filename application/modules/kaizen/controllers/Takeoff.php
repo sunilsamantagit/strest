@@ -55,7 +55,6 @@ class Takeoff extends MY_Controller
     
 	public function addedit()
 	{
-		echo "<pre>";print_r($_POST);
 		$add_data = array(            
 								'project_no'			=>	$this->input->post('takeoff_project_no'),
 								'quote_no'				=>	$this->input->post('takeoff_quate_no'),
@@ -99,12 +98,14 @@ class Takeoff extends MY_Controller
                                     //'page_link'                 => name_replaceCat('home_block',$this->title),
                                     //'is_active'                 => $this->is_active
                                 );
-print_r($add_data);
+
 		$id = $this->modeltakeoff->insert_row('taskoff',$add_data);
 		if($id) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
-		{echo "Home Block Inserted Successfully.";exit;
+		{
+			//echo "Home Block Inserted Successfully.";
 			$session_data = array("SUCC_MSG"  => "Home Block Inserted Successfully.");
-			$this->session->set_userdata($session_data);					
+			$this->session->set_userdata($session_data);
+			redirect('kaizen/takeoff');				
 		}	
 
 /*
@@ -246,7 +247,7 @@ print_r($add_data);
 		$where = array(
                             'id' => $takeoff_id
                         );
-        $takeoff_detls = $this->modeltakeoff->select_row('takeoff',$where);                       
+        $takeoff_detls = $this->modeltakeoff->select_row('bh_taskoff',$where);                       
 		if($takeoff_detls){
 			$data['details'] = $takeoff_detls[0];
 		}

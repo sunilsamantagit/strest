@@ -7205,6 +7205,7 @@ a {
 }
 
 #member-form form{    
+<<<<<<< HEAD
 display: flex;
    flex-wrap: wrap;
    box-sizing: border-box;
@@ -7217,6 +7218,20 @@ width: 50%;
    display: flex;
    align-items: center;
    position: relative;
+=======
+	display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+ #webcont-form form .single-column {
+ 	width: 50%;
+    padding-right: 35px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    position: relative;
+>>>>>>> f50df2ca9b10c7fb406e236a962a590d633bb510
 }
 #webcont-form .single-column label{
 width:100px;
@@ -7231,7 +7246,11 @@ width:100px;
 #webcont-form .single-column #takeoff_start_date.inputinpt + img,
 #webcont-form .single-column  #takeoff_datetime.inputinpt + img
 { position: absolute; right: 8px; top: 2px; height:24px;}
+<<<<<<< HEAD
 .bottonserright{ display: flex; flex-wrap: wrap; align-items: center;  width: 100%; margin-top: 20px;}
+=======
+.bottonserright{ display: flex; flex-wrap: wrap;  width: 100%; margin-top: 20px;}
+>>>>>>> f50df2ca9b10c7fb406e236a962a590d633bb510
 .bottonserright .back_dash{ margin-right: auto; }
 .bottonserright .web-red-btn{ padding: 12px 40px; }
 .bottonserright .web-red-btn.cancil{  background: #fff;  border: 1px solid #333; color: #333;}
