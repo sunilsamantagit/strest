@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php  //pre($this->session->userdata['web_admin_user_id']);
+=======
+<?php // pre($this->session->userdata['web_admin_user_id']);
+>>>>>>> 4f1b30561d28cfde31c25b7c8f04e90df5f7f468
 $user_detls = $this->model_home->selectOne('admin',array('id'=>$this->session->userdata['web_admin_user_id']));
 // pre($user_detls);
 ?>

@@ -247,7 +247,7 @@ class Takeoff extends MY_Controller
 		$where = array(
                             'id' => $takeoff_id
                         );
-        $takeoff_detls = $this->modeltakeoff->select_row('takeoff',$where);                       
+        $takeoff_detls = $this->modeltakeoff->select_row('bh_taskoff',$where);                       
 		if($takeoff_detls){
 			$data['details'] = $takeoff_detls[0];
 		}

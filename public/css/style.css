@@ -7207,14 +7207,13 @@ a {
 #member-form form{    
 	display: flex;
     flex-wrap: wrap;
-    margin: 0 -15px;
     box-sizing: border-box;
 }
  #webcont-form form .single-column {
  	width: 50%;
-    padding: 0 15px;
+    padding-right: 35px;
     box-sizing: border-box;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     display: flex;
     align-items: center;
     position: relative;
@@ -7231,10 +7230,16 @@ a {
 }
 #webcont-form .single-column #takeoff_start_date.inputinpt + img,
 #webcont-form .single-column  #takeoff_datetime.inputinpt + img
-{ position: absolute; right: 25px; top: 5px;}
+{ position: absolute; right: 8px; top: 2px; height:24px;}
 .bottonserright{ display: flex; flex-wrap: wrap;  width: 100%; margin-top: 20px;}
 .bottonserright .back_dash{ margin-right: auto; }
 .bottonserright .web-red-btn{ padding: 12px 40px; }
 .bottonserright .web-red-btn.cancil{  background: #fff;  border: 1px solid #333; color: #333;}
 .bottonserright .web-red-btn.save{ background: #159bd5; color: #fff;  border: 1px solid #159bd5; }
 .bottonserright .web-red-btn.next{ background: #159bd5; color: #fff;   border: 1px solid #159bd5;}
+#webcont-form .single-column select{ height:26px; }
+#webcont-form .single-column input[type="text"], #webcont-form .single-column input[type="password"], #webcont-form .single-column input[type="email"]{ height: 26px; border: 1px solid #999; }
+#webcont-form .clear{ width: 100%; }
+.single-column .inner_column{ width: 50%; box-sizing: border-box; display: flex; align-items: center; }
+.hr_line{ height: 1px; width: 100%; background: #999; margin-bottom: 15px;}
+
