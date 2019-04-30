@@ -1,4 +1,4 @@
-<?php  pre($this->session->userdata['web_admin_user_id']);
+<?php // pre($this->session->userdata['web_admin_user_id']);
 $user_detls = $this->model_home->selectOne('admin',array('id'=>$this->session->userdata['web_admin_user_id']));
 // pre($user_detls);
 ?>
@@ -48,16 +48,31 @@ $user_detls = $this->model_home->selectOne('admin',array('id'=>$this->session->u
 <div class="total-body">
 
 <div class="header">
-    <a  href="<?php echo site_url(); ?>"><img width="60px;" height="60px;" src="<?php echo base_url("public/default/images/logo.png"); ?>" alt="<?php echo  $this->config->item("COMPANY_NAME");?>" title="<?php echo  $this->config->item("COMPANY_NAME");?>" class="logo" /></a>
+<!--    <a  href="<?php echo site_url(); ?>"><img width="60px;" height="60px;" src="<?php echo base_url("public/default/images/logo.png"); ?>" alt="<?php echo  $this->config->item("COMPANY_NAME");?>" title="<?php echo  $this->config->item("COMPANY_NAME");?>" class="logo" /></a>-->
+    <a  href="<?php echo site_url(); ?>"><h2>STREST</h2></a>
     <div class="top-right">
+        <span><img src="<?php echo base_url("public/images/user-icon.png"); ?>" alt="">Welcome <?php echo $user_detls->first_name; ?>, </span>
     	<ul>
-
-            <li>Welcome <?php echo $user_detls->first_name; ?>, </li>
-            <li class="my_profile"><a href="<?php echo site_url("kaizen/user/doedit/".$user_detls->id);?>">My Profile</a> |</li>
-            <li><a href="<?php echo site_url("kaizen/logout/");?>" class="log"> Log Out</a></li>
+            <li class="my_profile"><a href="<?php echo site_url("kaizen/user/doedit/".$user_detls->id);?>">My Profile</a></li>
+            <li class="my_profile"><a href="<?php echo site_url("kaizen/settings");?>">Setting</a></li>
+            <li><a href="<?php echo site_url("kaizen/logout");?>" class="log"> Logout</a></li>
         </ul>
     </div>
     <div class="clear"></div>
 </div>
 
-<!--Header end-->
+    <!--Header end-->
+<style>
+.top-right{ position:relative; margin-bottom: 0;}
+.top-right span{ display: block; cursor: pointer; padding-bottom: 5px; position: relative; padding-right: 13px; line-height: 18px;}
+.top-right span:after{ content:""; border: solid black; border-width: 0 2px 2px 0; display: inline-block; padding: 3px; transform: rotate(45deg); position: absolute; right: 0; top: 4px;}
+.top-right ul{ display:none; position: absolute; width: 160px; right: 0; top: 100%; background: #fff;box-shadow: 0px 1px 5px -3px rgba(0,0,0,0.75);}
+.top-right ul li{ width:100%; padding: 10px 15px; box-sizing: border-box; border-bottom: 1px solid #ddd;}
+.top-right:hover ul{ display: block;}
+.top-right ul li a{ display: block;}
+.top-right span img{width: 18px;
+    height: 18px;
+    display: inline-block;
+    border-radius: 50%;
+    vertical-align: middle; margin-right: 5px;
+</style>

@@ -80,10 +80,11 @@ class User extends MY_Controller
 
 			//$editid = tracking($this->modeluser->field_arr,$id,'admin','admin',$editid,'edit');
                                 $this->user_title		=$this->input->post('user_title',TRUE);
+                                $this->user_id2		=$this->input->post('user_id2',TRUE);
                                 $this->first_name		=$this->input->post('first_name',TRUE);
                                 $this->last_name		=$this->input->post('last_name',TRUE);
                                 $this->change_password	=$this->input->post('change_password');
-                                $this->user_level		=$this->input->post('user_level',TRUE);
+                              //  $this->user_level		=$this->input->post('user_level',TRUE);
                                 $this->user_name        =$this->input->post('user_name');
                                 $this->user_email       =$this->input->post('user_email');
                                 $this->approved         =$this->input->post('approved',TRUE);
@@ -96,12 +97,13 @@ class User extends MY_Controller
                             if($this->change_password==1){
                                 $this->pwd              =$this->input->post('pwd');
                                 $update_data = array(
+                                   'user_id'                 => $this->user_id2,
                                    'full_name'                 => $this->user_title,
                                    'first_name'                 => $this->first_name,
                                    'last_name'                 => $this->last_name,
                                     'user_name'                 => $this->user_name,
                                     'user_email'                => $this->user_email,
-                                    'user_level'                => $this->user_level,
+                                    'user_level'                => 2,
                                     'pwd'                       => SHA1($this->pwd),
                                     'pwd_hint'                  => $this->pwd,
                                     'date'                      => date('Y-m-d'),
@@ -109,12 +111,13 @@ class User extends MY_Controller
                                     );
                             }else{
                                 $update_data = array(
+                                    'user_id'                 => $this->user_id2,
                                     'full_name'                 => $this->user_title,
                                     'first_name'                 => $this->first_name,
                                     'last_name'                 => $this->last_name,
                                     'user_name'                 => $this->user_name,
                                     'user_email'                => $this->user_email,
-                                    'user_level'                => $this->user_level,
+                                    'user_level'                => 2,
                                     'date'                      => date('Y-m-d'),
                                     'approved'          		=> $this->approved
                                 );
@@ -128,11 +131,14 @@ class User extends MY_Controller
 					$session_data = array("ERROR_MSG"  => "User Not Updated.");
 					$this->session->set_userdata($session_data);
 				}
+                                redirect("kaizen/user/doedit/".$id,'refresh');
+                                
 			} else {
+                                $this->user_id2		=$this->input->post('user_id2',TRUE);
                                 $this->user_title		=$this->input->post('user_title',TRUE);
                                 $this->first_name		=$this->input->post('first_name',TRUE);
                                 $this->last_name		=$this->input->post('last_name',TRUE);
-                                $this->user_level		=$this->input->post('user_level',TRUE);
+                               // $this->user_level		=$this->input->post('user_level',TRUE);
                                 $this->user_name        =$this->input->post('user_name');
                                 $this->pwd              =$this->input->post('pwd');
                                 $this->user_email       =$this->input->post('user_email');
@@ -143,12 +149,13 @@ class User extends MY_Controller
                 }
 
                 $add_data = array(
+                                'user_id'                 => $this->user_id2,
                                 'full_name'                 => $this->user_title,
                                 'first_name'                 => $this->first_name,
                                  'last_name'                 => $this->last_name,
                                 'user_name'                 => $this->user_name,
                                 'user_email'                => $this->user_email,
-                                'user_level'                => $this->user_level,
+                                'user_level'                => 2,
                                 'pwd'                       => SHA1($this->pwd),
                                 'pwd_hint'                  => $this->pwd,
                                 'date'                      => date('Y-m-d'),
@@ -166,9 +173,9 @@ class User extends MY_Controller
 					$session_data = array("ERROR_MSG"  => "User Not Created.");
 					$this->session->set_userdata($session_data);
 				}
-
+                          redirect("kaizen/user",'refresh');
 			}
-			redirect("kaizen/user/doedit/".$id,'refresh');
+			
 		}
 		else{
 			if(!empty($id)){
