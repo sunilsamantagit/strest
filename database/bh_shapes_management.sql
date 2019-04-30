@@ -25,26 +25,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bh_lumbsum`
+-- Table structure for table `bh_shapes_management`
 --
 
-DROP TABLE IF EXISTS `bh_lumbsum`;
-CREATE TABLE IF NOT EXISTS `bh_lumbsum` (
+DROP TABLE IF EXISTS `bh_shapes_management`;
+CREATE TABLE IF NOT EXISTS `bh_shapes_management` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `lumbsum_name` varchar(20) NOT NULL,
+  `shape_name` varchar(12) NOT NULL,
+  `shape_specification` varchar(12) NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `status` int(10) NOT NULL,
+  `status` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `bh_lumbsum`
+-- Dumping data for table `bh_shapes_management`
 --
 
-INSERT INTO `bh_lumbsum` (`id`, `lumbsum_name`, `date`, `status`) VALUES
-(30, 't4tr4et', '2019-04-30 14:07:49', 1),
-(28, 'Jack', '2019-04-30 12:52:55', 1),
-(29, 'Nick', '2019-04-30 12:54:36', 1);
+INSERT INTO `bh_shapes_management` (`id`, `shape_name`, `shape_specification`, `date`, `status`) VALUES
+(4, 'dddddddddddd', 'ffffffffff', '2019-04-30 14:06:17', 1),
+(5, 'fgert', 'fesfswef', '2019-04-30 14:08:04', 1),
+(6, 'sssss', 'efewfwe', '2019-04-30 15:59:43', 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

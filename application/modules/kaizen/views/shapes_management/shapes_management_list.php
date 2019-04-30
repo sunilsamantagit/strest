@@ -68,7 +68,7 @@ div.dataTables_length {
 <div class="rightDiv">
 	<div class="right-outer">
 	<div class="page_title">
-		<h3 class="title">shapes Management</h3>
+		<h2 class="title">Shapes Management</h2>
 		<?php $this->load->view($right); ?>
 	</div>
         <div class="clear"></div>
@@ -104,7 +104,7 @@ div.dataTables_length {
         			  if(empty($records)){
         				  ?>
         							<tr>
-        								<td align="center" valign="top"><b>There are no Records.</b><br /></td>
+        								<th align="center" valign="top" colspan="5"><b>There are no Records.</b><br /></th>
         							</tr>
         							<?php
         			  }
@@ -131,7 +131,7 @@ div.dataTables_length {
 							</td>-->
 							
                 		<td class="action_btn">
-                			<a class="" href="<?php echo site_url("kaizen/shapes_management/lumbsum_edit/".$row->id);?>"><span>Edit</span></a>
+                			<a class="" href="<?php echo site_url("kaizen/shapes_management/doedit/".$row->id);?>"><span>Edit</span></a>
 							<a href="javascript:void(0);" title="Delete" onclick="rowdelete('<?php echo $row->id; ?>','shapes_management');" class=""><span>Delete</span></a>
                         </td>
 						

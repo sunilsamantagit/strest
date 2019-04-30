@@ -49,8 +49,8 @@ class Lumbsum extends MY_Controller
 		
 		$where = array('status'=>1);
         $order_by = array('title' => 'asc');
-	    
-		
+	 //echo '<pre>';print_r($data['data']);exit;   
+	//echo "<pre>"; print_r($data); exit();	
 		$this->load->view('kaizen/lumbsum/edit_lumbsum',$data);		
 	}
     
@@ -58,7 +58,7 @@ class Lumbsum extends MY_Controller
 	{
 //echo "<pre>"; print_r($_POST);exit;
 		
-		$add_data1 = array(
+		/*$add_data1 = array(
 							'lumbsum_name'	=>	$this->input->post('lumbsum_entry_name'),
 							'status'		=>	$this->input->post('lumbsum_status')
 				
@@ -70,18 +70,19 @@ class Lumbsum extends MY_Controller
 			$session_data = array("SUCC_MSG"  => "Lumb Sum Inserted Successfully.");
 			$this->session->set_userdata($session_data);					
 		}	
-		redirect("kaizen/lumbsum/",'refresh');
-						
+		redirect("kaizen/lumbsum/",'refresh');*/
+	//.........................new..............................\\	
+	
 //print_r($add_data1);
 
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('lumbsum_entry_name', 'Title', 'trim|required|xss_clean');
 		
 		
-		$this->form_validation->set_error_delimiters('<span class="validation_msg">', '</span>');
+		//$this->form_validation->set_error_delimiters('<span class="validation_msg">', '</span>');
 		$id=$this->input->post('lumbsum_id','');
-	 	$takeoff_detls ='';
-	 	$uplod_img='';
+	 	//$takeoff_detls ='';
+	 	//$uplod_img='';
 		if($this->form_validation->run() == TRUE) // IF MENDATORY FIELDS VALIDATION TRUE(SERVER SIDE)  
 		{	
 			$where = array(
@@ -124,8 +125,8 @@ class Lumbsum extends MY_Controller
 			}
 			else 
 			{           
-                                $this->lumbsum_name         =$this->input->post('lumbsum_name',TRUE);
-                                $this->status     =$this->input->post('status',TRUE); 
+                                $this->lumbsum_name         =$this->input->post('lumbsum_entry_name',TRUE);
+                                $this->status     =$this->input->post('lumbsum_status',TRUE); 
                              if($this->status===false){
                                 $this->status='1';
                 }
@@ -135,21 +136,20 @@ class Lumbsum extends MY_Controller
               
                 $add_data = array(
                                     
-                                    'lumbsum_name' 			        => $this->lumbsum_name,
-                                    'page_link'                 => name_replaceCat('home_block',$this->title),
-                                    'status'                 => $this->status
+                                    'lumbsum_name' 	   => $this->lumbsum_name,
+                                    'status'           => $this->status
                                 );
                                 
 				$id = $this->modellumbsum->insert_row('lumbsum',$add_data);
 				if($id) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
 				{ 
                    
-					$session_data = array("SUCC_MSG"  => "Home Block Inserted Successfully.");
+					$session_data = array("SUCC_MSG"  => "Lumb Sum Entries Inserted Successfully.");
 					$this->session->set_userdata($session_data);					
 				}			
 				else // IF UPDATE PROCEDURE NOT EXECUTE SUCCESSFULLY
 				{	
-					$session_data = array("ERROR_MSG"  => "Home Block Not Inserted.");
+					$session_data = array("ERROR_MSG"  => "Lumb Sum Entries Not Inserted.");
 					$this->session->set_userdata($session_data);				
 				}
 			}
