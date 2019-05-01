@@ -119,7 +119,7 @@ div.dataTables_length {
 							<td style="text-align: center;"><?php if(!empty($row->shape_name)) echo $row->shape_name; ?></td>
 							<td><?php if(!empty($row->shape_specification)) echo $row->shape_specification; ?></td>
                             <td><?php if(!empty($row->date)) { $originalDate = $row->date;
-							$newDate = date("d-m-Y", strtotime($originalDate)); echo $newDate; } ?></td>
+							$newDate = date("m-d-Y", strtotime($originalDate)); echo $newDate; } ?></td>
         			        
 							<!--<td>    
 							 <span id="status_td<?php echo $row->id; ?>"><?php if($row->is_active==1){ ?>

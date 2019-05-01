@@ -159,7 +159,8 @@ class Shapes_management extends MY_Controller
 					$this->session->set_userdata($session_data);				
 				}
 			}
-			redirect("kaizen/shapes_management/doedit/".$id,'refresh');			
+			//redirect("kaizen/shapes_management/doedit/".$id,'refresh');	
+			redirect("kaizen/shapes_management/doedit/".$id,'refresh');				
 		}
 		else{
 			if(!empty($id)){

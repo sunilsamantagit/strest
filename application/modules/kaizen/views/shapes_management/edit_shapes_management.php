@@ -47,7 +47,7 @@ function form_submit(){
 <div class="rightDiv">
   <div class="right-outer add_lumbsum">
     <?php if(isset($details->id) && $details->id >0){?>
-    <h1 class="title">Edit - Shapes Management</h1>
+    <h2 class="title">Edit - Shapes Management</h2>
       <?php if(isset($details->title)){
 		     $count_e = mb_strlen( $details->title);
 							      $last_space_e = '';
@@ -57,7 +57,7 @@ function form_submit(){
     </h3>
     <?php }
     else {?>
-    <h1 class="title">Add - Shapes Management</h1>
+    <h2 class="title">Add - Shapes Management</h2>
     <?php } ?>
     <div class="clear"></div>
     <div class="mid-block padbot40">
