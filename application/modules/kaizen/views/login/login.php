@@ -28,17 +28,7 @@
 		font-weight: normal;
 	}
 
-	h1 {
-		color: #000;
-		background-color: transparent;
-		/*border-bottom: 1px solid #D0D0D0;*/
-		font-size: 35px;
-		font-weight: normal;
-		margin: 0 0 45px 0;
-		padding: 14px 15px 10px 15px;
-                line-height:35px;
-	}
-
+	
 	code {
 		font-family: Consolas, Monaco, Courier New, Courier, monospace;
 		font-size: 12px;
@@ -67,12 +57,16 @@
 		margin: 10px;
 		/*border: 1px solid #D0D0D0;*/
                 padding-top: 20px;
-		margin: 10% auto 0;
+		margin: 3% auto 0;
+                    padding-bottom: 1%;
     	text-align: center;
     	width: 45%;
 		-webkit-box-shadow: 0 0 8px #D0D0D0;
 	}
-
+h1{    font-family: 'Arial Bold', 'Arial Regular', 'Arial';
+    font-weight: 700;
+    font-style: normal;
+    font-size: 24px;}
 	#uname{
 		border: 1px solid #dddee0;
 		color: #787878;
@@ -136,26 +130,56 @@
 	</style>
 </head>
 <body>
-
+    <div class="body-header">
+                <h1>STREST</h1>
+    <h1>Stractural Steel Estimating Program</h1>
+    </div>
 <div id="container">
-	<h1>Welcome to <?php echo $this->config->item('COMPANY_NAME'); ?></h1>
-        <image src="<?php echo base_url("public/images/logo.png"); ?>"/>
-	<div id="body">
+    <div class="text-login">
+            <p>User Login Area</p>
+          </div>
+<!--	<h1>Welcome to <?php echo $this->config->item('COMPANY_NAME'); ?></h1>-->
+<!--        <image src="<?php echo base_url("public/images/logo.png"); ?>"/>-->
+
+    <div id="body">
             <div id="err_div" style="color:red;"></div>
             <span id="error_div"></span>
         <span id="success_div"></span>
             <!-- <form  method="post" action="<?php echo base_url("kaizen/welcome/authentication/"); ?>" id="login_frm" /> -->
 						<?php $attributes = array('id' => 'login_frm'); ?>
 						<?php echo form_open('kaizen/welcome/authentication/',$attributes); ?>
-                <div>User Name</div>
-                <input type="text" name="uname" id="uname" value="" class="validate[required]" />
-                <div>Password</div>
-                <input type="password" name="pwd" id="pwd" value="" class="validate[required]" />
-                <div></div>
-                <input name="" type="submit" class="submitBtn" value="Login" />
+        <div class="form-group">
+            <div class="label-sty">User Name</div>
+            <div class="form-box"><input type="text" name="uname" id="uname" value="" class="validate[required]" /></div>
+        </div>
+                <div class="form-group">
+            <div class="label-sty">User No</div>
+            <div class="form-box"><input type="text" name="uno" id="uname" value="" class="validate[required]" /></div>
+        </div>
+        <div class="form-group">
+        <div class="label-sty">Password</div>
+        <div class="form-box"> <input type="password" name="pwd" id="pwd" value="" class="validate[required]" /></div>
+        </div>
+        <div class="form-group">
+            <div class="label-sty"></div>
+            <div class="form-box"> 
+        <div class="checkbox check-box-sty">
+            <div class="text">
+               <input type="checkbox" value="checkbox"><span>Remember me</span>
+            </div>
+        </div>
+        </div>
+        </div>
+        <div class="button-sec">
+            <div class="button-sub-sty">   <input name="" type="submit" class="submitBtn" value="Login" /></div>
+            <div class="button-sub-sty">   <input name="" type="submit" class="submitBtn submitBtn1" value="Cancel" /></div>
+            <div class="button-sub-sty pading-forget"> <a href="" class="lost-password">Lost your password?</a></div>
+            
+        </div>
+        <div class="clear-fix"></div> 
         <!-- </form> -->
 				<?php echo form_close(); ?>
-            <a href="javascript:void(0);" class="forgot" onclick="showHideDiv();">Forgot Password</a>
+           <!-- <a href="javascript:void(0);" class="forgot" onclick="showHideDiv();">Forgot Password</a>-->
         <!-- <form method="post" action="<?php echo base_url("kaizen/welcome/forgetpassword");?>" id="forgetpassword" style="display:none;"> -->
 				<?php $attributes = array(
 							'id' => 'forgetpassword',
@@ -170,9 +194,78 @@
 				<?php echo form_close(); ?>
 	</div>
 
+    <style>
+    .body-header{		/*border: 1px solid #D0D0D0;*/
+                padding-top: 20px;
+		margin: 10% auto 0;
+    	text-align: center;
+    	width: 45%; }    
+      .form-box{width: 70%;
+    float: left;}      
+    .label-sty{width: 30%;
+    float: left;
+        margin-top: 7px;
+    font-size: 14px;
+    color: #000;
+    }  
+    #uname,#pwd {
+    border: 1px solid #dddee0;
+    display: block;
+    font-family: "Open Sans",sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    height: 28px;
+    padding: 0 2%;
+    width: 85%;
+    margin:6px 0px;
+    background: #fff!important;
+}
+#container {
+    background-color: rgba(215, 215, 215, 1);
+    -webkit-box-shadow: none;}
+.check-box-sty{ float:left; margin-left: -3px;}
+#login_frm > div {
+    font-size: 14px;
+}
+.button-sub-sty{ width:33%; float:left;}
+.submitBtn {
+    background-color: #4AA6DB;
+    border: 2px solid #4AA6DB;
+    border-radius: 4px;
+    margin-top: 10px;
+    color: #fff;
+    display: inline-block;
+    padding: 9px 39px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out 0s;
+    font-weight: 700;
+}
+.submitBtn:hover {
+    background-color:#fff ;
+    color: #4AA6DB;
+      border: 1px solid #000;
+   
+}
+.submitBtn1 {
+    background-color: #fff;
+    border: 1px solid #4AA6DB; color:#4AA6DB;}
+.submitBtn1:hover {
+    background-color:#4AA6DB ;
+    color: #fff;
+      border: 1px solid #000;
+   
+}
+.pading-forget{ padding-top: 17px;}
+.lost-password{ color: #169BD5; text-align:center;
+    text-decoration: none;}
+.clear-fix{ clear:both;}
+.text-login p{ text-align:center;  font-size: 20px;
+    font-weight: 600;}
+</style>
 
-</div>
-<script type="text/javascript">
+
+  <script type="text/javascript">
     function showHideDiv(){
 		$('#forgetpassword').show();
 		}

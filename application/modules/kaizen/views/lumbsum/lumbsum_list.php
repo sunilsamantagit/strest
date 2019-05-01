@@ -1,5 +1,6 @@
 <?php $this->load->view($header); ?>
 <?php $this->load->view($left); ?>
+ <?php //echo "<pre>";print_r($data);?>  <?php //echo "<pre>";print_r($category2);exit; ?>
 <style>
 div.dataTables_length {
     padding-left: 2em;
@@ -103,7 +104,7 @@ div.dataTables_length {
         			  if(empty($records)){
         				  ?>
         							<tr>
-        								<td align="center" valign="top"><b>There are no Records.</b><br /></td>
+        								<th align="center" valign="top" colspan="4"><b>There are no Records.</b><br /></th>
         							</tr>
         							<?php
         			  }
@@ -117,7 +118,7 @@ div.dataTables_length {
                             <td style="text-align: center;"><?php echo $i; ?></td>   
 							<td style="text-align: center;"><?php if(!empty($row->lumbsum_name)) echo $row->lumbsum_name; ?></td>
 							<td style="text-align: center;"><?php if(!empty($row->date)) { $originalDate = $row->date;
-							$newDate = date("d-m-Y", strtotime($originalDate)); echo $newDate; } ?></td>
+							$newDate = date("m-d-Y", strtotime($originalDate)); echo $newDate; } ?></td>
 				
         			        
 							<!--<td>    
@@ -130,7 +131,7 @@ div.dataTables_length {
 							</td>-->
 							
                 		<td class="action_btn">
-                			<a class="" href="<?php echo site_url("kaizen/lumbsum/lumbsum_edit/".$row->id);?>"><span>Edit</span></a>
+                			<a class="" href="<?php echo site_url("kaizen/lumbsum/doedit/".$row->id);?>"><span>Edit</span></a>
 							<a href="javascript:void(0);" title="Delete" onclick="rowdelete('<?php echo $row->id; ?>','lumbsum');" class=""><span>Delete</span></a>
                         </td>
 						

@@ -8,28 +8,8 @@ div.dataTables_length {
     div.dataTables_filter {
         padding-top: 0.55em;
     }
-	
-	#pagi {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-#pagi td, #pagi th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-
-
-#pagi th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: center;
-  background-color: #0B94FA;
-  color: black;
-}
-.page_title .rt-bg-block{
+    
+    .page_title .rt-bg-block{
 	background: none;
     border: 0;
     box-shadow: none;
@@ -61,16 +41,17 @@ div.dataTables_length {
 .action_btn a:not(:last-child):after{ content:"|"; position:absolute; right:-6px; color:#333;}
 .lumb_sumb_table table thead tr th{ background: #169bd5; border: 1px solid #333 !important;}
 .lumb_sumb_table table tbody tr td{ border: 1px solid #333 !important;}
-	
+.lumb_sumb_table table.dataTable{ border-collapse: collapse}
 </style>
+
 <script type='text/javascript' src='<?php echo base_url(); ?>public/js/jquery.dataTables.min.js'></script> 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>public/css/jquery.dataTables.min.css" />
 <div class="rightDiv">
 	<div class="right-outer">
-	<div class="page_title">
-		<h2 class="title">Shapes Management</h2>
-		<?php $this->load->view($right); ?>
-	</div>
+            <div class="page_title">
+		<h3 class="title">Takeoff Line Entries List</h3>
+                <?php $this->load->view($right); ?>
+            </div>
         <div class="clear"></div>
         
         <!--Search area end-->
@@ -91,11 +72,15 @@ div.dataTables_length {
            <div ><h2 align="center" style="color:#31B12c;"  id="status_mesage"></h2></div>
                     <table cellspacing="0" cellpadding="0" border="0" id="pagi">
 						<thead><tr>
-                            <th style="text-align: center;">No.<span class=""></span></th>
-                            <th width="35%">Shape Name<span class=""></span></th>
-                            <th>Shape Specification<span class=""></span></th>
-							<th>Inserted Date<span class=""></span></th>
-							<th>Action<span class=""></span> </th>
+                            <th>T<span class=""></span></th>
+                            <th>QTY<span class=""></span></th>
+                            <th>Material<span class=""></span></th>
+                            <th>Spec<span class=""></span></th>
+                            <th>Width (FT)<span class=""></span></th>
+                            <th>Length (FT)<span class=""></span></th>
+                            <th>WT (LB)<span class=""></span></th>
+                            <th>MHS<span class=""></span></th>
+			    <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -104,7 +89,7 @@ div.dataTables_length {
         			  if(empty($records)){
         				  ?>
         							<tr>
-        								<th align="center" valign="top" colspan="5"><b>There are no Records.</b><br /></th>
+                                                                    <th align="center" valign="top" colspan="9">There are no Records.</th>
         							</tr>
         							<?php
         			  }
@@ -115,38 +100,32 @@ div.dataTables_length {
         			  ?>
         					<tr>
                             
-                            <td style="text-align: center;"><?php echo $i; ?></td>   
-							<td style="text-align: center;"><?php if(!empty($row->shape_name)) echo $row->shape_name; ?></td>
-							<td><?php if(!empty($row->shape_specification)) echo $row->shape_specification; ?></td>
-                            <td><?php if(!empty($row->date)) { $originalDate = $row->date;
-							$newDate = date("m-d-Y", strtotime($originalDate)); echo $newDate; } ?></td>
-        			        
-							<!--<td>    
-							 <span id="status_td<?php echo $row->id; ?>"><?php if($row->is_active==1){ ?>
-	<a href="javascript:void(0)" onclick="change_status('<?php echo $row->id; ?>','0','status_td','home_block','home_block')" title="Active"> <img src="<?php echo site_url("public/images/unlock_icon.gif");?>" alt="Active"/> </a>
-								<?php } else{ ?>
-<a href="javascript:void(0)" onclick="change_status('<?php echo $row->id; ?>','1','status_td','home_block','home_block')" title="Inactive"> <img src="<?php echo site_url("public/images/locked_icon.gif");?>" alt="Inactive"/></a>
-								<?php } ?>
-							 </span>
-							</td>-->
-							
-                		<td class="action_btn">
-                			<a class="" href="<?php echo site_url("kaizen/shapes_management/doedit/".$row->id);?>"><span>Edit</span></a>
-							<a href="javascript:void(0);" title="Delete" onclick="rowdelete('<?php echo $row->id; ?>','shapes_management');" class=""><span>Delete</span></a>
-                        </td>
-						
-							</tr>
+                               
+                             <td><?php if(!empty($row->type)) echo $row->type; ?></td>		
+                             <td><?php if(!empty($row->qty)) echo $row->qty; ?></td>		
+                             <td><?php if(!empty($row->material)) echo $row->material; ?></td>		
+                             <td><?php if(!empty($row->spec)) echo $row->spec; ?></td>		
+                             <td><?php if(!empty($row->width)) echo $row->width; ?></td>		
+                             <td><?php if(!empty($row->length)) echo $row->length; ?></td>		
+                             <td><?php if(!empty($row->weight)) echo $row->weight; ?></td>		
+                             <td><?php if(!empty($row->mhs)) echo $row->mhs; ?></td>
+                             
+                	    <td class="action_btn">
+                	     <a class="" href="<?php echo site_url("kaizen/takeoffline/doedit/".$row->id);?>"><span>Edit</span></a> <a href="javascript:void(0);" title="Delete" onclick="rowdelete('<?php echo $row->id; ?>','takeoffline');" class=""><span>Delete</span></a>
+                                </a>
+                              </td>		</tr>
         									
-        			<?php
+        							<?php
         			  }
         			  }
         			  ?>        
                         
-                    </tbody>
-					</table>
+						
+                    </tbody></table>
             	</div>
                  <?php $this->load->view($footer); ?>
           </div>
+             
             
         
     </div>
@@ -162,10 +141,14 @@ div.dataTables_length {
       "order": [[ 2, "asc" ]],
       "stateSave": true,
     "aoColumns": [
-    null,
-    { "bSortable": false },
+          null,
 	  null,  
-	    { "bSortable": false },
+	  null,  
+	  null,  
+	  null,  
+	  null,  
+	  null,  
+	  null,  
       { "bSortable": false }
   
     ],

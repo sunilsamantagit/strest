@@ -30,12 +30,12 @@ class Shapes_management extends MY_Controller
 	
 	
 	public function dolist(){
-		//$data = array();
-		//$where = array();
+		$data = array();
+		$where = array();
                
-       // $order_by = array('id' => 'asc');
-		//$data_row = $this->modelshapes_management->select_row('bh_shapes_management',$where,$order_by);
-		//$data['records']= $data_row;
+        $order_by = array('id' => 'asc');
+		$data_row = $this->modelshapes_management->select_row('bh_shapes_management',$where,$order_by);
+		$data['records']= $data_row;
 //echo '<pre>';print_r($data['records']);exit;
 		$this->load->view('kaizen/shapes_management/shapes_management_list',$data);		
 	}
@@ -43,9 +43,9 @@ class Shapes_management extends MY_Controller
 	public function doadd(){
 		$data = array();
         $data['details']= new stdClass;
-		$lumbsum_id=$this->uri->segment(4);
+		$shape_id=$this->uri->segment(4);
 		$data['details']->status = 1;
-		$data['details']->id = $lumbsum_id;
+		$data['details']->id = $shape_id;
 		
 		$where = array('status'=>1);
         $order_by = array('title' => 'asc');
@@ -56,34 +56,50 @@ class Shapes_management extends MY_Controller
     
 	public function addedit()
 	{
-echo "<pre>"; print_r($_POST);exit;
-		
-		$add_data1 = array (
-				
-		);
+//echo "<pre>"; print_r($_POST);exit;
 
+/*$add_data1 = array(
+							'shape_name'	=>	$this->input->post('shape_name'),
+							'shape_specification'	=>	$this->input->post('shape_specification'),
+							'status'		=>	$this->input->post('shape_status')
+				
+						);
+						
+		$id = $this->modelshapes_management->insert_row('shapes_management',$add_data1);
+		if($id) { 
+		echo " Inserted Successfully..";
+			$session_data = array("SUCC_MSG"  => " Inserted Successfully.");
+			$this->session->set_userdata($session_data);					
+		}	
+		redirect("kaizen/shapes_management/",'refresh');*/
+	//.........................new..............................\\	
+	
+//print_r($add_data1);
+		
+		
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('lumbsum_entry_name', 'Title', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('shape_name', 'Title', 'trim|required|xss_clean');
+		//$this->form_validation->set_rules('shape_specification', 'Title', 'trim|required|xss_clean');
 		
-		
-		$this->form_validation->set_error_delimiters('<span class="validation_msg">', '</span>');
-		$id=$this->input->post('lumbsum_id','');
-	 	$takeoff_detls ='';
-	 	$uplod_img='';
+		//$this->form_validation->set_error_delimiters('<span class="validation_msg">', '</span>');
+		$id=$this->input->post('shape_id','');
+	 	//$takeoff_detls ='';
+	 	//$uplod_img='';
 		if($this->form_validation->run() == TRUE) // IF MENDATORY FIELDS VALIDATION TRUE(SERVER SIDE)  
 		{	
 			$where = array(
                            
                             'id' => $id
                         );
-                $lumbsum_detls = $this->modellumbsum->select_row('lumbsum',$where);
+                $shapes_detls = $this->modelshapes_management->select_row('shapes_management',$where);
 				
-        		if(!empty($lumbsum_detls)) 
+        		if(!empty($shapes_detls)) 
                 {
                    
 	//echo "<pre>"; print_r($_POST);exit;		                     
-                                $this->lumbsum_name  =$this->input->post('lumbsum_entry_name',TRUE);
-                                $this->status		 =$this->input->post('lumbsum_status',TRUE); 
+                                $this->shape_name 		    =$this->input->post('shape_name',TRUE);
+								$this->shape_specification  =$this->input->post('shape_specification',TRUE);
+                                $this->status		        =$this->input->post('shape_status',TRUE); 
                                 if($this->status===false){
                                         $this->status='1';
                                 }
@@ -92,28 +108,30 @@ echo "<pre>"; print_r($_POST);exit;
 								
                                 $update_data = array(
                                   
-                                    'lumbsum_name' => $this->lumbsum_name,
-                                    'status'       => $this->status
+                                    'shape_name'          => $this->shape_name,
+									'shape_specification' => $this->shape_specification,
+                                    'status'              => $this->status
                                 );
                                 
                 
 				$update_where = array('id' => $id);
-				if($this->modellumbsum->update_row('lumbsum',$update_data,$update_where)) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
+				if($this->modelshapes_management->update_row('shapes_management',$update_data,$update_where)) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
 				{
 				
-					$session_data = array("SUCC_MSG"  => "Lumb Sum Entries Updated Successfully.");
+					$session_data = array("SUCC_MSG"  => "Shapes Management Updated Successfully.");
 					$this->session->set_userdata($session_data);					
 				}			
 				else 
 				{	
-					$session_data = array("ERROR_MSG"  => "Lumb Sum Entries Not Updated.");
+					$session_data = array("ERROR_MSG"  => "Shapes Management Not Updated.");
 					$this->session->set_userdata($session_data);				
 				}
 			}
 			else 
 			{           
-                                $this->lumbsum_name         =$this->input->post('lumbsum_name',TRUE);
-                                $this->status     =$this->input->post('status',TRUE); 
+                                $this->shape_name            =$this->input->post('shape_name',TRUE);
+								 $this->shape_specification  =$this->input->post('shape_specification',TRUE);
+                                $this->status                =$this->input->post('shape_status',TRUE); 
                              if($this->status===false){
                                 $this->status='1';
                 }
@@ -123,25 +141,26 @@ echo "<pre>"; print_r($_POST);exit;
               
                 $add_data = array(
                                     
-                                    'lumbsum_name' 			        => $this->lumbsum_name,
-                                    'page_link'                 => name_replaceCat('home_block',$this->title),
-                                    'status'                 => $this->status
+                                    'shape_name' 	       => $this->shape_name,
+                                    'shape_specification'  => $this->shape_specification,
+                                    'status'               => $this->status
                                 );
                                 
-				$id = $this->modellumbsum->insert_row('lumbsum',$add_data);
+				$id = $this->modelshapes_management->insert_row('shapes_management',$add_data);
 				if($id) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
 				{ 
                    
-					$session_data = array("SUCC_MSG"  => "Home Block Inserted Successfully.");
+					$session_data = array("SUCC_MSG"  => "Shapes Management Inserted Successfully.");
 					$this->session->set_userdata($session_data);					
 				}			
 				else // IF UPDATE PROCEDURE NOT EXECUTE SUCCESSFULLY
 				{	
-					$session_data = array("ERROR_MSG"  => "Home Block Not Inserted.");
+					$session_data = array("ERROR_MSG"  => "Shapes Management Not Inserted.");
 					$this->session->set_userdata($session_data);				
 				}
 			}
-			redirect("kaizen/lumbsum/doedit/".$id,'refresh');			
+			//redirect("kaizen/shapes_management/doedit/".$id,'refresh');	
+			redirect("kaizen/shapes_management/doedit/".$id,'refresh');				
 		}
 		else{
 			if(!empty($id)){
@@ -155,13 +174,13 @@ echo "<pre>"; print_r($_POST);exit;
 	public function doedit()
 	{
 		$data = array();
-		$lumbsum_id=$this->uri->segment(4); 		
+		$shape_id=$this->uri->segment(4); 		
 		$where = array(
-                            'id' => $lumbsum_id
+                            'id' => $shape_id
                         );
-        $lumbsum_detls = $this->modellumbsum->select_row('lumbsum',$where);                       
-		if($lumbsum_detls){
-			$data['details'] = $lumbsum_detls[0];
+        $shapes_detls = $this->modelshapes_management->select_row('shapes_management',$where);                       
+		if($shapes_detls){
+			$data['details'] = $shapes_detls[0];
 		}
 		else{
 			$data['details']->status = 1;

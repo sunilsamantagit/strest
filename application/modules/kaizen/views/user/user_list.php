@@ -24,11 +24,11 @@ div.dataTables_length {
 						<?php
 						if($this->session->userdata('ERROR_MSG')==TRUE){
 							echo '<div class="notific_error">
-									<h2 align="center" style="color:#fff;">'.$this->session->userdata('ERROR_MSG').'</h1></div>';
+									<h2 align="center" style="color:#f00;">'.$this->session->userdata('ERROR_MSG').'</h1></div>';
 							$this->session->unset_userdata('ERROR_MSG');
 						}
 						if($this->session->userdata('SUCC_MSG')==TRUE){
-							echo '<div class="notific_suc"><h2 align="center" style="color:#000;">'.$this->session->userdata('SUCC_MSG').'</h1></div>';
+							echo '<div class="notific_suc"><h2 align="center" style="color:#0a0;">'.$this->session->userdata('SUCC_MSG').'</h1></div>';
 							$this->session->unset_userdata('SUCC_MSG');
 						}
 						?>

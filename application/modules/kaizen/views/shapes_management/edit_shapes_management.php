@@ -42,11 +42,12 @@ function form_submit(){
 .add_lumbsum #webcont-form .single-column select{ height:36px;}
 .add_lumbsum .bottonserright{ padding:0 15px; box-sizing: border-box; margin-top:100px;}
 .add_lumbsum .bottonserright .back_dash{ color:#159bd5;}
+#webcont-form form .single-column { float: left;}
 </style>
 <div class="rightDiv">
   <div class="right-outer add_lumbsum">
     <?php if(isset($details->id) && $details->id >0){?>
-    <h2 class="title">Edit - Lumb Sum Entries</h2>
+    <h2 class="title">Edit - Shapes Management</h2>
       <?php if(isset($details->title)){
 		     $count_e = mb_strlen( $details->title);
 							      $last_space_e = '';
@@ -56,7 +57,7 @@ function form_submit(){
     </h3>
     <?php }
     else {?>
-    <h2 class="title">Add - Lumb Sum Entries</h2>
+    <h2 class="title">Add - Shapes Management</h2>
     <?php } ?>
     <div class="clear"></div>
     <div class="mid-block padbot40">
@@ -65,8 +66,8 @@ function form_submit(){
           <div id="member-form" class="midarea">
             <?php 
 		  $attributes = array('name' => 'cont', 'id' => 'cont');
-		  echo form_open_multipart('kaizen/lumbsum/addedit/'.$details->id,$attributes);
-		  echo form_hidden('lumbsum_id', $details->id);		  
+		  echo form_open_multipart('kaizen/shapes_management/addedit/'.$details->id,$attributes);
+		  echo form_hidden('shape_id', $details->id);		  
 		  ?>
             <?php
 		if($this->session->userdata('ERROR_MSG')==TRUE){
@@ -81,25 +82,31 @@ function form_submit(){
 		?>
             <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
-              <label class="question-label">Entry Name<span> *</span></label>
-              <input type="text" name="lumbsum_entry_name" id="lumbsum_entry_name" value="<?php if(isset($details->lumbsum_name)){echo $details->lumbsum_name;}?>" class="inputinpt validate[required]" />
+              <label class="question-label">Shape Name<span>*</span></label>
+              <input type="text" name="shape_name" id="shape_name" value="<?php if(isset($details->shape_name)){echo $details->shape_name;}?>" class="inputinpt validate[required]" />
+            </div>
+						
+						
+			<?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
+            <div class="single-column">
+              <label class="question-label">Shape Specification<span>*</span></label>
+              <input type="text" name="shape_specification" id="shape_specification" value="<?php if(isset($details->shape_specification)){echo $details->shape_specification;}?>" class="inputinpt validate[required]" />
+            </div>
+
+			<div class="single-column" >
+                    <label class="single-column">Status<span></span></label>
+                    <select name="shape_status" id="shape_status"  class="inputinpt validate[required]">
+                                        
+                    <option value="1" <?php echo ((isset($details->status) && $details->status ==1)?'selected':'')?> >Active</option>
+                    <option value="2" <?php echo ((isset($details->status) && $details->status ==2)?'selected':'')?>>Inactive</option>
+                    </select>
             </div>
 
 
-							<div class="single-column" >
-                                    <label class="single-column">Status<span></span></label>
-                                    <select name="lumbsum_status" id="lumbsum_status"  class="inputinpt validate[required]">
-                                        
-                                        <option value="1" <?php echo ((isset($details->status) && $details->status ==1)?'selected':'')?> >Active</option>
-                                        <option value="2" <?php echo ((isset($details->status) && $details->status ==2)?'selected':'')?>>Inactive</option>
-                                    </select>
-                            </div>
-
-
 	<div class="bottonserright" style="padding-bottom:20px;"> 
-		<a href="<?php echo site_url('kaizen/lumbsum'); ?>" class="back_dash">Back to Listing</a>
+		<a href="<?php echo site_url('kaizen/shapes_management'); ?>" class="back_dash">Back to Listing</a>
 
-		 <a href="<?php echo site_url('kaizen/lumbsum'); ?>" class="web-red-btn cancil" onClick="form_submit();"><span>Cancel</span></a> <?php //echo form_close();?>
+		 <a href="<?php echo site_url('kaizen/shapes_management'); ?>" class="web-red-btn cancil" onClick="form_submit();"><span>Cancel</span></a> <?php //echo form_close();?>
 
 		 <a href="javascript:void(0);" class="web-red-btn save" onClick="form_submit();"><span>Save</span></a> <?php echo form_close();?> 
 

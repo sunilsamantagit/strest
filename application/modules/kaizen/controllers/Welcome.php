@@ -27,12 +27,13 @@ class Welcome extends CI_Controller {
 	public function authentication(){
 		$this->load->helper('security');
 		$username = xss_clean($this->input->post('uname'));
+		$usernumber = xss_clean($this->input->post('uno'));
 		$password = xss_clean($this->input->post('pwd'));
-
-		if($username == "" || $password == "")
+                //echo $usernumber;die;
+		if($username == "" || $password == "" || $usernumber== "")
 		{
 
-                        $err['uname'] =  'Invalid Username/Password';
+                        $err['uname'] =  'Invalid Username/Password......';
                         echo json_encode($err);
 		}
 		else
@@ -40,6 +41,7 @@ class Welcome extends CI_Controller {
 
                         $where = array(
                             'user_name' => $username,
+                            'user_id' => $usernumber,
                             'pwd' => SHA1($password),
                             'approved' => '1'
 
@@ -67,7 +69,7 @@ class Welcome extends CI_Controller {
 			else
 			{
 				//$this->model_login->update(0,$username);
-				$err['uname'] =  'Invalid Username/Password';
+				$err['uname'] =  'Invalid Username/Password..';
                                 echo json_encode($err);
 			}
 		}
