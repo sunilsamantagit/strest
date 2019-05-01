@@ -8,13 +8,13 @@ div.dataTables_length {
     div.dataTables_filter {
         padding-top: 0.55em;
     }
-
-	#pagi {
+  
+  #pagi {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
-  
+
 #pagi td, #pagi th {
   border: 1px solid #ddd;
   padding: 8px;
@@ -29,33 +29,31 @@ div.dataTables_length {
   background-color: #0B94FA;
   color: black;
 }
-
-
 .page_title .rt-bg-block{
-background: none;
-   border: 0;
-   box-shadow: none;
-float: right;
+  background: none;
+    border: 0;
+    box-shadow: none;
+  float: right;
 }
 .page_title .rt-column{
-padding: 0;
-   background: none;
+  padding: 0;
+    background: none;
 }
 .page_title .rt-bg-block br{ display:none;}
 .page_title .new-survey-btn-blue{
-background: #169bd5;
-   color: #fff;
-   width: auto;
+  background: #169bd5;
+    color: #fff;
+    width: auto;
 }
 .page_title .new-survey-btn-blue span{    
-color: #fff;
-   background: none;
-   padding: 10px 30px;
-   font-size: 12px;
+  color: #fff;
+    background: none;
+    padding: 10px 30px;
+    font-size: 12px;
 }
 .lumb_sumb_table{   
-display: flex;
-   flex-wrap: wrap;
+  display: flex;
+    flex-wrap: wrap;
 }
 .lumb_sumb_table .mid-block{ width:100%;}
 .action_btn{ text-align:center !important;}
@@ -63,24 +61,22 @@ display: flex;
 .action_btn a:not(:last-child):after{ content:"|"; position:absolute; right:-6px; color:#333;}
 .lumb_sumb_table table thead tr th{ background: #169bd5; border: 1px solid #333 !important;}
 .lumb_sumb_table table tbody tr td{ border: 1px solid #333 !important;}
-
-
+  
 </style>
 <script type='text/javascript' src='<?php echo base_url(); ?>public/js/jquery.dataTables.min.js'></script> 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>public/css/jquery.dataTables.min.css" />
 <div class="rightDiv">
-	<div class="right-outer">
-    	<div class="right-outer">
-		<h3 class="title">Takeoff - Listing</h3>
+  <div class="right-outer">
+  <div class="page_title">
+    <h2 class="title">Takeoff - Listing</h2>
+    <?php $this->load->view($right); ?>
+  </div>
         <div class="clear"></div>
-          <div class="rt-block">
-                <?php $this->load->view($right); ?>
-        </div>
-          <div class="clear"></div>
+        
         <!--Search area end-->
         <div class="application-table-area lumb_sumb_table">
-        	<div class="mid-block">
-            	<div class="members-table member-group">
+          <div class="mid-block">
+              <div class="members-table member-group">
 						<?php
 		if($this->session->userdata('ERROR_MSG')==TRUE){
 			echo '<div class="notific_error">
@@ -92,9 +88,11 @@ display: flex;
 			$this->session->unset_userdata('SUCC_MSG');
 		}
 		?>
+    <div id="pagi_wrapper" class="dataTables_wrapper no-footer">
+
            <div ><h2 align="center" style="color:#31B12c;"  id="status_mesage"></h2></div>
                     <table cellspacing="0" cellpadding="0" border="0" id="pagi">
-						<thead>
+            <thead>
               <tr>
                     <th style="text-align: center;">No.<span class=""></span></th>
                     <th width="35%">Quote No.<span class=""></span></th>
@@ -121,9 +119,9 @@ display: flex;
 			<td><?php if(!empty($row->quote_no)) echo $row->quote_no; ?></td>
       <td><?php if(!empty($row->date)){echo $row->date; }?></td>					
       <td class="action_btn">
-         <a class="" href="<?php echo site_url("kaizen/takeoff/takeoff_view/".$row->id);?>"><span>View</span></a>  
+         <a class="" href="<?php echo site_url("kaizen/takeoff/doedit/".$row->id);?>"><span>View</span></a>  
          <a class="" href="<?php echo site_url("kaizen/takeoff/doedit/".$row->id);?>"><span>Edit</span></a> 
-         <a class="" href="<?php echo site_url("kaizen/takeoff/doduplicate/".$row->id);?>"><span>Duplicate</span></a> 
+         <a class="duplicate" href="<?php echo site_url("kaizen/takeoff/doduplicate/".$row->id);?>"><span>Duplicate</span></a> 
          <a class="" href="<?php echo site_url("kaizen/takeoff/takeoff_Print/".$row->id);?>"><span>Print</span></a>
         <a class="" href="javascript:void(0);" title="Delete" onclick="rowdelete('<?php echo $row->id; ?>','bh_takeoff');" class=""><span>Delete</span></a>
 <!--
