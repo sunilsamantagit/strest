@@ -6,6 +6,12 @@
 <script src="<?php echo site_url("public/validator/js/jquery.validationEngine.js");?>" type="text/javascript" charset="utf-8"></script>
 <script src="<?php echo base_url("public/js/jquery.fancybox.js");?>" type="text/javascript" charset="utf-8"></script>
 <script src="<?php echo base_url("public/js/jquery.mask.min.js");?>" type="text/javascript" charset="utf-8"></script>
+<!--
+<link rel="stylesheet" href="https://hsf.ezygst.com/assets/plugins/daterangepicker/daterangepicker.css">
+<link rel="stylesheet" href="https://hsf.ezygst.com/assets/plugins/datepicker/datepicker3.css">
+<script src="https://hsf.ezygst.com/assets/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="https://hsf.ezygst.com/assets/plugins/datepicker/bootstrap-datepicker.js"></script>
+-->
 <link rel="stylesheet" href="<?php echo base_url("public/css/jquery.fancybox.css");?>" type="text/css"/>
 <script>
 $('.fancybox').fancybox({
@@ -15,6 +21,16 @@ $('.fancybox').fancybox({
 </script>
 <script type="text/javascript">
 $(document).ready(function(){
+
+$('.datepicker').datepicker({
+                                  autoclose: true,
+                                  format: "dd-mm-yyyy hh:ii:ss",
+                                  todayHighlight: true,
+                                  orientation: "auto",
+                                  todayBtn: true,
+                                  todayHighlight: true,
+                                 });
+
 	$("#cont").validationEngine();
 
 $('#takeoff_GST').keyup(function (){
