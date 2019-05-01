@@ -7236,7 +7236,7 @@ a {
 .bottonserright{ display: flex; flex-wrap: wrap;  width: 100%; margin-top: 20px;}
 .bottonserright .back_dash{ margin-right: auto; }
 .bottonserright .web-red-btn{ padding: 12px 40px; }
-.bottonserright .web-red-btn.cancil{background: #159bd5; color: #fff;  border: 1px solid #159bd5;}
+.bottonserright .web-red-btn.cancil{background: white; color: black;  border: 1px solid #000;}
 .bottonserright .web-red-btn.save{ background: #159bd5; color: #fff;  border: 1px solid #159bd5; }
 .bottonserright .web-red-btn.next{ background: #159bd5; color: #fff;   border: 1px solid #159bd5;}
 #webcont-form .single-column select{ height:26px; }

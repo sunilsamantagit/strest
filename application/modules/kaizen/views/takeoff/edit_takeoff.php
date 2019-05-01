@@ -29,7 +29,7 @@ $('#takeoff_othertax').keyup(function (){
     this.value = this.value.replace(/[^0-9\.]/g,'');
 });
 
-$('.phone_us').mask('(000) 000-0000'); 
+$('.phone_us').mask('(000)-000-0000'); 
 //$('.zip_code').mask('S0S 0S0'); 
 //$("#cont").validationEngine();
   
@@ -45,7 +45,7 @@ function form_submit(){
       	'width'		: 900,
       	'height'	: 600,
       	'type'		: 'iframe',
-              'autoScale'    	: false
+        'autoScale': false
           });
     });
 </script>
@@ -72,6 +72,19 @@ function form_submit(){
     <?php } ?>
     <div class="clear"></div>
     <div class="padbot40">
+
+      <?php
+    if($this->session->userdata('ERROR_MSG')==TRUE){
+      echo '<div class="notific_error">
+          <h1 align="center" style="color:#fff;">'.$this->session->userdata('ERROR_MSG').'</h1></div>';
+      $this->session->unset_userdata('ERROR_MSG');
+    }
+    if($this->session->userdata('SUCC_MSG')==TRUE){
+      echo '<div class="notific_suc"><h2 align="center" style="color:#000;">'.$this->session->userdata('SUCC_MSG').'</h1></div>';
+      $this->session->unset_userdata('SUCC_MSG');
+    }
+    ?>
+
       <div class="mid-content web-cont-mid" style="border-radius: 25px;background-color: lightgray;">
         <div id="webcont-form">
           <div id="member-form" class="midarea">
@@ -80,18 +93,7 @@ function form_submit(){
 		  echo form_open_multipart('kaizen/takeoff/addedit/'.$details->id,$attributes);
 		  echo form_hidden('takeoff_id', $details->id);		  
 		  ?>
-            <?php
-		if($this->session->userdata('ERROR_MSG')==TRUE){
-			echo '<div class="notific_error">
-					<h1 align="center" style="color:#fff;">'.$this->session->userdata('ERROR_MSG').'</h1></div>';
-			$this->session->unset_userdata('ERROR_MSG');
-		}
-		if($this->session->userdata('SUCC_MSG')==TRUE){
-			echo '<div class="notific_suc"><h2 align="center" style="color:#000;">'.$this->session->userdata('SUCC_MSG').'</h1></div>';
-			$this->session->unset_userdata('SUCC_MSG');
-		}
-		?>
-            <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
+          <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
               <label class="question-label">Project No.<span> *</span></label>
               <input type="text" name="takeoff_project_no" id="takeoff_project_no" value="<?php if(isset($details->project_no)){echo $details->project_no;}?>" class="inputinpt validate[required]" />
@@ -112,7 +114,7 @@ function form_submit(){
             <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
               <label class="question-label">Start Date</label>
-              <input type="text" name="takeoff_start_date" id="takeoff_start_date" placeholder="MM / DD / YYYY" value="<?php if(isset($details->date)){echo $details->date;}?>" class="inputinpt datepicker validate[required]" />
+              <input type="date" name="takeoff_start_date" id="takeoff_start_date" placeholder="MM / DD / YYYY" value="<?php if(isset($details->date)){echo $details->date;}?>" class="inputinpt" />
               <img src="<?php echo base_url(); ?>application/modules/kaizen/views/takeoff/u212.png"></img>
             </div>
 
@@ -220,7 +222,7 @@ function form_submit(){
             <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
               <label class="question-label">Date - Time</label>
-              <input type="text" name="takeoff_datetime" id="takeoff_datetime" placeholder="MM / DD / YYYY HH : MM" value="<?php if(isset($details->clo_date_time)){echo $details->clo_date_time;}?>" class="inputinpt datepicker validate[required]" />
+              <input type="text" name="takeoff_datetime" id="takeoff_datetime" placeholder="MM / DD / YYYY HH : MM" value="<?php if(isset($details->clo_date_time)){echo $details->clo_date_time;}?>" class="inputinpt datepicker" />
               <img src="<?php echo base_url(); ?>application/modules/kaizen/views/takeoff/u212.png"></img>
             </div>
 

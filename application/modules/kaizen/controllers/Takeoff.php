@@ -33,7 +33,7 @@ class Takeoff extends MY_Controller
 		$data = array();
 		$where = array();
                
-        $order_by = array('id' => 'asc');
+        $order_by = array('id' => 'DESC');
 		$data_row = $this->modeltakeoff->select_row('bh_takeoff',$where,$order_by);
 		$data['records']= $data_row;
 		$this->load->view('kaizen/takeoff/takeoff_list',$data);		
@@ -56,7 +56,7 @@ class Takeoff extends MY_Controller
 	public function addedit()
 	{//echo "<pre>";print_r($_POST);exit;
 
-	$posting_date=$this->input->post('takeoff_start_date');
+		$posting_date=$this->input->post('takeoff_start_date');
         $date=date('Y-m-d',strtotime($posting_date));
 		/*
 		$id = $this->modeltakeoff->insert_row('taskoff',$add_data);
@@ -267,13 +267,12 @@ class Takeoff extends MY_Controller
 	public function doduplicate()
 	{
 		$data = array();
-		$takeoff_id=$this->uri->segment(4); 	//echo $takeoff_id;exit;
-	/*	$where = array(
-                            'id' => $takeoff_id
-                        );*/
-		$getdata=$this->modeltakeoff->get_data($takeoff_id);
+		$takeoff_id=$this->uri->segment(4);
+		$id=$this->modeltakeoff->get_data($takeoff_id);
+		redirect('kaizen/takeoff/doedit/'.$id);
+		//redirect(kaizen/takeoff/doedit/$id);
 
-		echo "<pre>";print_r($getdata);exit;
+		//echo "<pre>";print_r($getdata);exit;
 		/*
         $takeoff_detls = $this->modeltakeoff->select_row('bh_takeoff',$where);
 
