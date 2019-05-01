@@ -58,10 +58,10 @@ class Material extends MY_Controller
 	}
     
 	public function addedit()
-	{//echo "<pre>";print_r($_POST);exit;
+	{echo "<pre>";print_r($_POST);exit;
 
-		$posting_date=$this->input->post('takeoff_start_date');
-        $date=date('Y-m-d',strtotime($posting_date));
+		//$posting_date=$this->input->post('takeoff_start_date');
+        //$date=date('Y-m-d',strtotime($posting_date));
 		/*
 		$id = $this->modeltakeoff->insert_row('taskoff',$add_data);
 		if($id) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
@@ -113,29 +113,29 @@ class Material extends MY_Controller
 'status'				=>	'1'
 */		
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('takeoff_project_no', 'takeoff_quate_no', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('material_name', 'trim|required|xss_clean');
 		
 		
 		$this->form_validation->set_error_delimiters('<span class="validation_msg">', '</span>');
-		$id=$this->input->post('takeoff_id','');
-	 	$takeoff_detls ='';
+		$id=$this->input->post('material_id','');
+	 	$material_detls ='';
 	 	$uplod_img='';
 		if($this->form_validation->run() == TRUE) // IF MENDATORY FIELDS VALIDATION TRUE(SERVER SIDE)  
 		{
 			$where = array(                           
                             'id' => $id
                         );
-                $takeoff_detls = $this->modeltakeoff->select_row('bh_takeoff',$where);
+                $material_detls = $this->modeltakeoff->select_row('bh_material',$where);
 				
-        		if(!empty($takeoff_detls)) 
+        		if(!empty($material_detls)) 
                 {
            $update_data = array(            
-								'project_no'			=>	$this->input->post('takeoff_project_no'),
-								'quote_no'				=>	$this->input->post('takeoff_quate_no'),
+								'material_name'			=>	$this->input->post('material_name'),
+								'spec_grade_id'				=>	$this->input->post('spec_grade_id'),
 								'date'					=>	$date,
-								'addenda'				=>	$this->input->post('takeoff_addenda'),
-								'pricing_units'			=>	$this->input->post('pricing_units'),
-								'project_title'			=>	$this->input->post('takeoff_project_title'),
+								'shape_id'				=>	$this->input->post('shape_id'),
+								'inches'			=>	$this->input->post('inches'),
+								'metric'			=>	$this->input->post('metric'),
 								'erect'					=>	$this->input->post('erect'),
 								'fob'					=>	$this->input->post('takeoff_fob'),
 								'location'				=>	$this->input->post('takeoff_location'),

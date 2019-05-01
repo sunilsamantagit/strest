@@ -112,12 +112,12 @@ function form_submit(){
           <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
               <label class="question-label">Material Name</label>
-              <input type="text" name="material_name" id="material_name" value="<?php if(isset($details->project_no)){echo $details->project_no;}?>" class="inputinpt validate[required]" />
+              <input type="text" name="material_name" id="material_name" value="<?php if(isset($details->material_name)){echo $details->material_name;}?>" class="inputinpt validate[required]" />
             </div>
 
             <div class="single-column">
               <label class="question-label">Spec Grade</label>
-              <select id="pricing_units" name="pricing_units" class="inputinpt">
+              <select id="spec_grade_id" name="spec_grade_id" class="inputinpt">
                 <?php foreach ($shapesgrade as $rows) {?>                 
                  <option value="<?php echo $rows->id; ?>"><?php echo $rows->id; ?></option>
                 <?php }?>
@@ -126,56 +126,54 @@ function form_submit(){
             </div>
             
             <div class="single-column">
-              <label class="question-label">Shape</label>
-              
-              <select id="pricing_units" name="pricing_units" class="inputinpt">
+              <label class="question-label">Shape</label>              
+              <select id="shape_id" name="shape_id" class="inputinpt">
                 <?php foreach ($shapesgrade as $rows) {?>                 
                  <option value="<?php echo $rows->id; ?>"><?php echo $rows->id; ?></option>
                 <?php }?>
               </select>
-
             </div>
 
             <div class="single-column">
               <label class="question-label">Inches</label>
-              <input type="text" name="material_name" id="material_name" value="<?php if(isset($details->project_no)){echo $details->project_no;}?>" class="inputinpt validate[required]" />
+              <input type="text" name="inches" id="inches" value="<?php if(isset($details->inches)){echo $details->inches;}?>" class="inputinpt" />
             </div>
 
             <div class="single-column">
               <label class="question-label">Metric</label>
-              <input type="text" name="material_name" id="material_name" value="<?php if(isset($details->project_no)){echo $details->project_no;}?>" class="inputinpt validate[required]" />
+              <input type="text" name="metric" id="metric" value="<?php if(isset($details->metric)){echo $details->metric;}?>" class="inputinpt" />
             </div>
 
             <div class="single-column">
               <label class="question-label">Size</label>
-              <input type="text" name="material_name" id="material_name" value="<?php if(isset($details->project_no)){echo $details->project_no;}?>" class="inputinpt validate[required]" />
+              <input type="text" name="size" id="size" value="<?php if(isset($details->size)){echo $details->size;}?>" class="inputinpt" />
             </div>
 
             <div class="single-column">
               <label class="question-label">Unit Weight(lbs/lin.ft)</label>
-              <input type="text" name="material_name" id="material_name" value="<?php if(isset($details->project_no)){echo $details->project_no;}?>" class="inputinpt validate[required]" />
+              <input type="text" name="unit_weight" id="unit_weight" value="<?php if(isset($details->unit_weight)){echo $details->unit_weight;}?>" class="inputinpt" />
             </div>
 
             <div class="single-column">
               <label class="question-label">Unit Cost ($/lb)</label>
-              <input type="text" name="material_name" id="material_name" value="<?php if(isset($details->project_no)){echo $details->project_no;}?>" class="inputinpt validate[required]" />
+              <input type="text" name="unit_cost" id="unit_cost" value="<?php if(isset($details->unit_cost)){echo $details->unit_cost;}?>" class="inputinpt" />
             </div>
 
             <div class="single-column">
               <label class="question-label">Surface(sq.ft./lin.ft.)</label>
-             <input type="text" name="material_name" id="material_name" value="<?php if(isset($details->project_no)){echo $details->project_no;}?>" class="inputinpt validate[required]" />
+             <input type="text" name="surface" id="surface" value="<?php if(isset($details->surface)){echo $details->surface;}?>" class="inputinpt" />
             </div>
 
             <div class="single-column">
               <label class="question-label">Labor(hr./lb.)</label>
-              <input type="text" name="material_name" id="material_name" value="<?php if(isset($details->project_no)){echo $details->project_no;}?>" class="inputinpt validate[required]" />
+              <input type="text" name="labor" id="labor" value="<?php if(isset($details->labor)){echo $details->labor;}?>" class="inputinpt" />
             </div>
 
             <div class="single-column">
               <label class="question-label">Labor(hr./lb.)</label>
-              <select id="pricing_units" name="pricing_units" class="inputinpt">
-                <option value="English"<?php if(isset($details->addenda)){if($details->addenda=="English"){ ?> selected <?php }}?>>English</option>
-                <option value="Metric"<?php if(isset($details->addenda)){if($details->addenda=="Metric"){ ?> selected <?php  }}?>>Metric</option>
+              <select id="status" name="status" class="inputinpt">
+                <option value="English"<?php if(isset($details->addenda)){if($details->addenda=="English"){ ?> selected <?php }}?>>Active</option>
+                <option value="Metric"<?php if(isset($details->addenda)){if($details->addenda=="Metric"){ ?> selected <?php  }}?>>Inactive</option>
               </select>
             </div>
 
@@ -189,10 +187,6 @@ function form_submit(){
 
  <a href="javascript:void(0);" title="Save" onClick="form_submit();");" class="web-red-btn save" 
  <?php if(isset($details->id) && ($details->id >0)){echo '<span>Update</span>';}else{echo '<span>Save</span>';} ?></a>
-
-
-<a href="#" title="Next"class="web-red-btn next" 
- <?php if(isset($details->id) && ($details->id >0)){echo '<span>Next</span>';}else{echo '<span>Next</span>';} ?> >></a>
 
 <!--
         <div class="single-column" >
