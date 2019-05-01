@@ -13,7 +13,7 @@ $('.fancybox').fancybox({
 </script>
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#cont").validationEngine();
+	$("#cont").validationEngine('attach', { promptPosition: "inline" });
 	});
         
 function form_submit(){
@@ -107,7 +107,7 @@ function form_submit(){
 
 
 	<div class="bottonserright" style="padding-bottom:20px;"> 
-		<a href="<?php echo site_url('kaizen/shapes_size'); ?>" class="back_dash">Back to Listing</a>
+		<a href="<?php echo site_url('kaizen/main'); ?>" class="back_dash">Back to Dashboard</a>
 
 		 <a href="<?php echo site_url('kaizen/shapes_size'); ?>" class="web-red-btn cancil" onClick="form_submit();"><span>Cancel</span></a> <?php //echo form_close();?>
 
@@ -120,17 +120,13 @@ function form_submit(){
         </div>
 
 
-<div class="webcont-form">
-    
-</div>
 
 
-        <div class="bodybottom"> </div>
+
+       
       </div>
     </div>
-    <!--<div class="rt-block">
-  <?php $this->load->view($right); ?>
-</div>-->
+    
   </div>
   <div class="clear"></div>
   <?php $this->load->view($footer); ?>

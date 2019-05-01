@@ -14,7 +14,7 @@ $('.fancybox').fancybox({
 </script>
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#cont").validationEngine();
+	$("#cont").validationEngine('attach', { promptPosition: "inline" });
 	});
         
 function form_submit(){
@@ -97,7 +97,7 @@ function form_submit(){
 
 
 	<div class="bottonserright" style="padding-bottom:20px;"> 
-		<a href="<?php echo site_url('kaizen/lumbsum'); ?>" class="back_dash">Back to Listing</a>
+		<a href="<?php echo site_url('kaizen/main'); ?>" class="back_dash">Back to Dashboard</a>
 
 		 <a href="<?php echo site_url('kaizen/lumbsum'); ?>" class="web-red-btn cancil" onClick="form_submit();"><span>Cancel</span></a> <?php //echo form_close();?>
 

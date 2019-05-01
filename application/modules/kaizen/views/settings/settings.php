@@ -29,7 +29,7 @@ $('.fancybox').fancybox({
 </script>
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#cont").validationEngine();
+	$("#cont").validationEngine('attach', { promptPosition: "inline" });
 });
 
 function form_submit()
