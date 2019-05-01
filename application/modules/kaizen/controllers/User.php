@@ -44,7 +44,7 @@ class User extends MY_Controller
 		$data = array();
 
             $where = array();
-        $order_by = array('id' => 'asc');
+        $order_by = array('id' => 'desc');
 		$data_row = $this->modeluser->select_row('admin',$where,$order_by);
 		$data['records']= $data_row;
         //pre($data);
@@ -159,7 +159,7 @@ class User extends MY_Controller
                                 'pwd'                       => SHA1($this->pwd),
                                 'pwd_hint'                  => $this->pwd,
                                 'date'                      => date('Y-m-d'),
-                                'approved'          		=> $this->approved
+                                'approved'          	   => $this->approved
                 );
 
 				$id = $this->modeluser->insert_row('admin',$add_data);

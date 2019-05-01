@@ -49,7 +49,7 @@ div.dataTables_length {
 <div class="rightDiv">
 	<div class="right-outer">
             <div class="page_title">
-		<h3 class="title">Takeoff Line Entries List</h3>
+		<h3 class="title">Admin Management</h3>
                 <?php $this->load->view($right); ?>
             </div>
         <div class="clear"></div>
@@ -73,11 +73,11 @@ div.dataTables_length {
                     <table cellspacing="0" cellpadding="0" border="0" id="pagi">
 
 						<thead><tr>
-                            <th>Name<span class=""></span></th>
+                            <th>NO.<span class=""></span></th>
                             <th>User Name<span class=""></span></th>
-                            <th>User Type<span class=""></span></th>
-                            <th>Status<span class=""></span></th>
-							              <th>Action</th>
+                            <th>User ID<span class=""></span></th>
+                            <th>Date<span class=""></span></th>
+			   <th>Action</th>
 <!--                            <th>View Tracking</th>-->
                         </tr>
                         </thead>
@@ -93,22 +93,24 @@ div.dataTables_length {
         			  }
         			  else{
         			  $i=0;
+                                  $slno=1;
         			  foreach($records as $row){
         				  $i++;
         			  ?>
 
                     <tr>
-                        <td><?php echo $row->first_name.' '.$row->last_name; ?></td>
+<!--                        <td><?php echo $row->first_name.' '.$row->last_name; ?></td>-->
+                        <td><?php echo $slno; ?></td>
                         <td><?php echo $row->user_name; ?></td>
-                        <td><?php
-                        if(!empty($row->user_level) && $row->user_level=='1'){echo 'Super Admin';}else{echo 'Admin'; }
-                        ?></td>
-                        <td><?php if($row->approved==1){ ?>
+                        <td><?php echo $row->user_id; ?></td>
+                        <td><?php echo date("m-d-Y", strtotime($row->date)); ?></td>
+<!--                        <td><?php if(!empty($row->user_level) && $row->user_level=='1'){echo 'Super Admin';}else{echo 'Admin'; } ?></td>-->
+<!--                        <td><?php if($row->approved==1){ ?>
                     <a href="<?php echo site_url("kaizen/".$this->router->fetch_class()."/changeApproval/".$row->id."/admin");?>" title="Active"> <img src="<?php echo site_url("public/images/unlock_icon.gif");?>" alt="Active"/> </a>
                     <?php } else{ ?>
                     <a href="<?php echo site_url("kaizen/".$this->router->fetch_class()."/changeApproval/".$row->id."/admin");?>" title="Inactive"> <img src="<?php echo site_url("public/images/locked_icon.gif");?>" alt="Inactive"/></a>
                     <?php } ?>
-                        </td>
+                        </td>-->
                 <td class="action_btn">
                     <a class="" href="<?php echo site_url("kaizen/user/doedit/".$row->id);?>"><span>Edit</span></a> 
                     <?php if($row->user_level!=1){ ?>
@@ -120,7 +122,7 @@ div.dataTables_length {
   </td>-->
   	</tr>
         							<?php
-        			  }
+        			  $slno++;}
         			  }
         			  ?>
                     </tbody></table>

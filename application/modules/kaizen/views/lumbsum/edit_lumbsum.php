@@ -14,7 +14,7 @@ $('.fancybox').fancybox({
 </script>
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#cont").validationEngine();
+	$("#cont").validationEngine('attach', { promptPosition: "inline" });
 	});
         
 function form_submit(){
@@ -46,17 +46,17 @@ function form_submit(){
 <div class="rightDiv">
   <div class="right-outer add_lumbsum">
     <?php if(isset($details->id) && $details->id >0){?>
-    <h2 class="title">Edit - Lumb Sum Entries</h2>
+    <h3 class="title">Edit - Lumb Sum Entries</h3>
       <?php if(isset($details->title)){
 		     $count_e = mb_strlen( $details->title);
 							      $last_space_e = '';
 							      $last_space_e = strrpos(substr($details->title, 0, 80), ' ');
 								  $trimmed_text_e = substr($details->title, 0, $last_space_e);
 		 echo preg_replace('/<[^>]*>/', '', $details->title); if($count_e>80){ echo "..."; }}?>
-    </h3>
+   
     <?php }
     else {?>
-    <h2 class="title">Add - Lumb Sum Entries </h2>
+    <h3 class="title">Add - Lumb Sum Entries</h3>
     <?php } ?>
     <div class="clear"></div>
     <div class="mid-block padbot40">
@@ -97,7 +97,7 @@ function form_submit(){
 
 
 	<div class="bottonserright" style="padding-bottom:20px;"> 
-		<a href="<?php echo site_url('kaizen/lumbsum'); ?>" class="back_dash">Back to Listing</a>
+		<a href="<?php echo site_url('kaizen/main'); ?>" class="back_dash">Back to Dashboard</a>
 
 		 <a href="<?php echo site_url('kaizen/lumbsum'); ?>" class="web-red-btn cancil" onClick="form_submit();"><span>Cancel</span></a> <?php //echo form_close();?>
 
@@ -110,18 +110,10 @@ function form_submit(){
         </div>
 
 
-<div class="webcont-form">
-    
-</div>
-
-
-        <div class="bodybottom"> </div>
       </div>
     </div>
-    <!--<div class="rt-block">
-  <?php $this->load->view($right); ?>
-</div>-->
-  </div>
   <div class="clear"></div>
   <?php $this->load->view($footer); ?>
+  </div>
+
 </div>

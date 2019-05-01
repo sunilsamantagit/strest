@@ -31,7 +31,7 @@ $('.datepicker').datepicker({
                                   todayHighlight: true,
                                  });
 
-	$("#cont").validationEngine();
+	$("#cont").validationEngine('attach', { promptPosition: "inline" });
 
 $('#takeoff_GST').keyup(function (){
     this.value = this.value.replace(/[^0-9\.]/g,'');
@@ -366,7 +366,7 @@ function form_submit(){
          
 
 <div class="bottonserright" style="padding-bottom:20px;"> 
-<a href="#" class="back_dash">Back to Dashboard</a>
+<a href="<?php echo site_url('kaizen/main'); ?>" class="back_dash">Back to Dashboard</a>
 
 <a href="<?php echo site_url();?>/kaizen/takeoff" title="Cancel" class="web-red-btn cancil" 
  <?php if(isset($details->id) && ($details->id >0)){echo '<span>Cancel</span>';}else{echo '<span>Cancel</span>';} ?></a>

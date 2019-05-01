@@ -163,9 +163,8 @@ div.dataTables_length {
       "stateSave": true,
     "aoColumns": [
     null,
-    { "bSortable": false },
 	  null,  
-	    { "bSortable": false },
+	   null, 
       { "bSortable": false }
   
     ],
