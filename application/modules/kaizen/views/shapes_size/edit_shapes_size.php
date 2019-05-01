@@ -95,6 +95,21 @@ function form_submit(){
               <label class="question-label">Shape<span>*</span></label>
               <input type="text" name="shape" id="shape" value="<?php if(isset($details->shape)){echo $details->shape;}?>" class="inputinpt validate[required]" />
             </div>
+			
+			<!--  
+			<div class="single-column">
+				<label class="question-label">Shape<span>*</span></label>
+                    <select class="form-control" id="shape" name="shape" style="width: 100%;">
+                      <option value=""><?php //echo 'select'; ?></option>
+
+                      <?php
+
+                       // foreach ($details as $row) {
+						//		echo "<option value='$row->id'".set_select('id',$row->id).">$row->shape_name</option>";
+                       // }
+                      ?>
+                    </select>
+                  </div>-->
 
 			<div class="single-column" >
                     <label class="single-column">Status<span></span></label>
