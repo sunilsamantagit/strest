@@ -56,7 +56,7 @@ function form_submit(){
     </h3>
     <?php }
     else {?>
-    <h2 class="title">Add - Lumb Sum Entries</h2>
+    <h2 class="title">Add - Lumb Sum Entries </h2>
     <?php } ?>
     <div class="clear"></div>
     <div class="mid-block padbot40">

@@ -5,7 +5,6 @@
 <script src="<?php echo site_url("public/validator/js/jquery.validationEngine.js");?>" type="text/javascript" charset="utf-8"></script>
 <script src="<?php echo base_url("public/js/jquery.fancybox.js");?>" type="text/javascript" charset="utf-8"></script>
 <link rel="stylesheet" href="<?php echo base_url("public/css/jquery.fancybox.css");?>" type="text/css"/>
-<?php //echo "<pre>";print_r($data);?>  <?php //echo "<pre>";print_r($category2);exit; ?>
 <script>
 $('.fancybox').fancybox({
   width:'1200',
@@ -51,7 +50,7 @@ function form_submit(){
 <div class="rightDiv">
   <div class="right-outer add_lumbsum">
     <?php if(isset($details->id) && $details->id >0){?>
-    <h2 class="title">Edit - Shapes Management</h2>
+    <h2 class="title">Shapes Size - Edit</h2>
       <?php if(isset($details->title)){
 		     $count_e = mb_strlen( $details->title);
 							      $last_space_e = '';
@@ -61,7 +60,7 @@ function form_submit(){
     </h3>
     <?php }
     else {?>
-    <h2 class="title">Add - Shapes Management</h2>
+    <h2 class="title">Shapes Size - Add</h2>
     <?php } ?>
     <div class="clear"></div>
     <div class="mid-block padbot40">
@@ -70,7 +69,7 @@ function form_submit(){
           <div id="member-form" class="midarea">
             <?php 
 		  $attributes = array('name' => 'cont', 'id' => 'cont');
-		  echo form_open_multipart('kaizen/shapes_management/addedit/'.$details->id,$attributes);
+		  echo form_open_multipart('kaizen/shapes_size/addedit/'.$details->id,$attributes);
 		  echo form_hidden('shape_id', $details->id);		  
 		  ?>
             <?php
@@ -86,15 +85,15 @@ function form_submit(){
 		?>
             <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
-              <label class="question-label">Shape Name<span>*</span></label>
-              <input type="text" name="shape_name" id="shape_name" value="<?php if(isset($details->shape_name)){echo $details->shape_name;}?>" class="inputinpt validate[required]" />
+              <label class="question-label">Size Name<span>*</span></label>
+              <input type="text" name="size_name" id="size_name" value="<?php if(isset($details->size_name)){echo $details->size_name;}?>" class="inputinpt validate[required]" />
             </div>
 						
 						
 			<?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
-              <label class="question-label">Shape Specification<span>*</span></label>
-              <input type="text" name="shape_specification" id="shape_specification" value="<?php if(isset($details->shape_specification)){echo $details->shape_specification;}?>" class="inputinpt validate[required]" />
+              <label class="question-label">Shape<span>*</span></label>
+              <input type="text" name="shape" id="shape" value="<?php if(isset($details->shape)){echo $details->shape;}?>" class="inputinpt validate[required]" />
             </div>
 
 			<div class="single-column" >
@@ -108,9 +107,9 @@ function form_submit(){
 
 
 	<div class="bottonserright" style="padding-bottom:20px;"> 
-		<a href="<?php echo site_url('kaizen/shapes_management'); ?>" class="back_dash">Back to Listing</a>
+		<a href="<?php echo site_url('kaizen/shapes_size'); ?>" class="back_dash">Back to Listing</a>
 
-		 <a href="<?php echo site_url('kaizen/shapes_management'); ?>" class="web-red-btn cancil" onClick="form_submit();"><span>Cancel</span></a> <?php //echo form_close();?>
+		 <a href="<?php echo site_url('kaizen/shapes_size'); ?>" class="web-red-btn cancil" onClick="form_submit();"><span>Cancel</span></a> <?php //echo form_close();?>
 
 		 <a href="javascript:void(0);" class="web-red-btn save" onClick="form_submit();"><span>Save</span></a> <?php echo form_close();?> 
 
