@@ -117,7 +117,7 @@ div.dataTables_length {
   <tr>
       <td><?php echo $i; ?></td>        
 			<td><?php if(!empty($row->quote_no)) echo $row->quote_no; ?></td>
-      <td><?php if(!empty($row->date)){echo $row->date; }?></td>					
+      <td><?php if(!empty($row->date)){echo $row->date; }?></td>
       <td class="action_btn">
          <a class="" href="<?php echo site_url("kaizen/takeoff/doedit/".$row->id);?>"><span>View</span></a>  
          <a class="" href="<?php echo site_url("kaizen/takeoff/doedit/".$row->id);?>"><span>Edit</span></a> 
@@ -160,13 +160,11 @@ div.dataTables_length {
       "order": [[ 2, "asc" ]],
       "stateSave": true,
     "aoColumns": [
-    null,
-    { "bSortable": false },
-	  null,  
-	    { "bSortable": false },
-      { "bSortable": false }
-  
-    ],
+                  null,
+                  null,
+              	  null, 
+                  { "bSortable": false }  
+                ],
     "fnDrawCallback": function () {
         var aTag = $("#pagi_wrapper");           
         $('html,body').animate({scrollTop: aTag.offset().top},'slow');
