@@ -49,7 +49,9 @@ $user_detls = $this->model_home->selectOne('admin',array('id'=>$this->session->u
 
 <div class="header">
 <!--    <a  href="<?php echo site_url(); ?>"><img width="60px;" height="60px;" src="<?php echo base_url("public/default/images/logo.png"); ?>" alt="<?php echo  $this->config->item("COMPANY_NAME");?>" title="<?php echo  $this->config->item("COMPANY_NAME");?>" class="logo" /></a>-->
-    <a  href="<?php echo site_url(); ?>"><h2>STREST</h2></a>
+    <div style="height: 0px !important; margin-left: 19px; font-family: 'Arial Bold', 'Arial'; font-size: 32px; color: #000;">
+        <a href="<?php echo site_url(); ?>"><div>STREST</div></a>
+    </div>
     <div class="top-right">
         <span><img src="<?php echo base_url("public/images/user-icon.png"); ?>" alt="">Welcome <?php echo $user_detls->first_name; ?>, </span>
     	<ul>

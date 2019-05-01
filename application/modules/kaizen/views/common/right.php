@@ -10,9 +10,9 @@
       <?php } ?>
 
       <?php  if(!empty($edit_function)) {  ?>
-        <a class="new-survey-btn-backbutton" href="<?php echo site_url("kaizen/".$fetch_class); ?>">
+<!--        <a class="new-survey-btn-backbutton" href="<?php echo site_url("kaizen/".$fetch_class); ?>">
           <span>Back To Listing</span>
-        </a>
+        </a>-->
         <br><br>
         <?php } ?>
         <?php if($fetch_class == 'banner' || $fetch_class == 'commonbanner')  {?>

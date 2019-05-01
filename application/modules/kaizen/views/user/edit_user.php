@@ -30,7 +30,7 @@ function showhide(val){
 			$this->session->unset_userdata('ERROR_MSG');
 		}
 		if($this->session->userdata('SUCC_MSG')==TRUE){
-			echo '<div class="notific_suc"><h2 align="center" style="color:#oao;">'.$this->session->userdata('SUCC_MSG').'</h1></div>';
+			echo '<div class="notific_suc"><h2 align="center" style="color:#0a0;">'.$this->session->userdata('SUCC_MSG').'</h1></div>';
 			$this->session->unset_userdata('SUCC_MSG');
 		}
 		?>
@@ -137,7 +137,11 @@ function showhide(val){
                                                                
 			<div class="bottonserright" style="padding-bottom:20px;">
                             <a href="<?php echo site_url("kaizen/main");?>" class="back_dash">Back to Dashboard</a>
-                            <a href="javascript:void(0);" title="Delete" onClick="rowdelete('<?php echo $details->id; ?>','admin');" class="web-red-btn cancil" <?php if(isset($details->id) && $details->id >0){}else{echo 'style="display:none;"';}?>> <span>Delete</span> </a>
+                            
+<!--                            <a href="javascript:void(0);" title="Delete" onClick="rowdelete('<?php echo $details->id; ?>','admin');" class="web-red-btn cancil" <?php if(isset($details->id) && $details->id >0){}else{echo 'style="display:none;"';}?>> <span>Delete</span> </a>-->
+                            
+                            <a href="<?php echo site_url("kaizen/user");?>" title="Cancel" class="web-red-btn cancil"><span>Cancel</span> </a>
+                            
                             <a href="javascript:void(0);" class="web-red-btn save" onClick="form_submit();"><span>Save</span></a> <?php echo form_close();?> </div>
 		</div>
 	</div>
@@ -149,7 +153,7 @@ function showhide(val){
 </div>
  <?php
     if(!empty($details->id) && $this->session->userdata('user_level')==1){
-        echo getalltracking($details->id,'admin');
+       // echo getalltracking($details->id,'admin');
     }
 ?>
 </div>

@@ -107,7 +107,9 @@ class MY_Controller extends CI_Controller {
 
                 );
         $this->model_common->delete_row($table_name,$where);
-        $this->session->set_flashdata('message','Successfull deleted');
+        //$this->session->set_flashdata('message','Successfull deleted');
+        $session_data = array("SUCC_MSG"  => "Successfully deleted");
+	$this->session->set_userdata($session_data);
         redirect("kaizen/".$module_name,'refresh');
   }
   

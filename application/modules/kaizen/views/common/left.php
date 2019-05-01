@@ -9,8 +9,10 @@ $comp_arr = array('membership'         => 'membership',
 
 
 
-$comp_arr2 = array('aaaa'         => 'aaaa',
-                    'bbbb'       => 'bbbb'
+$comp_arr2 = array('material_function'         => 'material_function',
+                    'lumbsum'       => 'lumbsum',
+                    'shapes_management'       => 'shapes_management',
+                    'shapes_size'       => 'shapes_size'
             );
 $comp_arr3 = array('xxxx'         => 'yyyy',
                     'xxx'       => 'yy'
@@ -64,7 +66,7 @@ if(in_array($fetch_class,$comp_arr4)){
         
           <li><a href="<?php echo site_url("kaizen/takeoffline"); ?>" class="<?php if(!empty($active_cls) && ($fetch_class == "takeoffline")){ echo "active" ; } ?>">Takeoff Line Entries</a></li>
           
-          <li><a href="<?php echo site_url("kaizen/membership"); ?>" class="<?php if(!empty($active_cls) && ($fetch_class == "membership2")){ echo "active" ; } ?>">Takeoff Price</a></li>
+          <li><a href="<?php echo site_url("kaizen/takeoff_price"); ?>" class="<?php if(!empty($active_cls) && ($fetch_class == "takeoff_price")){ echo "active" ; } ?>">Takeoff Price</a></li>
                 
         </ul>
       </div>
@@ -77,13 +79,13 @@ if(in_array($fetch_class,$comp_arr4)){
       <div style="<?php if(!empty($active_cls2)){ echo 'display:block;'; }?>" class="cat-cont">
         <ul class="category_sub_list">
          
-          <li><a href="<?php echo site_url("kaizen/home_block"); ?>" class="<?php if(!empty($active_cls2) && ($fetch_class == "aaaaa")){ echo "active" ; } ?>">Material Function</a></li>
+          <li><a href="<?php echo site_url("kaizen/material_function"); ?>" class="<?php if(!empty($active_cls2) && ($fetch_class == "material_function")){ echo "active" ; } ?>">Material Function</a></li>
         
-          <li><a href="<?php echo site_url("kaizen/membership"); ?>" class="<?php if(!empty($active_cls2) && ($fetch_class == "bbbbb")){ echo "active" ; } ?>">Lump Sum Entries</a></li>
+          <li><a href="<?php echo site_url("kaizen/lumbsum"); ?>" class="<?php if(!empty($active_cls2) && ($fetch_class == "lumbsum")){ echo "active" ; } ?>">Lump Sum Entries</a></li>
           
-          <li><a href="<?php echo site_url("kaizen/membership"); ?>" class="<?php if(!empty($active_cls2) && ($fetch_class == "cccc")){ echo "active" ; } ?>">Shapes Management</a></li>
+          <li><a href="<?php echo site_url("kaizen/shapes_management"); ?>" class="<?php if(!empty($active_cls2) && ($fetch_class == "shapes_management")){ echo "active" ; } ?>">Shapes Management</a></li>
           
-           <li><a href="<?php echo site_url("kaizen/membership"); ?>" class="<?php if(!empty($active_cls2) && ($fetch_class == "dddd")){ echo "active" ; } ?>">Shapes Size Management</a></li>
+           <li><a href="<?php echo site_url("kaizen/shapes_size"); ?>" class="<?php if(!empty($active_cls2) && ($fetch_class == "shapes_size")){ echo "active" ; } ?>">Shapes Size Management</a></li>
                 
         </ul>
       </div>
