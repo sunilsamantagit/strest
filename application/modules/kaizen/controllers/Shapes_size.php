@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Shapes_management extends MY_Controller 
+class Shapes_size extends MY_Controller 
 {
 	private $limit = 20;
 	var $offset = 0;
@@ -19,7 +19,7 @@ class Shapes_management extends MY_Controller
 		  'footer' => 'common/footer'
 		));
 		
-		$this->load->model('modelshapes_management');	
+		$this->load->model('modelshapes_size');	
 	}
 
 	public function index()
@@ -34,10 +34,10 @@ class Shapes_management extends MY_Controller
 		$where = array();
                
         $order_by = array('id' => 'asc');
-		$data_row = $this->modelshapes_management->select_row('bh_shapes_management',$where,$order_by);
+		$data_row = $this->modelshapes_size->select_row('bh_shapes_size',$where,$order_by);
 		$data['records']= $data_row;
 //echo '<pre>';print_r($data['records']);exit;
-		$this->load->view('kaizen/shapes_management/shapes_management_list',$data);		
+		$this->load->view('kaizen/shapes_size/shapes_size_list',$data);	
 	}
 	
 	public function doadd(){
@@ -51,7 +51,7 @@ class Shapes_management extends MY_Controller
         $order_by = array('title' => 'asc');
 	    
 		
-		$this->load->view('kaizen/shapes_management/edit_shapes_management',$data);		
+		$this->load->view('kaizen/shapes_size/edit_shapes_size',$data);		
 	}
     
 	public function addedit()
@@ -59,27 +59,27 @@ class Shapes_management extends MY_Controller
 //echo "<pre>"; print_r($_POST);exit;
 
 /*$add_data1 = array(
-							'shape_name'	=>	$this->input->post('shape_name'),
-							'shape_specification'	=>	$this->input->post('shape_specification'),
+							'size_name'	=>	$this->input->post('size_name'),
+							'shape'	=>	$this->input->post('shape'),
 							'status'		=>	$this->input->post('shape_status')
 				
 						);
 						
-		$id = $this->modelshapes_management->insert_row('shapes_management',$add_data1);
+		$id = $this->modelshapes_size->insert_row('shapes_size',$add_data1);
 		if($id) { 
 		echo " Inserted Successfully..";
 			$session_data = array("SUCC_MSG"  => " Inserted Successfully.");
 			$this->session->set_userdata($session_data);					
 		}	
-		redirect("kaizen/shapes_management/",'refresh');*/
+		redirect("kaizen/shapes_size/",'refresh');*/
 	//.........................new..............................\\	
 	
 //print_r($add_data1);
 		
 		
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('shape_name', 'Title', 'trim|required|xss_clean');
-		$this->form_validation->set_rules('shape_specification', 'Title', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('size_name', 'Title', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('shape', 'Title', 'trim|required|xss_clean');
 		
 		//$this->form_validation->set_error_delimiters('<span class="validation_msg">', '</span>');
 		$id=$this->input->post('shape_id','');
@@ -91,15 +91,15 @@ class Shapes_management extends MY_Controller
                            
                             'id' => $id
                         );
-                $shapes_detls = $this->modelshapes_management->select_row('shapes_management',$where);
+                $shapes_detls = $this->modelshapes_size->select_row('shapes_size',$where);
 				
         		if(!empty($shapes_detls)) 
                 {
                    
 	//echo "<pre>"; print_r($_POST);exit;		                     
-                                $this->shape_name 		    =$this->input->post('shape_name',TRUE);
-								$this->shape_specification  =$this->input->post('shape_specification',TRUE);
-                                $this->status		        =$this->input->post('shape_status',TRUE); 
+                                $this->size_name  =$this->input->post('size_name',TRUE);
+								$this->shape       =$this->input->post('shape',TRUE);
+                                $this->status	   =$this->input->post('shape_status',TRUE); 
                                 if($this->status===false){
                                         $this->status='1';
                                 }
@@ -108,30 +108,30 @@ class Shapes_management extends MY_Controller
 								
                                 $update_data = array(
                                   
-                                    'shape_name'          => $this->shape_name,
-									'shape_specification' => $this->shape_specification,
-                                    'status'              => $this->status
+                                    'size_name'    => $this->size_name,
+									'shape'         => $this->shape,
+                                    'status'        => $this->status
                                 );
                                 
                 
 				$update_where = array('id' => $id);
-				if($this->modelshapes_management->update_row('shapes_management',$update_data,$update_where)) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
+				if($this->modelshapes_size->update_row('shapes_size',$update_data,$update_where)) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
 				{
 				
-					$session_data = array("SUCC_MSG"  => "Shapes Management Updated Successfully.");
+					$session_data = array("SUCC_MSG"  => "Shapes Size Management Updated Successfully.");
 					$this->session->set_userdata($session_data);					
 				}			
 				else 
 				{	
-					$session_data = array("ERROR_MSG"  => "Shapes Management Not Updated.");
+					$session_data = array("ERROR_MSG"  => "Shapes Size Management Not Updated.");
 					$this->session->set_userdata($session_data);				
 				}
 			}
 			else 
 			{           
-                                $this->shape_name            =$this->input->post('shape_name',TRUE);
-								 $this->shape_specification  =$this->input->post('shape_specification',TRUE);
-                                $this->status                =$this->input->post('shape_status',TRUE); 
+                                $this->size_name   =$this->input->post('size_name',TRUE);
+								 $this->shape       =$this->input->post('shape',TRUE);
+                                $this->status       =$this->input->post('shape_status',TRUE); 
                              if($this->status===false){
                                 $this->status='1';
                 }
@@ -141,12 +141,12 @@ class Shapes_management extends MY_Controller
               
                 $add_data = array(
                                     
-                                    'shape_name' 	       => $this->shape_name,
-                                    'shape_specification'  => $this->shape_specification,
-                                    'status'               => $this->status
+                                    'size_name'   => $this->size_name,
+                                    'shape'        => $this->shape,
+                                    'status'       => $this->status
                                 );
                                 
-				$id = $this->modelshapes_management->insert_row('shapes_management',$add_data);
+				$id = $this->modelshapes_size->insert_row('shapes_size',$add_data);
 				if($id) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
 				{ 
                    
@@ -159,8 +159,8 @@ class Shapes_management extends MY_Controller
 					$this->session->set_userdata($session_data);				
 				}
 			}
-			//redirect("kaizen/shapes_management/doedit/".$id,'refresh');	
-			redirect("kaizen/shapes_management/",'refresh');				
+			//redirect("kaizen/shapes_size/doedit/".$id,'refresh');	
+			redirect("kaizen/shapes_size/",'refresh');				
 		}
 		else{
 			if(!empty($id)){
@@ -178,7 +178,7 @@ class Shapes_management extends MY_Controller
 		$where = array(
                             'id' => $shape_id
                         );
-        $shapes_detls = $this->modelshapes_management->select_row('shapes_management',$where);                       
+        $shapes_detls = $this->modelshapes_size->select_row('shapes_size',$where);                       
 		if($shapes_detls){
 			$data['details'] = $shapes_detls[0];
 		}
@@ -188,7 +188,7 @@ class Shapes_management extends MY_Controller
 		}
 		
 		
-		$this->load->view('kaizen/shapes_management/edit_shapes_management',$data);				
+		$this->load->view('kaizen/shapes_size/edit_shapes_size',$data);				
 	}
 	
 	

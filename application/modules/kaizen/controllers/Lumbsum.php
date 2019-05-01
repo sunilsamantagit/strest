@@ -153,7 +153,8 @@ class Lumbsum extends MY_Controller
 					$this->session->set_userdata($session_data);				
 				}
 			}
-			redirect("kaizen/lumbsum/doedit/".$id,'refresh');			
+			redirect("kaizen/lumbsum/",'refresh');
+			//redirect("kaizen/lumbsum/doedit/".$id,'refresh');			
 		}
 		else{
 			if(!empty($id)){

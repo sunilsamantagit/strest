@@ -34,7 +34,7 @@ class Takeoff extends MY_Controller
 		$where = array();
                
         $order_by = array('id' => 'DESC');
-		$data_row = $this->modeltakeoff->select_row('bh_takeoff',$where,$order_by);
+		$data_row = $this->modeltakeoff->select_row('bh_takeoff',$where,$order_by);		
 		$data['records']= $data_row;
 		$this->load->view('kaizen/takeoff/takeoff_list',$data);		
 	}
