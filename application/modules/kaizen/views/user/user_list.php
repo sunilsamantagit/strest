@@ -49,7 +49,7 @@ div.dataTables_length {
 <div class="rightDiv">
 	<div class="right-outer">
             <div class="page_title">
-		<h3 class="title">Takeoff Line Entries List</h3>
+		<h3 class="title">Admin Management</h3>
                 <?php $this->load->view($right); ?>
             </div>
         <div class="clear"></div>

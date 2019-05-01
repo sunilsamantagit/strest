@@ -9,7 +9,7 @@ $comp_arr = array('membership'         => 'membership',
 
 
 
-$comp_arr2 = array('material_function'         => 'material_function',
+$comp_arr2 = array('material'         => 'material',
                     'lumbsum'       => 'lumbsum',
                     'shapes_management'       => 'shapes_management',
                     'shapes_size'       => 'shapes_size'
@@ -79,7 +79,7 @@ if(in_array($fetch_class,$comp_arr4)){
       <div style="<?php if(!empty($active_cls2)){ echo 'display:block;'; }?>" class="cat-cont">
         <ul class="category_sub_list">
          
-          <li><a href="<?php echo site_url("kaizen/material_function"); ?>" class="<?php if(!empty($active_cls2) && ($fetch_class == "material_function")){ echo "active" ; } ?>">Material Function</a></li>
+          <li><a href="<?php echo site_url("kaizen/material"); ?>" class="<?php if(!empty($active_cls2) && ($fetch_class == "material")){ echo "active" ; } ?>">Material Function</a></li>
         
           <li><a href="<?php echo site_url("kaizen/lumbsum"); ?>" class="<?php if(!empty($active_cls2) && ($fetch_class == "lumbsum")){ echo "active" ; } ?>">Lump Sum Entries</a></li>
           

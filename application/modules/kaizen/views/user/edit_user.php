@@ -7,7 +7,7 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#cont").validationEngine();
+	$("#cont").validationEngine('attach', { promptPosition: "inline" });
 	});
 function form_submit(){
     $('#cont').submit();
@@ -22,7 +22,7 @@ function showhide(val){
 		<h3 class="title">Add - Admin Management</h3>
 
         <div class="clear"></div>
-        <div class="mid-block ass_bg">
+        <div class="ass_bg">
             <?php
 		if($this->session->userdata('ERROR_MSG')==TRUE){
 			echo '<div class="notific_error">
@@ -145,21 +145,20 @@ function showhide(val){
                             <a href="javascript:void(0);" class="web-red-btn save" onClick="form_submit();"><span>Save</span></a> <?php echo form_close();?> </div>
 		</div>
 	</div>
-	<div class="bodybottom"> </div>
+	
 </div>
 </div>
-<div class="rt-block">
-		  <?php $this->load->view($right); ?>
-</div>
+
  <?php
     if(!empty($details->id) && $this->session->userdata('user_level')==1){
        // echo getalltracking($details->id,'admin');
     }
 ?>
-</div>
-    <div class="clear"></div>
+            <div class="clear"></div>
 <?php $this->load->view($footer); ?>
+</div>
 
+</div>
     <style>
         #password_section{ width: 100%;}
         .full_row{ width: 100%; display: flex;}
