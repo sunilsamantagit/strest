@@ -117,22 +117,36 @@ function form_submit(){
 
             <div class="single-column">
               <label class="question-label">Spec Grade</label>
-              <select id="spec_grade_id" name="spec_grade_id" class="inputinpt">
-                <?php foreach ($shapesgrade as $rows) {?>                 
-                 <option value="<?php echo $rows->id; ?>"><?php echo $rows->id; ?></option>
-                <?php }?>
+              <select id="spec_grade_id" name="spec_grade_id" class="inputinpt validate[required]" />
+                <?php if(isset($details->spec_grade_id)){
+                   foreach ($shapesgrade as $rows) { ?>
+                      <option value="<?php echo $rows->id;?>"<?php if($rows->id==$details->spec_grade_id){?>selected<?php } ?>><?php echo $rows->shape_specification; ?></option>
+               <?php }
+                 } else { 
+                    foreach ($shapesgrade as $rows) { ?>
+                      <option value="<?php echo $rows->id;?>"><?php echo $rows->shape_specification; ?></option>
+               <?php }
+                 }?>
               </select>
 
             </div>
             
             <div class="single-column">
-              <label class="question-label">Shape</label>              
-              <select id="shape_id" name="shape_id" class="inputinpt">
-                <?php foreach ($shapesgrade as $rows) {?>                 
-                 <option value="<?php echo $rows->id; ?>"><?php echo $rows->id; ?></option>
-                <?php }?>
+              <label class="question-label">Shape</label>
+              <select id="shape_id" name="shape_id" class="inputinpt validate[required]" />
+                <?php if(isset($details->shape_id)){
+                   foreach ($shapes as $shape) { ?>
+                      <option value="<?php echo $shape->id;?>"<?php if($shape->id==$details->shape_id){?>selected<?php } ?>><?php echo $shape->size_name; ?></option>
+               <?php }
+                 }else {
+                foreach ($shapes as $shape) { ?>
+                      <option value="<?php echo $shape->id;?>"><?php echo $shape->size_name; ?></option>
+               <?php }
+                }
+                 ?>
               </select>
             </div>
+
 
             <div class="single-column">
               <label class="question-label">Inches</label>
@@ -141,39 +155,39 @@ function form_submit(){
 
             <div class="single-column">
               <label class="question-label">Metric</label>
-              <input type="text" name="metric" id="metric" value="<?php if(isset($details->metric)){echo $details->metric;}?>" class="inputinpt" />
+              <input type="text" name="metric" id="metric" value="<?php if(isset($details->metric)){echo $details->metric;}?>" class="inputinpt">
             </div>
 
             <div class="single-column">
               <label class="question-label">Size</label>
-              <input type="text" name="size" id="size" value="<?php if(isset($details->size)){echo $details->size;}?>" class="inputinpt" />
+              <input type="text" name="size" id="size" value="<?php if(isset($details->size)){echo $details->size;}?>" class="inputinpt">
             </div>
 
             <div class="single-column">
               <label class="question-label">Unit Weight(lbs/lin.ft)</label>
-              <input type="text" name="unit_weight" id="unit_weight" value="<?php if(isset($details->unit_weight)){echo $details->unit_weight;}?>" class="inputinpt" />
+              <input type="text" name="unit_weight" id="unit_weight" value="<?php if(isset($details->unit_weight)){echo $details->unit_weight;}?>" class="inputinpt">
             </div>
 
             <div class="single-column">
               <label class="question-label">Unit Cost ($/lb)</label>
-              <input type="text" name="unit_cost" id="unit_cost" value="<?php if(isset($details->unit_cost)){echo $details->unit_cost;}?>" class="inputinpt" />
+              <input type="text" name="unit_cost" id="unit_cost" value="<?php if(isset($details->unit_cost)){echo $details->unit_cost;}?>" class="inputinpt">
             </div>
 
             <div class="single-column">
               <label class="question-label">Surface(sq.ft./lin.ft.)</label>
-             <input type="text" name="surface" id="surface" value="<?php if(isset($details->surface)){echo $details->surface;}?>" class="inputinpt" />
+             <input type="text" name="surface" id="surface" value="<?php if(isset($details->surface)){echo $details->surface;}?>" class="inputinpt">
             </div>
 
             <div class="single-column">
               <label class="question-label">Labor(hr./lb.)</label>
-              <input type="text" name="labor" id="labor" value="<?php if(isset($details->labor)){echo $details->labor;}?>" class="inputinpt" />
+              <input type="text" name="labor" id="labor" value="<?php if(isset($details->labor)){echo $details->labor;}?>" class="inputinpt">
             </div>
 
             <div class="single-column">
               <label class="question-label">Labor(hr./lb.)</label>
               <select id="status" name="status" class="inputinpt">
-                <option value="English"<?php if(isset($details->addenda)){if($details->addenda=="English"){ ?> selected <?php }}?>>Active</option>
-                <option value="Metric"<?php if(isset($details->addenda)){if($details->addenda=="Metric"){ ?> selected <?php  }}?>>Inactive</option>
+                <option value="Active"<?php if(isset($details->status)){if($details->status=="Active"){ ?> selected <?php }}?>>Active</option>
+                <option value="Inactive"<?php if(isset($details->status)){if($details->status=="Inactive"){ ?> selected <?php  }}?>>Inactive</option>
               </select>
             </div>
 

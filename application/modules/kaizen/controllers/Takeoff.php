@@ -235,7 +235,7 @@ class Takeoff extends MY_Controller
 			}
 			redirect("kaizen/takeoff/doedit/".$id,'refresh');			
 		}
-		else{ echo "validation false";exit;
+		else{
 			if(!empty($id)){
 			$this->doedit();
 			}
