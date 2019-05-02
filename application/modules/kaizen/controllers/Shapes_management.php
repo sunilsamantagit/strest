@@ -32,7 +32,6 @@ class Shapes_management extends MY_Controller
 	public function dolist(){
 		$data = array();
 		$where = array();
-               
         $order_by = array('id' => 'desc');
 		$data_row = $this->modelshapes_management->select_row('shapes_management',$where,$order_by);
 		$data['records']= $data_row;
