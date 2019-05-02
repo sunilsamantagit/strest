@@ -101,13 +101,15 @@ function form_submit(){
                     <label class="single-column">Shape<span></span></label>
                     <select name="shape" id="shape"  class="inputinpt validate[required]">
                             
-						<?php foreach ($shape_specification as $rows) {?>                 
-							<option value="<?php echo $rows->shape_specification; ?>"><?php echo $rows->shape_specification; ?></option>
-						<?php }?>            
-                    </select>
-					<?php //foreach ($supplier as  $key) { ?>
-                        <!--<option value='<?php //echo $key->supplier_id ?>' <?php //if($key->supplier_id == $row->supplier_id){echo "selected";} ?>><?php //echo $key->supplier_name ?></option>-->
-                        <?php //} ?>
+					<?php if(isset($details->row)){
+						foreach ($shapes_management as $rows) { ?>
+						<option value="<?php echo $rows->shape_specification;?>"<?php if($rows->shape_specification==$details->row){?>selected<?php } ?>><?php echo $rows->shape_specification; ?></option>
+					<?php }
+					     	} else { 
+						foreach ($shapes_management as $rows) { ?>
+						<option value="<?php echo $rows->shape_specification;?>"><?php echo $rows->shape_specification; ?></option>
+					<?php } }?>
+					</select>
 				</div>
 					
 			<div class="single-column" >
