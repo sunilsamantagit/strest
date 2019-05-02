@@ -46,6 +46,9 @@ if(in_array($fetch_class,$comp_arr4)){
 ?>
 
 <div class="leftDiv">
+  <div class="logo">
+        <a href="<?php echo site_url('kaizen/main'); ?>">STREST</a>
+    </div> 
   <ul class="cat-list">
 
     <li class="listing-dashboard">
@@ -56,7 +59,7 @@ if(in_array($fetch_class,$comp_arr4)){
     <a href="<?php echo site_url("kaizen/pages"); ?>" <?php if(!empty($fetch_class) && $fetch_class == "pages"){ ?> class="active" <?php } ?>>Pages</a>
     </li> -->
 
-    <li class="listing-list"> <a href="javascript:void(0)">Takeoff<span class="listing-arrow"></span></a>
+    <li class="listing-list"> <a href="javascript:void(0)">Takeoff<span class="fa fa-chevron-down"></span></a>
       <div style="<?php if(!empty($active_cls)){ echo 'display:block;'; }?>" class="cat-cont">
         <ul class="category_sub_list">
          
@@ -73,7 +76,7 @@ if(in_array($fetch_class,$comp_arr4)){
  
     
     
-    <li class="listing-list"> <a href="javascript:void(0)">Master Entries<span class="listing-arrow"></span></a>
+    <li class="listing-list"> <a href="javascript:void(0)">Master Entries<span class="fa fa-chevron-down"></span></a>
       <div style="<?php if(!empty($active_cls2)){ echo 'display:block;'; }?>" class="cat-cont">
         <ul class="category_sub_list">
          
@@ -91,7 +94,7 @@ if(in_array($fetch_class,$comp_arr4)){
     
     
      <?php if($this->session->userdata('user_level')==1){ ?>
-    <li class="listing-list"> <a href="javascript:void(0)">Admin Management<span class="listing-arrow"></span></a>
+    <li class="listing-list"> <a href="javascript:void(0)">Admin Management<span class="fa fa-chevron-down"></span></a>
       <div style="<?php if(!empty($active_cls3)){ echo 'display:block;'; }?>" class="cat-cont">
         <ul class="category_sub_list">
          
