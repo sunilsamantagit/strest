@@ -32,12 +32,7 @@ class Shapes_size extends MY_Controller
 	public function dolist(){
 		$data = array();
 		$where = array();
-               
-<<<<<<< HEAD
-        $order_by = array('id' => 'asc');
-=======
         $order_by = array('id' => 'desc');
->>>>>>> 621b0f0ad1f216e6ad4635af2424d5a9781fe884
 		$data_row = $this->modelshapes_size->select_row('shapes_size',$where,$order_by);
 		$data['records']= $data_row;
 //echo '<pre>';print_r($data['records']);exit;
@@ -55,8 +50,8 @@ class Shapes_size extends MY_Controller
         $order_by = array('title' => 'asc');
 	    
 		$data_shapes = $this->modelshapes_size->select_row('shapes_management');
-		$data['shape_specification']= $data_shapes;
-//echo '<pre>';print_r($data['shape_specification']);exit;
+		$data['shapes_management']= $data_shapes;
+//echo '<pre>';print_r($data['shapes_management']);exit;
 		$this->load->view('kaizen/shapes_size/edit_shapes_size',$data);		
 	}
     
@@ -89,8 +84,7 @@ class Shapes_size extends MY_Controller
 		
 		//$this->form_validation->set_error_delimiters('<span class="validation_msg">', '</span>');
 		$id=$this->input->post('shape_id','');
-	 	//$takeoff_detls ='';
-	 	//$uplod_img='';
+	 	
 		if($this->form_validation->run() == TRUE) // IF MENDATORY FIELDS VALIDATION TRUE(SERVER SIDE)  
 		{	
 			$where = array(
@@ -124,12 +118,12 @@ class Shapes_size extends MY_Controller
 				if($this->modelshapes_size->update_row('shapes_size',$update_data,$update_where)) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
 				{
 				
-					$session_data = array("SUCC_MSG"  => "Shapes Size Management Updated Successfully.");
+					$session_data = array("SUCC_MSG"  => "Shapes Size Updated Successfully.");
 					$this->session->set_userdata($session_data);					
 				}			
 				else 
 				{	
-					$session_data = array("ERROR_MSG"  => "Shapes Size Management Not Updated.");
+					$session_data = array("ERROR_MSG"  => "Shapes Size Not Updated.");
 					$this->session->set_userdata($session_data);				
 				}
 			}
@@ -156,12 +150,12 @@ class Shapes_size extends MY_Controller
 				if($id) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
 				{ 
                    
-					$session_data = array("SUCC_MSG"  => "Shapes Management Inserted Successfully.");
+					$session_data = array("SUCC_MSG"  => "Shapes Size Inserted Successfully.");
 					$this->session->set_userdata($session_data);					
 				}			
 				else // IF UPDATE PROCEDURE NOT EXECUTE SUCCESSFULLY
 				{	
-					$session_data = array("ERROR_MSG"  => "Shapes Management Not Inserted.");
+					$session_data = array("ERROR_MSG"  => "Shapes Size Not Inserted.");
 					$this->session->set_userdata($session_data);				
 				}
 			}
@@ -192,7 +186,10 @@ class Shapes_size extends MY_Controller
 			$data['details']->status = 1;
 			$data['details']->id = 0;
 		}
+//echo '<pre>';print_r($data['details']);exit;
 		
+		$data_shapes = $this->modelshapes_size->select_row('shapes_management');
+		$data['shapes_management']= $data_shapes;
 		
 		$this->load->view('kaizen/shapes_size/edit_shapes_size',$data);				
 	}
