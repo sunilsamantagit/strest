@@ -14,9 +14,7 @@ $comp_arr2 = array('material'         => 'material',
                     'shapes_management'       => 'shapes_management',
                     'shapes_size'       => 'shapes_size'
             );
-$comp_arr3 = array('xxxx'         => 'yyyy',
-                    'xxx'       => 'yy'
-            );
+$comp_arr3 = array('user'         => 'user');
 
 $comp_arr4 = array(
                     'user_tracking'              => 'user_tracking'

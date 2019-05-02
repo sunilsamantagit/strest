@@ -84,7 +84,7 @@ div.dataTables_length {
 			$this->session->unset_userdata('ERROR_MSG');
 		}
 		if($this->session->userdata('SUCC_MSG')==TRUE){
-			echo '<div class="notific_suc"><h2 align="center" style="color:#000;">'.$this->session->userdata('SUCC_MSG').'</h1></div>';
+			echo '<div class="notific_suc"><h2 align="center" style="color:#0a0;">'.$this->session->userdata('SUCC_MSG').'</h1></div>';
 			$this->session->unset_userdata('SUCC_MSG');
 		}
 		?>
@@ -96,7 +96,7 @@ div.dataTables_length {
               <tr>
                     <th style="text-align: center;">No.<span class=""></span></th>
                     <th width="35%">Quote No.<span class=""></span></th>
-                    <th>Date<span class=""></span></th>
+                    <th>Created Date<span class=""></span></th>
 							      <th>Action</th>
               </tr>
             </thead>
@@ -110,20 +110,20 @@ div.dataTables_length {
         							<?php
         			  }
         			  else{
-        			  $i=0;
+        			  $i=1;
         			  foreach($records as $row){
-        				  $i++;				  
+        				 				  
         			  ?>
   <tr>
       <td><?php echo $i; ?></td>        
 			<td><?php if(!empty($row->quote_no)) echo $row->quote_no; ?></td>
-      <td><?php if(!empty($row->date)){echo $row->date; }?></td>
+      <td><?php if(!empty($row->created_date)){echo date("m-d-Y", strtotime($row->created_date)); }?></td>
       <td class="action_btn">
-         <a class="" href="<?php echo site_url("kaizen/takeoff/doedit/".$row->id);?>"><span>View</span></a>  
+         <a class="" href="<?php echo site_url("kaizen/takeoff/view/".$row->id);?>"><span>View</span></a>  
          <a class="" href="<?php echo site_url("kaizen/takeoff/doedit/".$row->id);?>"><span>Edit</span></a> 
          <a class="duplicate" href="<?php echo site_url("kaizen/takeoff/doduplicate/".$row->id);?>"><span>Duplicate</span></a> 
          <a class="" href="<?php echo site_url("kaizen/takeoff/takeoff_Print/".$row->id);?>"><span>Print</span></a>
-        <a class="" href="javascript:void(0);" title="Delete" onclick="rowdelete('<?php echo $row->id; ?>','bh_takeoff');" class=""><span>Delete</span></a>
+        <a class="" href="javascript:void(0);" title="Delete" onclick="rowdelete('<?php echo $row->id; ?>','takeoff');" class=""><span>Delete</span></a>
 <!--
 				  <a class="block-btn edit-btn" href="<?php echo site_url("kaizen/takeoff/takeoff_view/".$row->id);?>"><span>View</span></a>
           <a class="block-btn edit-btn" href="<?php echo site_url("kaizen/takeoff/takeoff_edit/".$row->id);?>"><span>Edit</span></a>
@@ -137,7 +137,7 @@ div.dataTables_length {
 							</tr>
         									
         			<?php
-        			  }
+        			  $i++; }
         			  }
         			  ?>        
                         
@@ -157,7 +157,7 @@ div.dataTables_length {
     $(document).ready(function() {
     $('#pagi').dataTable( {
       "dom": '<"top"iflp<"clear">>rt<"bottom"iflp<"clear">>',
-      "order": [[ 2, "asc" ]],
+      "order": [[ 0, "asc" ]],
       "stateSave": true,
     "aoColumns": [
                   null,

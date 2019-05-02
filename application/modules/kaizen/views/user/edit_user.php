@@ -19,8 +19,11 @@ function showhide(val){
 </script>
 <div class="rightDiv">
 	<div class="right-outer">
-		<h3 class="title">Add - Admin Management</h3>
-
+            <?php if(isset($details->id) && $details->id >0){?>
+		<h3 class="title">Edit - User Profile</h3>
+            <?php }else{ ?>
+             <h3 class="title">Add - User Profile</h3>   
+            <?php } ?>
         <div class="clear"></div>
         <div class="ass_bg">
             <?php

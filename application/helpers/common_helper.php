@@ -230,68 +230,68 @@ function uploadDocument($field='',$upload_dir='',$file_type='*')
         }
 
 
-function tracking($field_arr,$id,$table_name,$module_name,$editid='',$action='')
-{
-  $CI =& get_instance();
-  $CI->load->model("common/model_common");
-  $field_str = '';
-  foreach($field_arr as $field){
-    $field_str[] = $field['field_name'];
-  }
-  $old_value_str = '';
-  $new_value_str = '';
-  if(!empty($field_str) && !empty($id)){
-    $field_str_new = implode(", ",$field_str);
-
-    $CI->db->select($field_str_new);
-    $CI->db->where('id', $id);
-    $query = $CI->db->get($table_name);
-    $value_obj = $query->row();
-    $value_str = json_encode($value_obj);
-  }
-  if(empty($editid) && $action == 'edit'){
-    $old_value_str = $value_str;
-  }else{
-    $new_value_str = $value_str;
-  }
-  if(!empty($old_value_str)){
-    $data = array(
-      'element_id' 				=> $id,
-      'old_value' 				=> $old_value_str,
-      'action' 				=> $action,
-      'table_name' 			=> $table_name,
-      'module_name' 			=> $module_name,
-      'update_by' 			=> $CI->session->userdata('web_admin_user_name'),
-      'created_date' 			=> date("Y-m-d H:i:s"),
-      'field_arr'				=> json_encode($field_arr)
-    );
-  }else{
-    $data = array(
-      'element_id' 				=> $id,
-      'new_value' 				=> $new_value_str,
-      'action' 				=> $action,
-      'table_name' 			=> $table_name,
-      'module_name' 			=> $module_name,
-      'update_by' 			=> $CI->session->userdata('web_admin_user_name'),
-      'created_date' 			=> date("Y-m-d H:i:s"),
-      'field_arr'				=> json_encode($field_arr)
-    );
-  }
-  //sendmail($data);
-  if(!empty($editid)){
-    if($old_value_str != $new_value_str){
-      $update_where = array('id' => $editid);
-      $CI->model_common->update_row('tracking',$data,$update_where);
-      //sendmail($editid);
-    }
-    return $editid;
-  }else{
-    $editid = $CI->model_common->insert_row('tracking',$data);
-    //sendmail($editid);
-    return $editid;
-  }
-
-}
+//function tracking($field_arr,$id,$table_name,$module_name,$editid='',$action='')
+//{
+//  $CI =& get_instance();
+//  $CI->load->model("common/model_common");
+//  $field_str = '';
+//  foreach($field_arr as $field){
+//    $field_str[] = $field['field_name'];
+//  }
+//  $old_value_str = '';
+//  $new_value_str = '';
+//  if(!empty($field_str) && !empty($id)){
+//    $field_str_new = implode(", ",$field_str);
+//
+//    $CI->db->select($field_str_new);
+//    $CI->db->where('id', $id);
+//    $query = $CI->db->get($table_name);
+//    $value_obj = $query->row();
+//    $value_str = json_encode($value_obj);
+//  }
+//  if(empty($editid) && $action == 'edit'){
+//    $old_value_str = $value_str;
+//  }else{
+//    $new_value_str = $value_str;
+//  }
+//  if(!empty($old_value_str)){
+//    $data = array(
+//      'element_id' 				=> $id,
+//      'old_value' 				=> $old_value_str,
+//      'action' 				=> $action,
+//      'table_name' 			=> $table_name,
+//      'module_name' 			=> $module_name,
+//      'update_by' 			=> $CI->session->userdata('web_admin_user_name'),
+//      'created_date' 			=> date("Y-m-d H:i:s"),
+//      'field_arr'				=> json_encode($field_arr)
+//    );
+//  }else{
+//    $data = array(
+//      'element_id' 				=> $id,
+//      'new_value' 				=> $new_value_str,
+//      'action' 				=> $action,
+//      'table_name' 			=> $table_name,
+//      'module_name' 			=> $module_name,
+//      'update_by' 			=> $CI->session->userdata('web_admin_user_name'),
+//      'created_date' 			=> date("Y-m-d H:i:s"),
+//      'field_arr'				=> json_encode($field_arr)
+//    );
+//  }
+//  //sendmail($data);
+//  if(!empty($editid)){
+//    if($old_value_str != $new_value_str){
+//      $update_where = array('id' => $editid);
+//      $CI->model_common->update_row('tracking',$data,$update_where);
+//      //sendmail($editid);
+//    }
+//    return $editid;
+//  }else{
+//    $editid = $CI->model_common->insert_row('tracking',$data);
+//    //sendmail($editid);
+//    return $editid;
+//  }
+//
+//}
 
 function getalltracking($element_id,$module_name){
   $CI =& get_instance();

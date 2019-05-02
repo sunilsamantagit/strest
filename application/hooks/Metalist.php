@@ -18,7 +18,7 @@ class Metalist
       $CI->data['hooks_meta'] = $meta_list;
       $site_setting = $CI->model_meta->site_settings();
       $CI->data['site_settings']=$site_setting;
-      $CI->data['contact']=$CI->model_meta->selectOne('contact',array('id'=>1));
+    //  $CI->data['contact']=$CI->model_meta->selectOne('contact',array('id'=>1));
      // $commonbanner = $CI->model_meta->commonbanner($meta_list->id);
     //  $CI->data['commonbanner']=$commonbanner;
       
@@ -47,7 +47,7 @@ class Metalist
     //  $commonbanner = $CI->model_meta->commonbanner('%');
     //  $CI->data['commonbanner']=$commonbanner;
       $CI->data['site_settings']=$site_setting;
-      $CI->data['contact']=$CI->model_meta->selectOne('contact',array('id'=>1));
+    //  $CI->data['contact']=$CI->model_meta->selectOne('contact',array('id'=>1));
       
       //pre($meta_list);
     if(!empty($meta_list->parent_id)) {
@@ -66,8 +66,8 @@ class Metalist
 
     }
 
-    $CI->data['mem_first_nations'] = $CI->model_meta->select_row('first_nations',array('is_active'=>'1','is_type'=>'1'),array('display_order'=>'asc'));
-    $CI->data['other_first_nations'] = $CI->model_meta->select_row('first_nations',array('is_active'=>'1','is_type'=>'0'),array('display_order'=>'asc'));
+  //  $CI->data['mem_first_nations'] = $CI->model_meta->select_row('first_nations',array('is_active'=>'1','is_type'=>'1'),array('display_order'=>'asc'));
+  //  $CI->data['other_first_nations'] = $CI->model_meta->select_row('first_nations',array('is_active'=>'1','is_type'=>'0'),array('display_order'=>'asc'));
     // $sidebar_pages=$CI->model_meta->select_row('cms_pages',array('is_active'=>'1','id'=>'8'),array('display_order'=>'asc'));
     //
     // $selected_page_id_arr=explode(',',$sidebar_pages[0]->page_id);
@@ -80,31 +80,31 @@ class Metalist
     //             $page_list = $CI->model_meta->getSingleRecordPageName($selected_page_id);
     //         		$CI->data['page_list'] =$page_list;
 
-    $CI->data['inner_pages'] = $CI->model_meta->select_row('cms_pages',array('is_active'=>'1','parent_id'=>'2'),array('display_order'=>'asc'));
-
-    $socialmedia=$CI->model_meta->select_row('social_settings');
-    $sclist='';
-    if(!empty($socialmedia)){
-      foreach ($socialmedia as $value) {
-        switch ($value->social_menus_id) {
-          case 1:
-            $class='fb';
-            break;
-          case 2:
-            $class='twit';
-            break;
-          case 5:
-            $class='utube';
-            break;
-
-          default:
-            # code...
-            break;
-        }
-        $sclist.='<li><a href="'.$value->link.'" target="_blank" class="'.$class.'"></a></li>';
-      }
-      $CI->data['socialmedia_list']=$sclist;
-    }
+//    $CI->data['inner_pages'] = $CI->model_meta->select_row('cms_pages',array('is_active'=>'1','parent_id'=>'2'),array('display_order'=>'asc'));
+//
+//    $socialmedia=$CI->model_meta->select_row('social_settings');
+//    $sclist='';
+//    if(!empty($socialmedia)){
+//      foreach ($socialmedia as $value) {
+//        switch ($value->social_menus_id) {
+//          case 1:
+//            $class='fb';
+//            break;
+//          case 2:
+//            $class='twit';
+//            break;
+//          case 5:
+//            $class='utube';
+//            break;
+//
+//          default:
+//            # code...
+//            break;
+//        }
+//        $sclist.='<li><a href="'.$value->link.'" target="_blank" class="'.$class.'"></a></li>';
+//      }
+//      $CI->data['socialmedia_list']=$sclist;
+//    }
 
   }
 }

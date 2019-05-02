@@ -34,7 +34,7 @@ class Takeoff extends MY_Controller
 		$where = array();
                
         $order_by = array('id' => 'DESC');
-		$data_row = $this->modeltakeoff->select_row('bh_takeoff',$where,$order_by);		
+		$data_row = $this->modeltakeoff->select_row('takeoff',$where,$order_by);		
 		$data['records']= $data_row;
 		$this->load->view('kaizen/takeoff/takeoff_list',$data);		
 	}
@@ -121,7 +121,7 @@ class Takeoff extends MY_Controller
 			$where = array(                           
                             'id' => $id
                         );
-                $takeoff_detls = $this->modeltakeoff->select_row('bh_takeoff',$where);
+                $takeoff_detls = $this->modeltakeoff->select_row('takeoff',$where);
 				
         		if(!empty($takeoff_detls)) 
                 {
@@ -167,14 +167,14 @@ class Takeoff extends MY_Controller
                                 );                              
                 
 				$update_where = array('id' => $id);
-				if($this->modeltakeoff->update_row('bh_takeoff',$update_data,$update_where)) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
+				if($this->modeltakeoff->update_row('takeoff',$update_data,$update_where)) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
 				{				
-					$session_data = array("SUCC_MSG"  => "Takeoff - Description Updated Successfully.");
+					$session_data = array("SUCC_MSG"  => "Takeoff - Description Updated Successfully");
 					$this->session->set_userdata($session_data);					
 				}			
 				else 
 				{	
-					$session_data = array("ERROR_MSG"  => "Takeoff - Description Not Updated.");
+					$session_data = array("ERROR_MSG"  => "Takeoff - Description Not Updated");
 					$this->session->set_userdata($session_data);				
 				}
 			}
@@ -218,18 +218,19 @@ class Takeoff extends MY_Controller
 								'engineer_contact'		=>	$this->input->post('takeoff_engineer_contact'),
 								'engineer_tel'			=>	$this->input->post('takeoff_engineer_tel'),
 								'engineer_fax'			=>	$this->input->post('takeoff_engineer_fax'),
+								'created_date'			=> date('Y-m-d'),
 								'status'				=>	'1'
                                 );
                                // print_r($add_data);echo "validation come";exit;
 				$id = $this->modeltakeoff->insert_row('takeoff',$add_data);
 				if($id) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
 				{                   
-					$session_data = array("SUCC_MSG"  => "Takeoff - Description Inserted Successfully.");
+					$session_data = array("SUCC_MSG"  => "Takeoff - Description Inserted Successfully");
 					$this->session->set_userdata($session_data);					
 				}			
 				else // IF UPDATE PROCEDURE NOT EXECUTE SUCCESSFULLY
 				{	
-					$session_data = array("ERROR_MSG"  => "Takeoff - Description Not Inserted.");
+					$session_data = array("ERROR_MSG"  => "Takeoff - Description Not Inserted");
 					$this->session->set_userdata($session_data);				
 				}
 			}
@@ -251,7 +252,7 @@ class Takeoff extends MY_Controller
 		$where = array(
                             'id' => $takeoff_id
                         );
-        $takeoff_detls = $this->modeltakeoff->select_row('bh_takeoff',$where);                       
+        $takeoff_detls = $this->modeltakeoff->select_row('takeoff',$where);                       
 		if($takeoff_detls){
 			$data['details'] = $takeoff_detls[0];
 		}
@@ -262,6 +263,27 @@ class Takeoff extends MY_Controller
 		
 		
 		$this->load->view('kaizen/takeoff/edit_takeoff',$data);				
+	}
+        
+        
+        public function view()
+	{
+		$data = array();
+		$takeoff_id=$this->uri->segment(4); 		
+		$where = array(
+                            'id' => $takeoff_id
+                        );
+        $takeoff_detls = $this->modeltakeoff->select_row('takeoff',$where);                       
+		if($takeoff_detls){
+			$data['details'] = $takeoff_detls[0];
+		}
+		else{
+			$data['details']->is_active = 1;
+			$data['details']->id = 0;
+		}
+		
+		
+		$this->load->view('kaizen/takeoff/view_takeoff',$data);				
 	}
 
 	public function doduplicate()
@@ -274,7 +296,7 @@ class Takeoff extends MY_Controller
 
 		//echo "<pre>";print_r($getdata);exit;
 		/*
-        $takeoff_detls = $this->modeltakeoff->select_row('bh_takeoff',$where);
+        $takeoff_detls = $this->modeltakeoff->select_row('takeoff',$where);
 
 
 

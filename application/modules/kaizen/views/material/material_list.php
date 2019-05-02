@@ -68,7 +68,7 @@ div.dataTables_length {
 <div class="rightDiv">
   <div class="right-outer">
   <div class="page_title">
-    <h2 class="title">Shapes Management</h2>
+    <h2 class="title">Material Function</h2>
     <?php $this->load->view($right); ?>
   </div>
         <div class="clear"></div>

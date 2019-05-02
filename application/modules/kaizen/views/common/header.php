@@ -50,8 +50,8 @@ $user_detls = $this->model_home->selectOne('admin',array('id'=>$this->session->u
 <div class="header">
 <!--    <a  href="<?php echo site_url(); ?>"><img width="60px;" height="60px;" src="<?php echo base_url("public/default/images/logo.png"); ?>" alt="<?php echo  $this->config->item("COMPANY_NAME");?>" title="<?php echo  $this->config->item("COMPANY_NAME");?>" class="logo" /></a>-->
     <div class="logo">
-        <a href="<?php echo site_url(); ?>">STREST</a>
-    </div>
+        <a href="<?php echo site_url('kaizen/main'); ?>">STREST</a>
+    </div> 
     <div class="top-right">
         <span><img src="<?php echo base_url("public/images/user-icon.png"); ?>" alt="">Welcome <?php echo $user_detls->first_name; ?>, </span>
     	<ul>
