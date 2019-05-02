@@ -33,7 +33,11 @@ class Shapes_size extends MY_Controller
 		$data = array();
 		$where = array();
                
+<<<<<<< HEAD
+        $order_by = array('id' => 'asc');
+=======
         $order_by = array('id' => 'desc');
+>>>>>>> 621b0f0ad1f216e6ad4635af2424d5a9781fe884
 		$data_row = $this->modelshapes_size->select_row('shapes_size',$where,$order_by);
 		$data['records']= $data_row;
 //echo '<pre>';print_r($data['records']);exit;
@@ -50,7 +54,9 @@ class Shapes_size extends MY_Controller
 		$where = array('status'=>1);
         $order_by = array('title' => 'asc');
 	    
-		
+		$data_shapes = $this->modelshapes_size->select_row('shapes_management');
+		$data['shape_specification']= $data_shapes;
+//echo '<pre>';print_r($data['shape_specification']);exit;
 		$this->load->view('kaizen/shapes_size/edit_shapes_size',$data);		
 	}
     
