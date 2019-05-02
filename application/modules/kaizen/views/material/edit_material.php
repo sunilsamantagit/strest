@@ -64,6 +64,31 @@ function form_submit(){
         'autoScale': false
           });
     });
+$(document).ready(function(){
+     $('#inches').keyup(function (){
+    this.value = this.value.replace(/[^0-9\.]/g,'');
+    });
+
+     $('#metric').keyup(function (){
+    this.value = this.value.replace(/[^0-9\.]/g,'');
+    });
+
+     $('#unit_weight').keyup(function (){
+    this.value = this.value.replace(/[^0-9\.]/g,'');
+    });
+
+     $('#unit_cost').keyup(function (){
+    this.value = this.value.replace(/[^0-9\.]/g,'');
+    });
+
+     $('#surface').keyup(function (){
+    this.value = this.value.replace(/[^0-9\.]/g,'');
+    });
+
+     $('#labor').keyup(function (){
+    this.value = this.value.replace(/[^0-9\.]/g,'');
+    });
+});
 </script>
 
 <style>
@@ -128,7 +153,6 @@ function form_submit(){
                <?php }
                  }?>
               </select>
-
             </div>
             
             <div class="single-column">
@@ -184,10 +208,15 @@ function form_submit(){
             </div>
 
             <div class="single-column">
-              <label class="question-label">Labor(hr./lb.)</label>
+              <label class="question-label">Status</label>
               <select id="status" name="status" class="inputinpt">
-                <option value="Active"<?php if(isset($details->status)){if($details->status=="Active"){ ?> selected <?php }}?>>Active</option>
-                <option value="Inactive"<?php if(isset($details->status)){if($details->status=="Inactive"){ ?> selected <?php  }}?>>Inactive</option>
+                <?php /* if(isset($details->status)) {?>
+                  <option value="Active"<?php if($details->status=="Active"){?>selected<?php } ?>>Active</option>
+                  <option value="Inactive"<?php if($details->status=="Inactive"){?>selected<?php } ?>>Inactive</option>
+                }else{ */?>
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+                <?php // } ?>
               </select>
             </div>
 

@@ -33,8 +33,8 @@ class Shapes_management extends MY_Controller
 		$data = array();
 		$where = array();
                
-        $order_by = array('id' => 'asc');
-		$data_row = $this->modelshapes_management->select_row('bh_shapes_management',$where,$order_by);
+        $order_by = array('id' => 'desc');
+		$data_row = $this->modelshapes_management->select_row('shapes_management',$where,$order_by);
 		$data['records']= $data_row;
 //echo '<pre>';print_r($data['records']);exit;
 		$this->load->view('kaizen/shapes_management/shapes_management_list',$data);		

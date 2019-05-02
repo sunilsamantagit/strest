@@ -8,11 +8,11 @@ class Modeltakeoff extends MY_Model{
     public function get_data($takeoff_id)
     {
     	$this->db->select('*');
-	    $this->db->from('bh_takeoff');
+	    $this->db->from('strest_takeoff');
 	    $this->db->where('id',$takeoff_id);
 	    $data=$this->db->get()->result_array();
 	    //echo "<pre>";print_r($data);
-	    $query = $this->db->query('select max(id) as id from bh_takeoff')->result_array();
+	    $query = $this->db->query('select max(id) as id from strest_takeoff')->result_array();
 	    
 	    $id=$query[0]['id']+1;
 	    
@@ -56,18 +56,9 @@ class Modeltakeoff extends MY_Model{
 								'engineer_fax'			=>	$data[0]['engineer_fax'],
 								'status'				=>	$data[0]['status']								
                                 );
-	    $this->db->insert('bh_takeoff',$add_data);
+	    $this->db->insert('strest_takeoff',$add_data);
 	    return $insert_id = $this->db->insert_id();
 
-    }
-/*
-    public function clonedata_insert($id)
-    {
-    	$this->db->get('bh_takeoff');
-    	$idc=$id+1;
-    	$query = $this->db->query('INSERT INTO bh_takeoff SELECT * FROM bh_takeoff WHERE id ='.$id.' ON DUPLICATE KEY UPDATE id='.$idc);
-    	return $query->result();
-    }*/
-	
+    }	
 }
 ?>

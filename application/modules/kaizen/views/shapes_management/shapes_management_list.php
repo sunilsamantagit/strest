@@ -84,7 +84,7 @@ div.dataTables_length {
 			$this->session->unset_userdata('ERROR_MSG');
 		}
 		if($this->session->userdata('SUCC_MSG')==TRUE){
-			echo '<div class="notific_suc"><h2 align="center" style="color:#000;">'.$this->session->userdata('SUCC_MSG').'</h1></div>';
+			echo '<div class="notific_suc"><h2 align="center" style="color:#0a0;">'.$this->session->userdata('SUCC_MSG').'</h1></div>';
 			$this->session->unset_userdata('SUCC_MSG');
 		}
 		?>
@@ -109,9 +109,9 @@ div.dataTables_length {
         							<?php
         			  }
         			  else{
-        			  $i=0;
+        			  $i=1;
         			  foreach($records as $row){
-        				  $i++;				  
+        				 			  
         			  ?>
         					<tr>
                             
@@ -138,7 +138,7 @@ div.dataTables_length {
 							</tr>
         									
         			<?php
-        			  }
+        			   $i++;}
         			  }
         			  ?>        
                         
@@ -159,8 +159,8 @@ div.dataTables_length {
     $(document).ready(function() {
     $('#pagi').dataTable( {
       "dom": '<"top"iflp<"clear">>rt<"bottom"iflp<"clear">>',
-      "order": [[ 2, "asc" ]],
-      "stateSave": true,
+      "order": [[ 0, "asc" ]],
+      //"stateSave": true,
     "aoColumns": [
     null,
     { "bSortable": false },

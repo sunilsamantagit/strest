@@ -84,7 +84,7 @@ div.dataTables_length {
 			$this->session->unset_userdata('ERROR_MSG');
 		}
 		if($this->session->userdata('SUCC_MSG')==TRUE){
-			echo '<div class="notific_suc"><h2 align="center" style="color:#000;">'.$this->session->userdata('SUCC_MSG').'</h1></div>';
+			echo '<div class="notific_suc"><h2 align="center" style="color:#0a0;">'.$this->session->userdata('SUCC_MSG').'</h1></div>';
 			$this->session->unset_userdata('SUCC_MSG');
 		}
 		?>
@@ -109,9 +109,9 @@ div.dataTables_length {
         							<?php
         			  }
         			  else{
-        			  $i=0;
+        			  $i=1;
         			  foreach($records as $row){
-        				  $i++;				  
+        				  			  
         			  ?>
         					<tr>
                             
@@ -132,13 +132,13 @@ div.dataTables_length {
 							
                 		<td class="action_btn">
                 			<a class="" href="<?php echo site_url("kaizen/shapes_size/doedit/".$row->id);?>"><span>Edit</span></a>
-							<a href="javascript:void(0);" title="Delete" onclick="rowdelete('<?php echo $row->id; ?>','shapes_management');" class=""><span>Delete</span></a>
+							<a href="javascript:void(0);" title="Delete" onclick="rowdelete('<?php echo $row->id; ?>','shapes_size');" class=""><span>Delete</span></a>
                         </td>
 						
 							</tr>
         									
         			<?php
-        			  }
+        			 $i++;	 }
         			  }
         			  ?>        
                         
@@ -159,8 +159,8 @@ div.dataTables_length {
     $(document).ready(function() {
     $('#pagi').dataTable( {
       "dom": '<"top"iflp<"clear">>rt<"bottom"iflp<"clear">>',
-      "order": [[ 2, "asc" ]],
-      "stateSave": true,
+      "order": [[ 0, "asc" ]],
+    //  "stateSave": true,
     "aoColumns": [
     null,
     { "bSortable": false },

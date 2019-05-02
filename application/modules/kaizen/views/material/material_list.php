@@ -130,7 +130,7 @@ div.dataTables_length {
               
     <td class="action_btn">
       <a class="" href="<?php echo site_url("kaizen/material/doedit/".$row->id);?>"><span>Edit</span></a>
-      <a href="javascript:void(0);" title="Delete" onclick="rowdelete('<?php echo $row->id; ?>','bh_material');" class=""><span>Delete</span></a>
+      <a href="javascript:void(0);" title="Delete" onclick="rowdelete('<?php echo $row->id; ?>','material');" class=""><span>Delete</span></a>
     </td>
             
               </tr>

@@ -33,8 +33,8 @@ class Shapes_size extends MY_Controller
 		$data = array();
 		$where = array();
                
-        $order_by = array('id' => 'asc');
-		$data_row = $this->modelshapes_size->select_row('bh_shapes_size',$where,$order_by);
+        $order_by = array('id' => 'desc');
+		$data_row = $this->modelshapes_size->select_row('shapes_size',$where,$order_by);
 		$data['records']= $data_row;
 //echo '<pre>';print_r($data['records']);exit;
 		$this->load->view('kaizen/shapes_size/shapes_size_list',$data);	

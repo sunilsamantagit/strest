@@ -30,6 +30,17 @@ $('.datepicker').datepicker({
                                   todayBtn: true,
                                   todayHighlight: true,
                                  });
+                                 
+     $('.datepicker2').datepicker({
+                                  autoclose: true,
+                                  format: "dd-mm-yyyy",
+                                  todayHighlight: true,
+                                  orientation: "auto",
+                                  todayBtn: true,
+                                  todayHighlight: true,
+                                 });
+                                 
+                                 
 
 	$("#cont").validationEngine('attach', { promptPosition: "inline" });
 
@@ -96,7 +107,7 @@ function form_submit(){
       $this->session->unset_userdata('ERROR_MSG');
     }
     if($this->session->userdata('SUCC_MSG')==TRUE){
-      echo '<div class="notific_suc"><h2 align="center" style="color:#000;">'.$this->session->userdata('SUCC_MSG').'</h1></div>';
+      echo '<div class="notific_suc"><h2 align="center" style="color:#0a0;">'.$this->session->userdata('SUCC_MSG').'</h1></div>';
       $this->session->unset_userdata('SUCC_MSG');
     }
     ?>
@@ -130,7 +141,7 @@ function form_submit(){
             <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
               <label class="question-label">Start Date</label>
-              <input type="date" name="takeoff_start_date" id="takeoff_start_date" placeholder="MM / DD / YYYY" value="<?php if(isset($details->date)){echo $details->date;}?>" class="inputinpt" />
+              <input type="text" name="takeoff_start_date" id="takeoff_start_date" placeholder="MM / DD / YYYY" value="<?php if(isset($details->date)){echo $details->date;}?>" class="inputinpt datepicker2" />
               <img src="<?php echo base_url(); ?>application/modules/kaizen/views/takeoff/u212.png"></img>
             </div>
 
@@ -368,14 +379,14 @@ function form_submit(){
 <div class="bottonserright" style="padding-bottom:20px;"> 
 <a href="<?php echo site_url('kaizen/main'); ?>" class="back_dash">Back to Dashboard</a>
 
-<a href="<?php echo site_url();?>/kaizen/takeoff" title="Cancel" class="web-red-btn cancil" 
+<a href="<?php echo site_url();?>/kaizen/takeoff" title="" class="web-red-btn cancil" 
  <?php if(isset($details->id) && ($details->id >0)){echo '<span>Cancel</span>';}else{echo '<span>Cancel</span>';} ?></a>
 
- <a href="javascript:void(0);" title="Save" onClick="form_submit();");" class="web-red-btn save" 
+ <a href="javascript:void(0);" title="" onClick="form_submit();");" class="web-red-btn save" 
  <?php if(isset($details->id) && ($details->id >0)){echo '<span>Update</span>';}else{echo '<span>Save</span>';} ?></a>
 
 
-<a href="#" title="Next"class="web-red-btn next" 
+<a href="#" title="" class="web-red-btn next" 
  <?php if(isset($details->id) && ($details->id >0)){echo '<span>Next</span>';}else{echo '<span>Next</span>';} ?> >></a>
 
 
