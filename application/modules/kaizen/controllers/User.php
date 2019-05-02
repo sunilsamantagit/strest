@@ -122,9 +122,10 @@ class User extends MY_Controller
                                     'approved'          		=> $this->approved
                                 );
                             }
+                           // pre($update_data);die;
 				$update_where = array('id' => $id);
 				if($this->modeluser->update_row('admin',$update_data,$update_where)){
-					tracking($this->modeluser->field_arr,$id,'admin','admin',$editid,'edit');
+					//tracking($this->modeluser->field_arr,$id,'admin','admin',$editid,'edit');
 					$session_data = array("SUCC_MSG"  => "User Updated Successfully.");
 					$this->session->set_userdata($session_data);
 				}else{
@@ -165,7 +166,7 @@ class User extends MY_Controller
 				$id = $this->modeluser->insert_row('admin',$add_data);
 				if($id){
 					if(!empty($this->modeluser->field_arr)){
-                    	tracking($this->modeluser->field_arr,$id,'admin','admin',$editid,'add');
+                    	//tracking($this->modeluser->field_arr,$id,'admin','admin',$editid,'add');
 					}
 					$session_data = array("SUCC_MSG"  => "User Created Successfully.");
 					$this->session->set_userdata($session_data);

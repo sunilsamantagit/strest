@@ -29,7 +29,7 @@ $this->load->model('modelmain');
                                   <a href="<?php echo site_url('kaizen/takeoff'); ?>">Takeoff Entry </a>
                               </div>
                               <div class="dash_item">
-                              <a href="<?php echo site_url('kaizen/takeoff'); ?>">Master Entries  </a>
+                              <a href="<?php echo site_url('kaizen/material'); ?>">Master Entries  </a>
                              </div>
                             <div class="dash_item">
                                 <?php if($this->session->userdata('user_level')==1){ ?>

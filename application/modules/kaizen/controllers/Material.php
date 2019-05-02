@@ -34,7 +34,7 @@ class Material extends MY_Controller
 		$where = array();
                
         $order_by = array('id' => 'DESC');
-		$data_row = $this->modeltakeoff->select_row('bh_material',$where,$order_by);		
+		$data_row = $this->modeltakeoff->select_row('material',$where,$order_by);		
 		$data['records']= $data_row;
 		$this->load->view('kaizen/material/material_list',$data);		
 	}
@@ -49,8 +49,8 @@ class Material extends MY_Controller
 		$where = array('is_active'=>1);
         $order_by = array('title' => 'asc');
 	    
-	    $data_shapesgrade = $this->modeltakeoff->select_row('bh_takeoff');
-		$data_shapes = $this->modeltakeoff->select_row('bh_takeoff');
+	    $data_shapesgrade = $this->modeltakeoff->select_row('takeoff');
+		$data_shapes = $this->modeltakeoff->select_row('takeoff');
 		$data['shapesgrade']= $data_shapesgrade;
 		$data['shapes']= $data_shapes;
 		
@@ -125,7 +125,7 @@ class Material extends MY_Controller
 			$where = array(                           
                             'id' => $id
                         );
-                $material_detls = $this->modeltakeoff->select_row('bh_material',$where);
+                $material_detls = $this->modeltakeoff->select_row('material',$where);
 				
         		if(!empty($material_detls)) 
                 {
@@ -171,7 +171,7 @@ class Material extends MY_Controller
                                 );                              
                 
 				$update_where = array('id' => $id);
-				if($this->modeltakeoff->update_row('bh_takeoff',$update_data,$update_where)) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
+				if($this->modeltakeoff->update_row('takeoff',$update_data,$update_where)) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
 				{				
 					$session_data = array("SUCC_MSG"  => "Takeoff - Description Updated Successfully.");
 					$this->session->set_userdata($session_data);					
@@ -255,7 +255,7 @@ class Material extends MY_Controller
 		$where = array(
                             'id' => $takeoff_id
                         );
-        $takeoff_detls = $this->modeltakeoff->select_row('bh_takeoff',$where);                       
+        $takeoff_detls = $this->modeltakeoff->select_row('takeoff',$where);                       
 		if($takeoff_detls){
 			$data['details'] = $takeoff_detls[0];
 		}
@@ -278,7 +278,7 @@ class Material extends MY_Controller
 
 		//echo "<pre>";print_r($getdata);exit;
 		/*
-        $takeoff_detls = $this->modeltakeoff->select_row('bh_takeoff',$where);
+        $takeoff_detls = $this->modeltakeoff->select_row('takeoff',$where);
 
 
 
