@@ -34,7 +34,7 @@ class Lumbsum extends MY_Controller
 		$where = array();
                
         $order_by = array('id' => 'asc');
-		$data_row = $this->modellumbsum->select_row('bh_lumbsum',$where,$order_by);
+		$data_row = $this->modellumbsum->select_row('lumbsum',$where,$order_by);
 		$data['records']= $data_row;
 //echo '<pre>';print_r($data['records']);exit;
 		$this->load->view('kaizen/lumbsum/lumbsum_list',$data);		
