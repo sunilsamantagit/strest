@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url']						=   'http://localhost/strest/';
+$config['base_url']						=   'http://www.saskatoonmetal-test.com.php72-4.lan3-1.websitetestlink.com/';
 $config['server_absolute_path'] 		= 	$_SERVER['DOCUMENT_ROOT']."/"; // site root folder
 $config['front_base_url']				= 	$config['base_url'];
 $config['file_upload_base_url']			=	$config['front_base_url']."public/uploads/";
@@ -540,7 +540,7 @@ spl_autoload_register('myAutoloader');
 function myAutoloader($class)
 // function spl_autoload_register($class)
 {
-    if (strpos($class, 'CI_') !== 0)
+    if (strpos($class, 'CI_') !== 0) 
     {
         if (file_exists($file = APPPATH . 'core/' . $class . EXT))
         {

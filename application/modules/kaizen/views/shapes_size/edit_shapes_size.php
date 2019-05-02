@@ -90,12 +90,28 @@ function form_submit(){
             </div>
 						
 						
-			<?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
+			<!--<?php //echo validation_errors('<div class="notific_error">', '</div>'); ?>
             <div class="single-column">
               <label class="question-label">Shape<span>*</span></label>
-              <input type="text" name="shape" id="shape" value="<?php if(isset($details->shape)){echo $details->shape;}?>" class="inputinpt validate[required]" />
-            </div>
-
+              <input type="text" name="shape" id="shape" value="<?php// if(isset($details->shape)){echo $details->shape;}?>" class="inputinpt validate[required]" />
+            </div>-->
+			
+					
+				<div class="single-column" >
+                    <label class="single-column">Shape<span></span></label>
+                    <select name="shape" id="shape"  class="inputinpt validate[required]">
+                            
+					<?php if(isset($details->shape)){
+						foreach ($shapes_management as $rows) { ?>
+						<option value="<?php echo $rows->shape_specification;?>"<?php if($rows->shape_specification==$details->shape){?>selected<?php } ?>><?php echo $rows->shape_specification; ?></option>
+					<?php }
+					     	} else { 
+						foreach ($shapes_management as $rows) { ?>
+						<option value="<?php echo $rows->shape_specification;?>"><?php echo $rows->shape_specification; ?></option>
+					<?php } }?>
+					</select>
+				</div>
+					
 			<div class="single-column" >
                     <label class="single-column">Status<span></span></label>
                     <select name="shape_status" id="shape_status"  class="inputinpt validate[required]">
