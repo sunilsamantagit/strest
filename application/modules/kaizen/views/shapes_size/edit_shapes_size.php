@@ -103,11 +103,11 @@ function form_submit(){
                             
 					<?php if(isset($details->shape)){
 						foreach ($shapes_management as $rows) { ?>
-						<option value="<?php echo $rows->shape_specification;?>"<?php if($rows->shape_specification==$details->shape){?>selected<?php } ?>><?php echo $rows->shape_specification; ?></option>
+						<option value="<?php echo $rows->id;?>"<?php if($rows->id==$details->shape){?>selected<?php } ?>><?php echo $rows->shape_specification; ?></option>
 					<?php }
 					     	} else { 
 						foreach ($shapes_management as $rows) { ?>
-						<option value="<?php echo $rows->shape_specification;?>"><?php echo $rows->shape_specification; ?></option>
+						<option value="<?php echo $rows->id;?>"><?php echo $rows->shape_specification; ?></option>
 					<?php } }?>
 					</select>
 				</div>

@@ -80,12 +80,12 @@ class Membership extends MY_Controller
 				$update_where = array('id' => $id);
 				if($this->modelsettings->update_row('membership',$update_data,$update_where)) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
 				{
-					$session_data = array("SUCC_MSG"  => "Member and Sponsor updated successfully.");
+					$session_data = array("SUCC_MSG"  => "Member and Sponsor Entries updated successfully.");
 					$this->session->set_userdata($session_data);
 				}
 				else
 				{
-					$session_data = array("ERROR_MSG"  => "Member and Sponsor is not updated.");
+					$session_data = array("ERROR_MSG"  => "Member and Sponsor Entries is not updated.");
 					$this->session->set_userdata($session_data);
 				}
 			}
@@ -95,12 +95,12 @@ class Membership extends MY_Controller
 				if($id) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
 				{
 
-					$session_data = array("SUCC_MSG"  => "Member and Sponsor inserted successfully.");
+					$session_data = array("SUCC_MSG"  => "Member and Sponsor Entries inserted successfully.");
 					$this->session->set_userdata($session_data);
 				}
 				else // IF UPDATE PROCEDURE NOT EXECUTE SUCCESSFULLY
 				{
-					$session_data = array("ERROR_MSG"  => "Member and Sponsor is not inserted.");
+					$session_data = array("ERROR_MSG"  => "Member and Sponsor Entries is not inserted.");
 					$this->session->set_userdata($session_data);
 				}
 			}

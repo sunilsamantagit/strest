@@ -169,12 +169,12 @@ class Takeoff extends MY_Controller
 				$update_where = array('id' => $id);
 				if($this->modeltakeoff->update_row('takeoff',$update_data,$update_where)) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
 				{				
-					$session_data = array("SUCC_MSG"  => "Takeoff - Description Updated Successfully");
+					$session_data = array("SUCC_MSG"  => "Takeoff - Description Entries Updated Successfully");
 					$this->session->set_userdata($session_data);					
 				}			
 				else 
 				{	
-					$session_data = array("ERROR_MSG"  => "Takeoff - Description Not Updated");
+					$session_data = array("ERROR_MSG"  => "Takeoff - Description Entries Not Updated");
 					$this->session->set_userdata($session_data);				
 				}
 			}
@@ -225,12 +225,12 @@ class Takeoff extends MY_Controller
 				$id = $this->modeltakeoff->insert_row('takeoff',$add_data);
 				if($id) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
 				{                   
-					$session_data = array("SUCC_MSG"  => "Takeoff - Description Inserted Successfully");
+					$session_data = array("SUCC_MSG"  => "Takeoff - Description Entries Inserted Successfully");
 					$this->session->set_userdata($session_data);					
 				}			
 				else // IF UPDATE PROCEDURE NOT EXECUTE SUCCESSFULLY
 				{	
-					$session_data = array("ERROR_MSG"  => "Takeoff - Description Not Inserted");
+					$session_data = array("ERROR_MSG"  => "Takeoff - Description Entries Not Inserted");
 					$this->session->set_userdata($session_data);				
 				}
 			}

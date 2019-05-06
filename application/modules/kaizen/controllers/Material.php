@@ -95,12 +95,12 @@ class Material extends MY_Controller
 				$update_where = array('id' => $id);
 				if($this->modelmaterial->update_row('takeoff',$update_data,$update_where)) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
 				{				
-					$session_data = array("SUCC_MSG"  => "Material Function Updated Successfully.");
+					$session_data = array("SUCC_MSG"  => "Material Function Entries Updated Successfully.");
 					$this->session->set_userdata($session_data);					
 				}			
 				else 
 				{	
-					$session_data = array("ERROR_MSG"  => "Material Function Not Updated.");
+					$session_data = array("ERROR_MSG"  => "Material Function Entries Not Updated.");
 					$this->session->set_userdata($session_data);				
 				}
 			}
@@ -124,12 +124,12 @@ class Material extends MY_Controller
 				$id = $this->modelmaterial->insert_row('material',$add_data);
 				if($id) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
 				{                   
-					$session_data = array("SUCC_MSG"  => "Material Function Inserted Successfully.");
+					$session_data = array("SUCC_MSG"  => "Material Function Entries Inserted Successfully.");
 					$this->session->set_userdata($session_data);					
 				}			
 				else // IF UPDATE PROCEDURE NOT EXECUTE SUCCESSFULLY
 				{	
-					$session_data = array("ERROR_MSG"  => "Material Function Not Inserted.");
+					$session_data = array("ERROR_MSG"  => "Material Function Entries Not Inserted.");
 					$this->session->set_userdata($session_data);				
 				}
 			}
