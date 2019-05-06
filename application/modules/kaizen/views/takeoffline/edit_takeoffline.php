@@ -6,12 +6,6 @@
 <script src="<?php echo site_url("public/validator/js/jquery.validationEngine.js");?>" type="text/javascript" charset="utf-8"></script>
 <script src="<?php echo base_url("public/js/jquery.fancybox.js");?>" type="text/javascript" charset="utf-8"></script>
 <script src="<?php echo base_url("public/js/jquery.mask.min.js");?>" type="text/javascript" charset="utf-8"></script>
-<!--
-<link rel="stylesheet" href="https://hsf.ezygst.com/assets/plugins/daterangepicker/daterangepicker.css">
-<link rel="stylesheet" href="https://hsf.ezygst.com/assets/plugins/datepicker/datepicker3.css">
-<script src="https://hsf.ezygst.com/assets/plugins/daterangepicker/daterangepicker.js"></script>
-<script src="https://hsf.ezygst.com/assets/plugins/datepicker/bootstrap-datepicker.js"></script>
--->
 <link rel="stylesheet" href="<?php echo base_url("public/css/jquery.fancybox.css");?>" type="text/css"/>
 <script>
 $('.fancybox').fancybox({
@@ -21,22 +15,49 @@ $('.fancybox').fancybox({
 </script>
 <script type="text/javascript">
 $(document).ready(function(){
-$("#resource").change(function(){
-    alert("asd");
+$("#entry_type").change(function(){
+    if($("#entry_type").val()=="MainMumbr")
+    {
+      $("#lumpsum").hide();
+      $("#text").hide();
+      $("#mainMumbr").show();
+    }
+    if($("#entry_type").val()=="Lumpsum")
+    {
+      $("#text").hide();
+      $("#mainMumbr").hide();
+      $("#lumpsum").show();      
+    }
+    if($("#entry_type").val()=="Text")
+    {
+      $("#lumpsum").hide();
+      $("#mainMumbr").hide();
+      $("#text").show();
+    }
   });
 
-$('.datepicker').datepicker({
-                                  autoclose: true,
-                                  format: "dd-mm-yyyy hh:ii:ss",
-                                  todayHighlight: true,
-                                  orientation: "auto",
-                                  todayBtn: true,
-                                  todayHighlight: true,
-                                 });
+$("#shapes_management_id").change(function(){
+  var shap_id=$("#shapes_management_id").val();
+//alert(shap_id);
+$("#size_id").text('');
+$.ajax({
+           url:"<?php echo site_url(); ?>/kaizen/takeoffline/shapes_size/"+shap_id,
+           type:"GET",
+           dataType:"JSON",
+           success:function(data){
+              $("#size_id").append('<option value="">Select Option</option>');
+               for(var i=0;i<data['shap_details'].length;i++)
+               {
+                  $("#size_id").append('<option value="' + data['shap_details'][i].id + '">' + data['shap_details'][i].size_name + '</option>');
+                  //$("#size_id").val(data['shap_details'][i].size_name);
+               }
+           }
+        });
 
+});
 	$("#cont").validationEngine('attach', { promptPosition: "inline" });
 
-
+	});
         
 function form_submit(){
     $('#cont').submit();
@@ -51,6 +72,11 @@ function form_submit(){
         'autoScale': false
           });
     });
+$(document).ready(function(){  
+     $('#inches').keyup(function (){
+    this.value = this.value.replace(/[^0-9\.]/g,'');
+    });
+});
 </script>
 
 <style>
@@ -93,46 +119,9 @@ function form_submit(){
           <div id="member-form" class="midarea">
             <?php 
 		  $attributes = array('name' => 'cont', 'id' => 'cont');
-		  echo form_open_multipart('kaizen/material/addedit/'.$details->id,$attributes);
-		  echo form_hidden('material_id', $details->id);		  
+		  echo form_open_multipart('kaizen/takeoffline/addedit/'.$details->id,$attributes);
+		  echo form_hidden('takeoffline_id', $details->id);
 		  ?>
-          <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
-            <div class="single-column">
-              <label class="question-label">Material Name</label>
-              <input type="text" name="material_name" id="material_name" value="<?php if(isset($details->material_name)){echo $details->material_name;}?>" class="inputinpt validate[required]" />
-            </div>
-
-            <div class="single-column">
-              <label class="question-label">Spec Grade</label>
-              <select id="spec_grade_id" name="spec_grade_id" class="inputinpt validate[required]" />
-                <?php if(isset($details->spec_grade_id)){
-                   foreach ($shapesgrade as $rows) { ?>
-                      <option value="<?php echo $rows->id;?>"<?php if($rows->id==$details->spec_grade_id){?>selected<?php } ?>><?php echo $rows->shape_specification; ?></option>
-               <?php }
-                 } else { 
-                    foreach ($shapesgrade as $rows) { ?>
-                      <option value="<?php echo $rows->id;?>"><?php echo $rows->shape_specification; ?></option>
-               <?php }
-                 }?>
-              </select>
-            </div>
-            
-            <div class="single-column">
-              <label class="question-label">Shape</label>
-              <select id="shape_id" name="shape_id" class="inputinpt validate[required]" />
-                <?php if(isset($details->shape_id)){
-                   foreach ($shapes as $shape) { ?>
-                      <option value="<?php echo $shape->id;?>"<?php if($shape->id==$details->shape_id){?>selected<?php } ?>><?php echo $shape->size_name; ?></option>
-               <?php }
-                 }else {
-                foreach ($shapes as $shape) { ?>
-                      <option value="<?php echo $shape->id;?>"><?php echo $shape->size_name; ?></option>
-               <?php }
-                }
-                 ?>
-              </select>
-            </div>
-
 
             <div class="single-column">
               <label class="question-label">Resource *</label>
@@ -146,7 +135,7 @@ function form_submit(){
 
             <div class="single-column">
               <label class="question-label">Entry Type *</label>
-              <select id="resource" name="resource" class="inputinpt validate[required]" />
+              <select id="entry_type" name="entry_type" class="inputinpt validate[required]" />
                 <option value="Select Option">Select Option</option>
                 <option value="MainMumbr">MainMumbr</option>
                 <option value="Lumpsum">Lumpsum</option>
@@ -155,73 +144,145 @@ function form_submit(){
               </select>
             </div>
 
-            <div id="mainMumbr">
-              Main Mmbr
-            </div>
+  <div id="mainMumbr" style="display: show;width: 100%;background-color: darkgray;">
+      <b>Main Mmbr</b>
+        <div class="single-column">
+              <label class="question-label">Shape</label>
+              <select id="shapes_management_id" name="shapes_management_id" class="inputinpt validate[required]" />
+                <option value="">Select Option</option>
+                 <?php foreach ($shapesgrade as $rows) { ?>
+                      <option value="<?php echo $rows->id;?>"><?php echo $rows->shape_specification; ?></option>
+               <?php }?>
+              </select>
+        </div>
 
-            <div id="lumpsum" style="display: none;">
-              Lump Sum Entry
-            </div>
-
-            <div id="text" style="display: none;">
-              Text
-            </div>
-
-
-            <div class="single-column">
-              <label class="question-label">Metric</label>
-              <input type="text" name="metric" id="metric" value="<?php if(isset($details->metric)){echo $details->metric;}?>" class="inputinpt">
-            </div>
-
-            <div class="single-column">
+        <div class="single-column">
               <label class="question-label">Size</label>
-              <input type="text" name="size" id="size" value="<?php if(isset($details->size)){echo $details->size;}?>" class="inputinpt">
+              <select id="size_id" name="size_id" class="inputinpt validate[required]" />
+              </select>
+        </div>
+
+        <div class="single-column">
+              <label class="question-label">Width</label>
+              <input type="text" name="width" id="width" value="<?php //if(isset($details->metric)){echo $details->metric;}?>" class="inputinpt">
+        </div>
+
+        <div class="single-column">
+              <label class="question-label">Lens</label>
+              <input type="text" name="lens" id="lens" value="<?php //if(isset($details->metric)){echo $details->metric;}?>" class="inputinpt">
+        </div>
+
+        <div class="single-column">
+              <label class="question-label">Add ConnMat etc</label>
+              <input type="text" name="connmat" id="connmat" value="<?php //if(isset($details->metric)){echo $details->metric;}?>" class="inputinpt">%
+        </div>
+
+        <div class="single-column">
+              <label class="question-label">Weight</label>
+              <input type="text" name="weight" id="weight" value="<?php //if(isset($details->metric)){echo $details->metric;}?>" class="inputinpt">
+              lbs/each
+        </div>
+
+        <div class="single-column">
+              <label class="question-label">Field -- Bolts</label>
+              <input type="text" name="field_bolts" id="field_bolts" value="<?php //if(isset($details->metric)){echo $details->metric;}?>" class="inputinpt">
+        </div>
+
+        <div class="single-column">
+              <label class="question-label">Welds</label>
+              <input type="text" name="welds" id="welds" value="<?php //if(isset($details->metric)){echo $details->metric;}?>" class="inputinpt">
+              in/each
+        </div>
+
+        <div class="single-column">
+              <label class="question-label">MH/T Range</label>
+              <input type="text" name="mh_t_range" id="mh_t_range" value="<?php //if(isset($details->metric)){echo $details->metric;}?>" class="inputinpt">
+        </div>
+
+        <div class="single-column">
+              <label class="question-label">=</label>
+              <input type="text" name="mh_total_range" id="mh_total_range" value="<?php //if(isset($details->metric)){echo $details->metric;}?>" class="inputinpt">
+              MH/T Range
+        </div>
+
+        <div class="single-column">
+              <label class="question-label">SF4>Auxserv: Shop</label>
+              <select id="auxserv_shop" name="auxserv_shop" class="inputinpt validate[required]" />
+                <option value="Select Option">Select Option</option>
+                <option value="Standard Primer">Standard Primer</option>
+                <option value="Not Required">Not Required</option>                 
+              </select>
+        </div>
+
+        <div class="single-column">
+              <label class="question-label">Quantity</label>
+              <input type="text" name="quantity" id="quantity" value="<?php //if(isset($details->metric)){echo $details->metric;}?>" class="inputinpt">
+              MH/T Range
+        </div>
+
+  </div>
+
+  <div id="lumpsum" style="display: none;width: 100%;background-color: darkgray;">
+          <b>Lump Sum Entry</b>
+
+            <div class="single-column">
+              <label class="question-label">Entry Type</label>
+              <select id="lumbsum" name="lumbsum" class="inputinpt validate[required]" />
+                <option value="">Select Option</option>
+                 <?php foreach ($lumbsum as $lumb) { ?>
+                      <option value="<?php echo $lumb->id;?>"><?php echo $lumb->lumbsum_name; ?></option>
+               <?php }?>               
+              </select>
             </div>
 
             <div class="single-column">
-              <label class="question-label">Unit Weight(lbs/lin.ft)</label>
-              <input type="text" name="unit_weight" id="unit_weight" value="<?php if(isset($details->unit_weight)){echo $details->unit_weight;}?>" class="inputinpt">
+              <label class="question-label">Description</label>
+              <input type="text" name="description" id="description" value="<?php //if(isset($details->size)){echo $details->size;}?>" class="inputinpt">
             </div>
 
             <div class="single-column">
-              <label class="question-label">Unit Cost ($/lb)</label>
-              <input type="text" name="unit_cost" id="unit_cost" value="<?php if(isset($details->unit_cost)){echo $details->unit_cost;}?>" class="inputinpt">
+              <label class="question-label">Amount</label>
+              $<input type="text" name="amount" id="amount" value="<?php //if(isset($details->size)){echo $details->size;}?>" class="inputinpt">MHs
             </div>
 
-            <div class="single-column">
-              <label class="question-label">Surface(sq.ft./lin.ft.)</label>
-             <input type="text" name="surface" id="surface" value="<?php if(isset($details->surface)){echo $details->surface;}?>" class="inputinpt">
+  </div>
+
+  <div id="text" style="display: none;width: 100%;background-color: darkgray;">              
+            <b>Text</b>
+
+              <div class="single-column">
+              <label class="question-label">Description</label>
+              <textarea id="text_description" name="text_description"  value="<?php //if(isset($details->size)){echo $details->size;}?>" class="inputinpt"></textarea>
             </div>
 
-            <div class="single-column">
-              <label class="question-label">Labor(hr./lb.)</label>
-              <input type="text" name="labor" id="labor" value="<?php if(isset($details->labor)){echo $details->labor;}?>" class="inputinpt">
-            </div>
+  </div>
 
-            <div class="single-column">
-              <label class="question-label">Status</label>
-              <select id="status" name="status" class="inputinpt">
+        <div class="single-column">
+              <label class="question-label">Erect</label>
+              <select id="erect" name="erect" class="inputinpt">
                 <?php /* if(isset($details->status)) {?>
                   <option value="Active"<?php if($details->status=="Active"){?>selected<?php } ?>>Active</option>
                   <option value="Inactive"<?php if($details->status=="Inactive"){?>selected<?php } ?>>Inactive</option>
                 }else{ */?>
-                <option value="Active">Active</option>
-                <option value="Inactive">Inactive</option>
+                <option value="">Select Option</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
                 <?php // } ?>
               </select>
-            </div>
+            </div>          
 
 
 
 <div class="bottonserright" style="padding-bottom:20px;"> 
-<a href="<?php echo site_url('kaizen/main'); ?>" class="back_dash">Back to Dashboard</a>
+
+<a href="javascript:void(0);" title="Save" onClick="form_submit();");" class="web-red-btn save" 
+ <?php if(isset($details->id) && ($details->id >0)){echo '<span>Update</span>';}else{echo '<span>Save</span>';} ?></a>
+
 
 <a href="<?php echo site_url();?>/kaizen/material" title="Cancel" class="web-red-btn cancil" 
  <?php if(isset($details->id) && ($details->id >0)){echo '<span>Cancel</span>';}else{echo '<span>Cancel</span>';} ?></a>
 
- <a href="javascript:void(0);" title="Save" onClick="form_submit();");" class="web-red-btn save" 
- <?php if(isset($details->id) && ($details->id >0)){echo '<span>Update</span>';}else{echo '<span>Save</span>';} ?></a>
-
+ 
 <!--
         <div class="single-column" >
               <label class="question-label">Status:<span>*</span></label>
