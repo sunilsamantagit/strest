@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url']						=   'http://www.saskatoonmetal-test.com.php72-4.lan3-1.websitetestlink.com/';
+$config['base_url']						=   'http://localhost/strest/';
 $config['server_absolute_path'] 		= 	$_SERVER['DOCUMENT_ROOT']."/"; // site root folder
 $config['front_base_url']				= 	$config['base_url'];
 $config['file_upload_base_url']			=	$config['front_base_url']."public/uploads/";
