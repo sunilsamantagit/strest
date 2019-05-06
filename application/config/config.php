@@ -540,7 +540,7 @@ spl_autoload_register('myAutoloader');
 function myAutoloader($class)
 // function spl_autoload_register($class)
 {
-    if (strpos($class, 'CI_') !== 0)
+    if (strpos($class, 'CI_') !== 0) 
     {
         if (file_exists($file = APPPATH . 'core/' . $class . EXT))
         {

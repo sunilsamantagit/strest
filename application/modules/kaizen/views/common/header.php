@@ -49,9 +49,9 @@ $user_detls = $this->model_home->selectOne('admin',array('id'=>$this->session->u
 
 <div class="header">
 <!--    <a  href="<?php echo site_url(); ?>"><img width="60px;" height="60px;" src="<?php echo base_url("public/default/images/logo.png"); ?>" alt="<?php echo  $this->config->item("COMPANY_NAME");?>" title="<?php echo  $this->config->item("COMPANY_NAME");?>" class="logo" /></a>-->
-    <div class="logo">
+    <!-- <div class="logo">
         <a href="<?php echo site_url('kaizen/main'); ?>">STREST</a>
-    </div> 
+    </div>  -->
     <div class="top-right">
         <span><img src="<?php echo base_url("public/images/user-icon.png"); ?>" alt="">Welcome <?php echo $user_detls->first_name; ?>, </span>
     	<ul>
@@ -65,26 +65,9 @@ $user_detls = $this->model_home->selectOne('admin',array('id'=>$this->session->u
 
     <!--Header end-->
 <style>
-.top-right{ position:relative; margin-bottom: 0; margin-top: 0;}
-.top-right span{ display: block; cursor: pointer; padding-bottom: 0; position: relative; padding-right: 13px; line-height: 18px;}
-.top-right span:after{ content:""; border: solid black; border-width: 0 2px 2px 0; display: inline-block; padding: 3px; transform: rotate(45deg); position: absolute; right: 0; top: 4px;}
-.top-right ul{ display:none; position: absolute; width: 160px; right: 0; top: 100%; background: #fff;box-shadow: 0px 1px 5px -3px rgba(0,0,0,0.75);}
-.top-right ul li{ width:100%; padding: 10px 15px; box-sizing: border-box; border-bottom: 1px solid #ddd;}
-.top-right:hover ul{ display: block;}
-.top-right ul li a{ display: block;}
-.top-right span img{width: 18px;
-    height: 18px;
-    display: inline-block;
-    border-radius: 50%;
-    vertical-align: middle; margin-right: 5px;}
-.header{ display: flex; flex-wrap: wrap; align-items: center;}
-.header .logo{ margin:0; margin-right:auto; width:16%; border-right:1px solid #ccc;padding: 5px 0; box-sizing: border-box; text-align: center;}
-.header .logo a{ font-size:27px; font-weight: 600;}
 .web-red-btn, .new-survey-btn-blue{ text-transform: inherit;font-size: 13px;}
-.footerCreate{ position: absolute; bottom: 0; line-height: normal;}
 .mid-content{ min-height:inherit;}
 .web-cont-mid{ padding-bottom: 0px !important;}
-.right-outer h3.title, .right-outer h2.title{ font-size:24px; font-weight: bold;}
 #webcont-form form .single-column{ overflow: inherit;}
 .formError.inline { position: absolute !important; left: 100px !important;  bottom: -14px; top: auto !important;}
 .formError.inline .formErrorContent{color: #ee0101;background: none;padding: 0}

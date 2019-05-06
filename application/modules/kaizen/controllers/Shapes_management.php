@@ -117,12 +117,12 @@ class Shapes_management extends MY_Controller
 				if($this->modelshapes_management->update_row('shapes_management',$update_data,$update_where)) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
 				{
 				
-					$session_data = array("SUCC_MSG"  => "Shapes Management Updated Successfully.");
+					$session_data = array("SUCC_MSG"  => "Shapes Management Entries Updated Successfully.");
 					$this->session->set_userdata($session_data);					
 				}			
 				else 
 				{	
-					$session_data = array("ERROR_MSG"  => "Shapes Management Not Updated.");
+					$session_data = array("ERROR_MSG"  => "Shapes Management Entries Not Updated.");
 					$this->session->set_userdata($session_data);				
 				}
 			}
@@ -149,12 +149,12 @@ class Shapes_management extends MY_Controller
 				if($id) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
 				{ 
                    
-					$session_data = array("SUCC_MSG"  => "Shapes Management Inserted Successfully.");
+					$session_data = array("SUCC_MSG"  => "Shapes Management Entries Inserted Successfully.");
 					$this->session->set_userdata($session_data);					
 				}			
 				else // IF UPDATE PROCEDURE NOT EXECUTE SUCCESSFULLY
 				{	
-					$session_data = array("ERROR_MSG"  => "Shapes Management Not Inserted.");
+					$session_data = array("ERROR_MSG"  => "Shapes Management Entries Not Inserted.");
 					$this->session->set_userdata($session_data);				
 				}
 			}

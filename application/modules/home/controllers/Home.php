@@ -14,7 +14,7 @@ class Home extends CI_Controller {
 
 public function index(){
 	//redirect('kaizen/welcome');
-	header("Location: http://www.saskatoonmetal-test.com.php72-4.lan3-1.websitetestlink.com/kaizen/main"); 
+	header("Location: http://localhost/strest/kaizen/main"); 
         $where=array('is_active'=>1);
         $order_by=array('display_order'=>'asc');
        // $this->data['banner_list']=  $this->model_home->select_row('banner',$where,$order_by);

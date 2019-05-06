@@ -41,7 +41,7 @@ function form_submit(){
 <div class="rightDiv">
   <div class="right-outer">
     <?php if(isset($details->id) && $details->id >0){?>
-    <h3 class="title">Edit
+    <h3 class="title">Edit Takeoff Line Entries
       <?php if(isset($details->title)){
 		     $count_e = mb_strlen( $details->title);
 							      $last_space_e = '';
