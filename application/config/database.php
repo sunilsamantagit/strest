@@ -77,7 +77,11 @@ $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost', 
 	'username' => 'root', 
+<<<<<<< HEAD
+	'password' => 'password',	
+=======
 	'password' => "",	
+>>>>>>> 6224ef8ac8c67ee9732bdbc3ecd21b4a05f4bb08
 	'database' => '328057_smmetal', 
 	'dbdriver' => 'mysqli',
 	'dbprefix' => 'strest_',

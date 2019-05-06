@@ -27,15 +27,13 @@ class Takeoffline extends MY_Controller
 		$this->dolist();	
 	}
 	
-	
-	
 	public function dolist(){
 		$data = array();
 		$where = array();
                
         $order_by = array('display_order' => 'asc');
 		$data_row = $this->modeltakeoffline->select_row('takeoffline',$where,$order_by);
-		$data['records']= $data_row;
+		$data['records']= $data_row;		
 		$this->load->view('kaizen/takeoffline/takeoffline_list',$data);		
 	}
 	
@@ -45,18 +43,26 @@ class Takeoffline extends MY_Controller
 		$takeoffline_id=$this->uri->segment(4);
 		$data['details']->is_active = 1;
 		$data['details']->id = $takeoffline_id;
-		
-		$where = array('is_active'=>1);
-        $order_by = array('title' => 'asc');
-	    $data['page_list'] = $this->modeltakeoffline->select_row('cms_pages',$where,$order_by);	
-		
+
+	    $data_shapesgrade = $this->modeltakeoffline->select_row('shapes_management');
+		$data['shapesgrade']= $data_shapesgrade;
+		$data_lumbsum = $this->modeltakeoffline->select_row('lumbsum');
+		$data['lumbsum']= $data_lumbsum;		
 		$this->load->view('kaizen/takeoffline/edit_takeoffline',$data);		
 	}
     
-	public function addedit()
+	public function shapes_size($shap_id)
 	{
+		$where = array('shape'=> $shap_id);
+        $order_by = array('id' => 'asc');
+		$data['shap_details'] = $this->modeltakeoffline->select_row('shapes_size',$where,$order_by);
+		echo json_encode($data);
+	}
+
+	public function addedit()
+	{echo "<pre>";print_r($_POST);exit;
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('takeoffline_title', 'Title', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('resource', 'entry_type', 'trim|required|xss_clean');
 		
 		
 		$this->form_validation->set_error_delimiters('<span class="validation_msg">', '</span>');
@@ -73,6 +79,7 @@ class Takeoffline extends MY_Controller
 				
         		if(!empty($takeoffline_detls)) 
                 {
+                	
                    
 			                     
                                 $this->title		=$this->input->post('takeoffline_title',TRUE);
