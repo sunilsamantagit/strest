@@ -120,9 +120,9 @@ div.dataTables_length {
 			
 		<?php foreach($shapes_management as $rows){
 		if($rows->id==$row->shape)  { ?>
-							<td><?php if(!empty($row->shape)) echo $rows->shape_specification; } } ?></td>
+							<td style="text-align: center;"><?php if(!empty($row->shape)) echo $rows->shape_specification; } } ?></td>
 							
-                            <td><?php if(!empty($row->date)) { $originalDate = $row->date;
+                            <td style="text-align: center;"><?php if(!empty($row->date)) { $originalDate = $row->date;
 							$newDate = date("m-d-Y", strtotime($originalDate)); echo $newDate; } ?></td>
         			        
 							<!--<td>    
