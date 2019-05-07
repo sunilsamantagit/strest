@@ -14,11 +14,11 @@ class Welcome extends CI_Controller {
             $this->load->model("model_login");
 	}
 
-	public function index(){
-		if($this->session->userdata('web_admin_logged_in')==TRUE) {
-			redirect('kaizen/main','refresh');
-		}
-		$data['error'] = "Please login with your credentials";
+	   public function index(){
+//		if(!$this->session->userdata('web_admin_logged_in')) {
+//			redirect('kaizen/main','refresh');
+//		}
+//		$data['error'] = "Please login with your credentials";
 
 
 		$this->load->view('login/login', $data);
@@ -29,8 +29,9 @@ class Welcome extends CI_Controller {
 		$username = xss_clean($this->input->post('uname'));
 		$usernumber = xss_clean($this->input->post('uno'));
 		$password = xss_clean($this->input->post('pwd'));
-                //echo $usernumber;die;
-		if($username == "" || $password == "" || $usernumber== "")
+                
+             
+                if($username == "" || $password == "" || $usernumber== "")
 		{
 
                         $err['uname'] =  'Invalid Username/Password......';
@@ -51,7 +52,28 @@ class Welcome extends CI_Controller {
 
 			if(!empty($result))
 			{
-					$session_data = array(
+                            
+                            
+                          #Coockie Start#
+                            if ($this->input->post("ckbx")==1)
+                              {
+                                 $this->input->set_cookie('uname', $username, 86400); 
+                                 $this->input->set_cookie('uno', $usernumber, 86400); 
+                                 $this->input->set_cookie('pwd', $password, 86400); 
+                        
+                                 // echo "Login successfully";
+                                 }
+                                else
+                                 {
+                                delete_cookie('uname'); 
+                                delete_cookie('uno'); 
+                                delete_cookie('pwd'); 
+                               // echo "Login successfully without create cookies";
+                             }
+                          #Cookies End#
+                            
+                            
+                                    $session_data = array(
 					   "web_admin_user_name"  	=> $username,
 					   "web_admin_user_id"  	=> $result[0]->id,
 					   "SITE_ID"  	=> 1,
@@ -74,6 +96,8 @@ class Welcome extends CI_Controller {
 			}
 		}
 	}
+        
+        
 
         function forgetpassword(){
 			//$this->load->model('kaizen/model_login');

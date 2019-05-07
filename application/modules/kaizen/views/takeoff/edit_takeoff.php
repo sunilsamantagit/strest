@@ -1,6 +1,6 @@
 <?php //echo "<pre>";print_r($details);exit; ?>
 <?php $this->load->view($header); ?>
-<?php $this->load->view($left); ?>
+<?php $this->load->view($left); ?> 
 <link rel="stylesheet" href="<?php echo site_url("public/validator/css/validationEngine.jquery.css");?>" type="text/css"/>
 <script src="<?php echo site_url("public/validator/js/languages/jquery.validationEngine-en.js");?>" type="text/javascript" charset="utf-8"></script>
 <script src="<?php echo site_url("public/validator/js/jquery.validationEngine.js");?>" type="text/javascript" charset="utf-8"></script>

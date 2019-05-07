@@ -5,7 +5,8 @@ class Main extends CI_Controller {
 	{
 		parent::__construct();
 
-		if( ! $this->session->userdata('web_admin_logged_in')) {redirect('kaizen/welcome','refresh');
+		if(!$this->session->userdata('web_admin_logged_in') && get_cookie('uname')=='') {
+                    redirect('kaizen/welcome','refresh');
 		}
 		$this->load->vars( array(
 		  'global' => 'Available to all views',
@@ -17,10 +18,36 @@ class Main extends CI_Controller {
 
 	function index()
 	{
-		$where = array( 'action' => 'edit' );
-    $order_by = array('created_date'=>'desc');
-    $tracking_result = $this->model_home->select_row('tracking',$where,$order_by,10);
-    $data['user_tracking_detls'] = $tracking_result;
+            
+                 if(get_cookie('uname')!=''){
+                $c_dyls = $this->model_common->selectOne('admin',array('user_name'=>get_cookie('uname')));
+        
+                                        $session_data = array(
+					   "web_admin_user_name"   => $c_dyls->user_name,
+					   "web_admin_user_id"     => $c_dyls->id,
+					   "SITE_ID"  	           => 1,
+					   "user_level"  	   => $c_dyls->user_level,
+					   "module"  	           => $c_dyls->module,
+					   "web_admin_logged_in"   => TRUE
+					 );
+
+					//$this->model_login->update($c_dyls->id,$c_dyls->user_name);
+                                        $this->session->set_userdata($session_data);
+                                        
+                                        
+        
+    }
+   
+    
+            
+            
+            
+            
+          // echo $this->session->userdata('web_admin_logged_in');die;
+	 $where = array( 'action' => 'edit' );
+         $order_by = array('created_date'=>'desc');
+        $tracking_result = $this->model_home->select_row('tracking',$where,$order_by,10);
+        $data['user_tracking_detls'] = $tracking_result;
 
 		if($this->session->userdata('web_admin_logged_in'))
 		{
@@ -40,6 +67,7 @@ class Main extends CI_Controller {
 			redirect('kaizen/welcome','refresh');
 		}
 	}
+        
 	function ajax_site()
 	{
 		if($this->session->userdata('web_admin_logged_in'))

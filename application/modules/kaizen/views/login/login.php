@@ -128,6 +128,11 @@ h1{    font-family: 'Arial Bold', 'Arial Regular', 'Arial';
 }
 
 	</style>
+        
+        <script>
+        var sss = '<?php echo get_cookie('uname'); ?>';
+        if(sss!=''){window.location.href = '<?php echo site_url("kaizen/main"); ?>';}
+        </script>
 </head>
 <body>
     <div class="body-header">
@@ -150,22 +155,22 @@ h1{    font-family: 'Arial Bold', 'Arial Regular', 'Arial';
 						<?php echo form_open('kaizen/welcome/authentication/',$attributes); ?>
         <div class="form-group">
             <div class="label-sty">User Name</div>
-            <div class="form-box"><input type="text" name="uname" id="uname" value="" class="validate[required]" /></div>
+            <div class="form-box"><input type="text" name="uname" id="uname" value="<?php if(get_cookie('uname')){ echo get_cookie('uname');}?>" class="validate[required]" /></div>
         </div>
                 <div class="form-group">
             <div class="label-sty">User No</div>
-            <div class="form-box"><input type="text" name="uno" id="uname" value="" class="validate[required]" /></div>
+            <div class="form-box"><input type="text" name="uno" id="uname" value="<?php if(get_cookie('uno')){ echo get_cookie('uno');}?>" class="validate[required]" /></div>
         </div>
         <div class="form-group">
         <div class="label-sty">Password</div>
-        <div class="form-box"> <input type="password" name="pwd" id="pwd" value="" class="validate[required]" /></div>
+        <div class="form-box"> <input type="password" name="pwd" id="pwd" value="<?php if(get_cookie('pwd')){ echo get_cookie('pwd');}?>" class="validate[required]" /></div>
         </div>
         <div class="form-group">
             <div class="label-sty"></div>
             <div class="form-box"> 
         <div class="checkbox check-box-sty">
             <div class="text">
-               <input type="checkbox" value="checkbox"><span>Remember me</span>
+                <input type="checkbox" name="ckbx" id="ckbx" value="1"><span>Remember me</span>
             </div>
         </div>
         </div>
