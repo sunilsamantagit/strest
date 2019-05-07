@@ -91,7 +91,7 @@ div.dataTables_length {
         			  if(empty($records)){
         				  ?>
         							<tr>
-                                                                    <th align="center" valign="top" colspan="9">There are no Records.</th>
+                        <th align="center" valign="top" colspan="9">There are no Records.</th>
         							</tr>
         							<?php
         			  }
@@ -113,7 +113,8 @@ div.dataTables_length {
                              <td><?php if(!empty($row->mhs)) echo $row->mhs; ?></td>
                              
                 	    <td class="action_btn">
-                	     <a class="" href="<?php echo site_url("kaizen/takeoffline/doedit/".$row->id);?>"><span>Edit</span></a> <a href="javascript:void(0);" title="Delete" onclick="rowdelete('<?php echo $row->id; ?>','takeoffline');" class=""><span>Delete</span></a>
+                	     <a class="" href="<?php echo site_url("kaizen/takeoffline/doedit/".$row->id);?>"><span>Edit</span></a> 
+                         <a href="javascript:void(0);" title="Delete" onclick="rowdelete('<?php echo $row->id; ?>','takeoffline');" class=""><span>Delete</span></a>
                                 </a>
                               </td>		</tr>
         									
@@ -151,7 +152,7 @@ div.dataTables_length {
       <div class="mid-content web-cont-mid" style="border-radius: 25px;background-color: lightgray;">
         <div id="webcont-form">
           <div id="member-form" class="midarea">
-            <form action="http://localhost/strest/kaizen/takeoffline/addedit/0" name="cont" id="cont" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+            <form action="#" name="cont" id="cont" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                <input type="hidden" name="csrftestname" value="c51b0af7e946971250edd9afbafe7ec0">
 
 <input type="hidden" name="takeoffline_id" value="0">
@@ -382,6 +383,36 @@ $("#cont").validationEngine('attach', { promptPosition: "inline" });
 
 });
 function form_submit(){
+/*
+    var resource=$("#resource").val();
+    var entry_type=$("#entry_type").val();
+    var shapes_management_id=$("#shapes_management_id").val();
+    var size_id=$("#size_id").val();
+    var width=$("#width").val();
+    var length=$("#length").val();
+    var connmat=$("#connmat").val();
+    var weight=$("#weight").val();
+    var field_bolts=$("#field_bolts").val();
+    var welds=$("#welds").val();
+    var mh_t_range=$("#mh_t_range").val();
+    var mh_total_range=$("#mh_total_range").val();
+    var auxserv_shop=$("#auxserv_shop").val();
+    var quantity=$("#quantity").val();
+    var erect=$("#erect").val();
+
+$.ajax({
+        url: "<?php echo base_url('takeoffline/addedit'); ?>",
+        type: "GET",
+        dataType:"JSON",
+        data: {'invoice_no': invoice_no,'purchase_id':purchase_id,'due_amount': due_amount,'payment_date':payment_date,'supplier_id':supplier_id,'paying_by':paying_by,'bank_name':bank_name,'cheque_no':cheque_no,'description':description,'group_title':group_title,'branch_id':branch_id,'purpose':purpose,'dues':dues,'exp_id':exp_id},
+        success: function(data){
+        alert(data);
+    }
+});
+*/
+
+    alert("asd");exit;
+
     $('#cont').submit();
 }
 </script> </div></div></div>

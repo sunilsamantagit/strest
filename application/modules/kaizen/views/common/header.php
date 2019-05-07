@@ -48,6 +48,7 @@ $user_detls = $this->model_home->selectOne('admin',array('id'=>$this->session->u
 <div class="total-body">
 
 <div class="header">
+  <div id="menu_toggle"><i class="fa fa-angle-left"></i></div>
 <!--    <a  href="<?php echo site_url(); ?>"><img width="60px;" height="60px;" src="<?php echo base_url("public/default/images/logo.png"); ?>" alt="<?php echo  $this->config->item("COMPANY_NAME");?>" title="<?php echo  $this->config->item("COMPANY_NAME");?>" class="logo" /></a>-->
     <!-- <div class="logo">
         <a href="<?php echo site_url('kaizen/main'); ?>">STREST</a>
@@ -55,8 +56,8 @@ $user_detls = $this->model_home->selectOne('admin',array('id'=>$this->session->u
     <div class="top-right">
         <span><img src="<?php echo base_url("public/images/user-icon.png"); ?>" alt="">Welcome <?php echo $user_detls->first_name; ?>, </span>
     	<ul>
-            <li class="my_profile"><a href="<?php echo site_url("kaizen/user/doedit/".$user_detls->id);?>">My Profile</a></li>
-            <li class="my_profile"><a href="<?php echo site_url("kaizen/settings");?>">Setting</a></li>
+            <li><a class="user" href="<?php echo site_url("kaizen/user/doedit/".$user_detls->id);?>">My Profile</a></li>
+            <li><a class="setting" href="<?php echo site_url("kaizen/settings");?>">Setting</a></li>
             <li><a href="<?php echo site_url("kaizen/logout");?>" class="log"> Logout</a></li>
         </ul>
     </div>
@@ -73,3 +74,11 @@ $user_detls = $this->model_home->selectOne('admin',array('id'=>$this->session->u
 .formError.inline .formErrorContent{color: #ee0101;background: none;padding: 0}
 .formError.inline .formErrorContent br{ display:none;}
 </style>
+
+<script>
+$(document).ready(function(){
+  $("#menu_toggle").click(function(){
+    $("body").toggleClass("sidebar_close");
+  });
+});
+</script>

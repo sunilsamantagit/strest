@@ -77,7 +77,7 @@ $autoload['libraries'] = array('database','session', 'form_validation');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url','file','form','html','security','text_helper','common_helper');
+$autoload['helper'] = array('url','file','form','html','security','text_helper','common_helper','cookie'); 
 
 
 /*
@@ -122,7 +122,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array("home/model_home","common/model_common");
+$autoload['model'] = array("home/model_home","common/model_common","kaizen/model_login");
 
 // $autoload['config'] = array('facebook');
 /* End of file autoload.php */

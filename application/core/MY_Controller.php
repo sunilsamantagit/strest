@@ -1,14 +1,42 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+ //echo 'aaaaaa';die;
+//redirect('kaizen/main','refresh');
 class MY_Controller extends CI_Controller {
   public function __construct(){ 
     parent::__construct(); 
-    if($this->session->userdata('web_admin_logged_in')!=TRUE) {
-            redirect('kaizen','refresh');
-    }
+    
+   
+//           if(get_cookie('uname')!=''){
+//           $c_dyls = $this->model_common->selectOne('admin',array('user_name'=>get_cookie('uname')));
+//        
+//                                        $session_data = array(
+//					   "web_admin_user_name"   => $c_dyls->user_name,
+//					   "web_admin_user_id"     => $c_dyls->id,
+//					   "SITE_ID"  	           => 1,
+//					   "user_level"  	   => $c_dyls->user_level,
+//					   "module"  	           => $c_dyls->module,
+//					   "web_admin_logged_in"   => TRUE
+//					 );
+//
+//					$this->model_login->update($c_dyls->id,$c_dyls->user_name);
+//                                        $this->session->set_userdata($session_data);
+//                                        
+//                                        redirect("kaizen/main",'refresh');
+//        
+//    }
+//   
+//    elseif($this->session->userdata('web_admin_logged_in')!=TRUE) {
+//            redirect('kaizen/welcome','refresh');
+//    }else{redirect('kaizen/welcome','refresh');}
+    
+    
+    
+    
+    
     
     $current_module = $this->router->fetch_module();
     $this->load->model('common/model_common');
+    $this->load->model('common/model_login');
   }
   
   

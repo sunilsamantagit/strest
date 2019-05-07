@@ -8,7 +8,7 @@ class User extends MY_Controller
 	{
 		parent::__construct();
 
-		if( ! $this->session->userdata('web_admin_logged_in')) {
+		if(!$this->session->userdata('web_admin_logged_in') && get_cookie('uname')=='') {
 			redirect('kaizen/welcome','refresh');
 		}
 //        if($this->session->userdata('user_level')!=1){

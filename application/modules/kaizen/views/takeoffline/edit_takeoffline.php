@@ -18,15 +18,26 @@ $(document).ready(function(){
 $("#entry_type").change(function(){
     if($("#entry_type").val()=="MainMumbr")
     {
+<<<<<<< HEAD
+      $("#lumpsum").hide(1000);
+      $("#text").hide();
+      $("#mainMumbr").show(1000);
+=======
       $("#lumpsum").hide();
       $("#text").hide();
       $("#mainMumbr").show();
+>>>>>>> 9fb3c01f02f1a626d1d17081c4b6d2f2e6bda201
     }
     if($("#entry_type").val()=="Lumpsum")
     {
       $("#text").hide();
+<<<<<<< HEAD
+      $("#mainMumbr").hide(1000);
+      $("#lumpsum").show(1000);      
+=======
       $("#mainMumbr").hide();
       $("#lumpsum").show();      
+>>>>>>> 9fb3c01f02f1a626d1d17081c4b6d2f2e6bda201
     }
     if($("#entry_type").val()=="Text")
     {
@@ -35,6 +46,18 @@ $("#entry_type").change(function(){
       $("#text").show();
     }
   });
+<<<<<<< HEAD
+$('.datepicker').datepicker({
+                                  autoclose: true,
+                                  format: "dd-mm-yyyy hh:ii:ss",
+                                  todayHighlight: true,
+                                  orientation: "auto",
+                                  todayBtn: true,
+                                  todayHighlight: true,
+                                 });
+
+	$("#cont").validationEngine('attach', { promptPosition: "inline" });
+=======
 
 $("#shapes_management_id").change(function(){
   var shap_id=$("#shapes_management_id").val();
@@ -57,6 +80,7 @@ $.ajax({
 });
 	$("#cont").validationEngine('attach', { promptPosition: "inline" });
 
+>>>>>>> 9fb3c01f02f1a626d1d17081c4b6d2f2e6bda201
 	});
         
 function form_submit(){
@@ -72,7 +96,13 @@ function form_submit(){
         'autoScale': false
           });
     });
+<<<<<<< HEAD
+$(document).ready(function(){
+
+  
+=======
 $(document).ready(function(){  
+>>>>>>> 9fb3c01f02f1a626d1d17081c4b6d2f2e6bda201
      $('#inches').keyup(function (){
     this.value = this.value.replace(/[^0-9\.]/g,'');
     });
@@ -119,9 +149,52 @@ $(document).ready(function(){
           <div id="member-form" class="midarea">
             <?php 
 		  $attributes = array('name' => 'cont', 'id' => 'cont');
+<<<<<<< HEAD
+		  echo form_open_multipart('kaizen/material/addedit/'.$details->id,$attributes);
+		  echo form_hidden('material_id', $details->id);		  
+		  ?>
+          <?php echo validation_errors('<div class="notific_error">', '</div>'); ?>
+            <div class="single-column">
+              <label class="question-label">Material Name</label>
+              <input type="text" name="material_name" id="material_name" value="<?php if(isset($details->material_name)){echo $details->material_name;}?>" class="inputinpt validate[required]" />
+            </div>
+
+            <div class="single-column">
+              <label class="question-label">Spec Grade</label>
+              <select id="spec_grade_id" name="spec_grade_id" class="inputinpt validate[required]" />
+                <?php if(isset($details->spec_grade_id)){
+                   foreach ($shapesgrade as $rows) { ?>
+                      <option value="<?php echo $rows->id;?>"<?php if($rows->id==$details->spec_grade_id){?>selected<?php } ?>><?php echo $rows->shape_specification; ?></option>
+               <?php }
+                 } else { 
+                    foreach ($shapesgrade as $rows) { ?>
+                      <option value="<?php echo $rows->id;?>"><?php echo $rows->shape_specification; ?></option>
+               <?php }
+                 }?>
+              </select>
+            </div>
+            
+            <div class="single-column">
+              <label class="question-label">Shape</label>
+              <select id="shape_id" name="shape_id" class="inputinpt validate[required]" />
+                <?php if(isset($details->shape_id)){
+                   foreach ($shapes as $shape) { ?>
+                      <option value="<?php echo $shape->id;?>"<?php if($shape->id==$details->shape_id){?>selected<?php } ?>><?php echo $shape->size_name; ?></option>
+               <?php }
+                 }else {
+                foreach ($shapes as $shape) { ?>
+                      <option value="<?php echo $shape->id;?>"><?php echo $shape->size_name; ?></option>
+               <?php }
+                }
+                 ?>
+              </select>
+            </div>
+
+=======
 		  echo form_open_multipart('kaizen/takeoffline/addedit/'.$details->id,$attributes);
 		  echo form_hidden('takeoffline_id', $details->id);
 		  ?>
+>>>>>>> 9fb3c01f02f1a626d1d17081c4b6d2f2e6bda201
 
             <div class="single-column">
               <label class="question-label">Resource *</label>
@@ -144,6 +217,70 @@ $(document).ready(function(){
               </select>
             </div>
 
+<<<<<<< HEAD
+  <div id="mainMumbr" style="display: show;">
+      Main Mmbr
+<?php print_r($shapesgrade); ?>
+        <div class="single-column">
+              <label class="question-label">Shape</label>
+              <select id="spec_grade_id" name="spec_grade_id" class="inputinpt validate[required]" />
+                <?php /* if(isset($details->spec_grade_id)){
+                   foreach ($shapesgrade as $rows) { ?>
+                      <option value="<?php echo $rows->id;?>"<?php if($rows->id==$details->spec_grade_id){?>selected<?php } ?>><?php echo $rows->shape_specification; ?></option>
+               <?php }
+                 } else { */
+                    foreach ($shapesgrade as $rows) { ?>
+                      <option value="<?php echo $rows->id;?>"><?php echo $rows->shape_specification; ?></option>
+               <?php }
+                // }?>
+              </select>
+        </div>
+
+  </div>
+
+            <div id="lumpsum" style="display: none;">
+              Lump Sum Entry
+            </div>
+
+            <div id="text" style="display: none;">
+              Text
+            </div>
+
+
+            <div class="single-column">
+              <label class="question-label">Metric</label>
+              <input type="text" name="metric" id="metric" value="<?php if(isset($details->metric)){echo $details->metric;}?>" class="inputinpt">
+            </div>
+
+            <div class="single-column">
+              <label class="question-label">Size</label>
+              <input type="text" name="size" id="size" value="<?php if(isset($details->size)){echo $details->size;}?>" class="inputinpt">
+            </div>
+
+            <div class="single-column">
+              <label class="question-label">Unit Weight(lbs/lin.ft)</label>
+              <input type="text" name="unit_weight" id="unit_weight" value="<?php if(isset($details->unit_weight)){echo $details->unit_weight;}?>" class="inputinpt">
+            </div>
+
+            <div class="single-column">
+              <label class="question-label">Unit Cost ($/lb)</label>
+              <input type="text" name="unit_cost" id="unit_cost" value="<?php if(isset($details->unit_cost)){echo $details->unit_cost;}?>" class="inputinpt">
+            </div>
+
+            <div class="single-column">
+              <label class="question-label">Surface(sq.ft./lin.ft.)</label>
+             <input type="text" name="surface" id="surface" value="<?php if(isset($details->surface)){echo $details->surface;}?>" class="inputinpt">
+            </div>
+
+            <div class="single-column">
+              <label class="question-label">Labor(hr./lb.)</label>
+              <input type="text" name="labor" id="labor" value="<?php if(isset($details->labor)){echo $details->labor;}?>" class="inputinpt">
+            </div>
+
+            <div class="single-column">
+              <label class="question-label">Status</label>
+              <select id="status" name="status" class="inputinpt">
+=======
   <div id="mainMumbr" style="display: show;width: 100%;background-color: darkgray;">
       <b>Main Mmbr</b>
         <div class="single-column">
@@ -260,29 +397,48 @@ $(document).ready(function(){
         <div class="single-column">
               <label class="question-label">Erect</label>
               <select id="erect" name="erect" class="inputinpt">
+>>>>>>> 9fb3c01f02f1a626d1d17081c4b6d2f2e6bda201
                 <?php /* if(isset($details->status)) {?>
                   <option value="Active"<?php if($details->status=="Active"){?>selected<?php } ?>>Active</option>
                   <option value="Inactive"<?php if($details->status=="Inactive"){?>selected<?php } ?>>Inactive</option>
                 }else{ */?>
+<<<<<<< HEAD
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+                <?php // } ?>
+              </select>
+            </div>
+=======
                 <option value="">Select Option</option>
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
                 <?php // } ?>
               </select>
             </div>          
+>>>>>>> 9fb3c01f02f1a626d1d17081c4b6d2f2e6bda201
 
 
 
 <div class="bottonserright" style="padding-bottom:20px;"> 
+<<<<<<< HEAD
+<a href="<?php echo site_url('kaizen/main'); ?>" class="back_dash">Back to Dashboard</a>
+=======
 
 <a href="javascript:void(0);" title="Save" onClick="form_submit();");" class="web-red-btn save" 
  <?php if(isset($details->id) && ($details->id >0)){echo '<span>Update</span>';}else{echo '<span>Save</span>';} ?></a>
 
+>>>>>>> 9fb3c01f02f1a626d1d17081c4b6d2f2e6bda201
 
 <a href="<?php echo site_url();?>/kaizen/material" title="Cancel" class="web-red-btn cancil" 
  <?php if(isset($details->id) && ($details->id >0)){echo '<span>Cancel</span>';}else{echo '<span>Cancel</span>';} ?></a>
 
+<<<<<<< HEAD
+ <a href="javascript:void(0);" title="Save" onClick="form_submit();");" class="web-red-btn save" 
+ <?php if(isset($details->id) && ($details->id >0)){echo '<span>Update</span>';}else{echo '<span>Save</span>';} ?></a>
+
+=======
  
+>>>>>>> 9fb3c01f02f1a626d1d17081c4b6d2f2e6bda201
 <!--
         <div class="single-column" >
               <label class="question-label">Status:<span>*</span></label>
