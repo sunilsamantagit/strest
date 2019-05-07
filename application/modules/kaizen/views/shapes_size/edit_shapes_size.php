@@ -111,6 +111,62 @@ function form_submit(){
 					<?php } }?>
 					</select>
 				</div>
+		
+			 
+		<div class="single-column">
+				<b> Size Short </b>
+				<div class="single-column">
+              <label class="question-label">Inches</label>
+              <input type="text" name="inches_short" id="inches_short" value="<?php if(isset($details->inches_short)){echo $details->inches_short;}?>" class="inputinpt" />
+            </div>
+
+            <div class="single-column">
+              <label class="question-label">Metric</label>
+              <input type="text" name="metric_short" id="metric_short" value="<?php if(isset($details->metric_short)){echo $details->metric_short;}?>" class="inputinpt">
+            </div>
+		 </div>		
+				
+			
+		<div class="single-column">
+				<b> Size Long </b>
+				<div class="single-column">
+              <label class="question-label">Inches</label>
+              <input type="text" name="inches_long" id="inches_long" value="<?php if(isset($details->inches_long)){echo $details->inches_long;}?>" class="inputinpt" />
+            </div>
+
+            <div class="single-column">
+              <label class="question-label">Metric</label>
+              <input type="text" name="metric_long" id="metric_long" value="<?php if(isset($details->metric_long)){echo $details->metric_long;}?>" class="inputinpt">
+            </div>
+		</div>	
+
+            <div class="single-column">
+              <label class="question-label">Size</label>
+              <input type="text" name="size" id="size" value="<?php if(isset($details->size)){echo $details->size;}?>" class="inputinpt">
+            </div>
+
+            <div class="single-column">
+              <label class="question-label">Unit Weight(lbs/lin.ft)</label>
+              <input type="text" name="unit_weight" id="unit_weight" value="<?php if(isset($details->unit_weight)){echo $details->unit_weight;}?>" class="inputinpt">
+            </div>
+
+            <div class="single-column">
+              <label class="question-label">Unit Cost ($/lb)</label>
+              <input type="text" name="unit_cost" id="unit_cost" value="<?php if(isset($details->unit_cost)){echo $details->unit_cost;}?>" class="inputinpt">
+            </div>
+
+            <div class="single-column">
+              <label class="question-label">Surface(sq.ft./lin.ft.)</label>
+             <input type="text" name="surface" id="surface" value="<?php if(isset($details->surface)){echo $details->surface;}?>" class="inputinpt">
+            </div>
+
+            <div class="single-column">
+              <label class="question-label">Labor(hr./lb.)</label>
+              <input type="text" name="labor" id="labor" value="<?php if(isset($details->labor)){echo $details->labor;}?>" class="inputinpt">
+            </div>
+
+				
+				
 					
 			<div class="single-column" >
                     <label class="single-column">Status<span></span></label>

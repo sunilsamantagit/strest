@@ -100,9 +100,18 @@ class Shapes_size extends MY_Controller
                 {
                    
 	//echo "<pre>"; print_r($_POST);exit;		                     
-                                $this->size_name  =$this->input->post('size_name',TRUE);
-								$this->shape       =$this->input->post('shape',TRUE);
-                                $this->status	   =$this->input->post('shape_status',TRUE); 
+                                $this->size_name     =$this->input->post('size_name',TRUE);
+								$this->shape         =$this->input->post('shape',TRUE);
+								$this->inches_short  =$this->input->post('inches_short',TRUE);
+								$this->metric_short  =$this->input->post('metric_short',TRUE);
+								$this->inches_long   =$this->input->post('inches_long',TRUE);
+								$this->metric_long   =$this->input->post('metric_long',TRUE);
+								$this->size          =$this->input->post('size',TRUE);
+								$this->unit_weight   =$this->input->post('unit_weight',TRUE);
+								$this->unit_cost     =$this->input->post('unit_cost',TRUE);
+								$this->surface       =$this->input->post('surface',TRUE);
+								$this->labor         =$this->input->post('labor',TRUE);
+                                $this->status	     =$this->input->post('shape_status',TRUE); 
                                 if($this->status===false){
                                         $this->status='1';
                                 }
@@ -111,9 +120,18 @@ class Shapes_size extends MY_Controller
 								
                                 $update_data = array(
                                   
-                                    'size_name'    => $this->size_name,
-									'shape'         => $this->shape,
-                                    'status'        => $this->status
+                                    'size_name'      => $this->size_name,
+									'shape'          => $this->shape,
+									'inches_short'   => $this->inches_short,
+									'metric_short'   => $this->metric_short,
+									'inches_long'    => $this->inches_long,
+									'metric_long'    => $this->metric_long,
+									'size'           => $this->size,
+									'unit_weight'    => $this->unit_weight,
+									'unit_cost'      => $this->unit_cost,
+									'surface'        => $this->surface,
+									'labor'          => $this->labor,
+                                    'status'         => $this->status
                                 );
                                 
                 
@@ -132,9 +150,18 @@ class Shapes_size extends MY_Controller
 			}
 			else 
 			{           
-                                $this->size_name   =$this->input->post('size_name',TRUE);
-								 $this->shape       =$this->input->post('shape',TRUE);
-                                $this->status       =$this->input->post('shape_status',TRUE); 
+                                $this->size_name       =$this->input->post('size_name',TRUE);
+								 $this->shape          =$this->input->post('shape',TRUE);
+								 $this->inches_short   =$this->input->post('inches_short',TRUE);
+								$this->metric_short    =$this->input->post('metric_short',TRUE);
+								$this->inches_long     =$this->input->post('inches_long',TRUE);
+								$this->metric_long     =$this->input->post('metric_long',TRUE);
+								$this->size            =$this->input->post('size',TRUE);
+								$this->unit_weight     =$this->input->post('unit_weight',TRUE);
+								$this->unit_cost       =$this->input->post('unit_cost',TRUE);
+								$this->surface         =$this->input->post('surface',TRUE);
+								$this->labor           =$this->input->post('labor',TRUE);
+                                $this->status          =$this->input->post('shape_status',TRUE); 
                              if($this->status===false){
                                 $this->status='1';
                 }
@@ -144,9 +171,18 @@ class Shapes_size extends MY_Controller
               
                 $add_data = array(
                                     
-                                    'size_name'   => $this->size_name,
-                                    'shape'        => $this->shape,
-                                    'status'       => $this->status
+                                    'size_name'      => $this->size_name,
+                                    'shape'          => $this->shape,
+									'inches_short'   => $this->inches_short,
+									'metric_short'   => $this->metric_short,
+									'inches_long'    => $this->inches_long,
+									'metric_long'    => $this->metric_long,
+									'size'           => $this->size,
+									'unit_weight'    => $this->unit_weight,
+									'unit_cost'      => $this->unit_cost,
+									'surface'        => $this->surface,
+									'labor'          => $this->labor,
+                                    'status'         => $this->status
                                 );
                                 
 				$id = $this->modelshapes_size->insert_row('shapes_size',$add_data);

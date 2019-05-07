@@ -98,9 +98,16 @@ $(document).ready(function(){
 .maxlength-feedback {
     color: #D3332F;
 }
+
+.add_material .mid-block{ width:100%;}
+.add_material #member-form form{ display:block;}
+.add_material #webcont-form .single-column label{ padding-left:0;}
+.add_material #webcont-form .single-column select{ height:36px;}
+.add_material .bottonserright{ padding:0 15px; box-sizing: border-box; margin-top:100px;}
+.add_material .bottonserright .back_dash{ color:#159bd5;}
 </style>
 <div class="rightDiv">
-  <div class="right-outer">
+  <div class="right-outer add_material">
     <?php if(isset($details->id) && $details->id >0){?>
     <h3 class="title">Edit - Material Function
       <?php if(isset($details->title)){
@@ -143,7 +150,7 @@ $(document).ready(function(){
               <input type="text" name="material_name" id="material_name" value="<?php if(isset($details->material_name)){echo $details->material_name;}?>" class="inputinpt validate[required]" />
             </div>
 
-            <div class="single-column">
+            <?php /*<div class="single-column">
               <label class="question-label">Spec Grade</label>
               <select id="spec_grade_id" name="spec_grade_id" class="inputinpt validate[required]" />
                 <?php if(isset($details->spec_grade_id)){
@@ -208,7 +215,7 @@ $(document).ready(function(){
             <div class="single-column">
               <label class="question-label">Labor(hr./lb.)</label>
               <input type="text" name="labor" id="labor" value="<?php if(isset($details->labor)){echo $details->labor;}?>" class="inputinpt">
-            </div>
+            </div> */ ?>
 
             <div class="single-column">
               <label class="question-label">Status</label>

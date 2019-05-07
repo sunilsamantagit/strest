@@ -59,6 +59,7 @@ class Material extends MY_Controller
     
 	public function addedit()
 	{	
+//echo "<pre>"; print_r($_POST);exit;
 		$this->load->library('form_validation');
 		echo $this->form_validation->set_rules('material_name','spec_grade_id', 'trim|required|xss_clean');
 		
@@ -79,8 +80,7 @@ class Material extends MY_Controller
                 {
            $update_data = array(            
 								'material_name'			=>	$this->input->post('material_name'),
-								'spec_grade_id'				=>	$this->input->post('spec_grade_id'),
-								//'date'					=>	$date,
+								/*'spec_grade_id'				=>	$this->input->post('spec_grade_id'),
 								'shape_id'				=>	$this->input->post('shape_id'),
 								'inches'			=>	$this->input->post('inches'),
 								'metric'			=>	$this->input->post('metric'),
@@ -88,7 +88,7 @@ class Material extends MY_Controller
 								'unit_weight'				=>	$this->input->post('unit_weight'),
 								'unit_cost'					=>	$this->input->post('unit_cost'),
 								'surface'					=>	$this->input->post('surface'),
-								'labor'					=>	$this->input->post('labor'),
+								'labor'					=>	$this->input->post('labor'),*/
 								'status'					=>	$this->input->post('status')
                                 );                              
                 
@@ -108,8 +108,7 @@ class Material extends MY_Controller
 			{           
               $add_data = array(            
 								'material_name'			=>	$this->input->post('material_name'),
-								'spec_grade_id'				=>	$this->input->post('spec_grade_id'),
-								//'date'					=>	$date,
+								/*'spec_grade_id'				=>	$this->input->post('spec_grade_id'),
 								'shape_id'				=>	$this->input->post('shape_id'),
 								'inches'			=>	$this->input->post('inches'),
 								'metric'			=>	$this->input->post('metric'),
@@ -117,7 +116,7 @@ class Material extends MY_Controller
 								'unit_weight'				=>	$this->input->post('unit_weight'),
 								'unit_cost'					=>	$this->input->post('unit_cost'),
 								'surface'					=>	$this->input->post('surface'),
-								'labor'					=>	$this->input->post('labor'),
+								'labor'					=>	$this->input->post('labor'),*/
 								'status'					=>	$this->input->post('status')
                                 );
                                // print_r($add_data);echo "validation come";exit;
