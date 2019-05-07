@@ -8,7 +8,7 @@ class Takeoffline extends MY_Controller
 	{
 		parent::__construct();		 
 		
-		if( ! $this->session->userdata('web_admin_logged_in')) {
+		if(!$this->session->userdata('web_admin_logged_in') && get_cookie('uname')=='') {
 			redirect('kaizen/welcome','refresh');
 		}
 		$this->load->vars( array(
@@ -36,6 +36,8 @@ class Takeoffline extends MY_Controller
         $order_by = array('display_order' => 'asc');
 		$data_row = $this->modeltakeoffline->select_row('takeoffline',$where,$order_by);
 		$data['records']= $data_row;
+		$data_shapesgrade = $this->modeltakeoffline->select_row('shapes_management');
+		$data['shapesgrade']= $data_shapesgrade;
 		$this->load->view('kaizen/takeoffline/takeoffline_list',$data);		
 	}
 	

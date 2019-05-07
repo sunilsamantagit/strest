@@ -52,14 +52,14 @@ if(in_array($fetch_class,$comp_arr4)){
   <ul class="cat-list">
 
     <li class="listing-dashboard">
-    <a href="<?php echo site_url("kaizen/main/"); ?>" <?php if(!empty($fetch_class) && $fetch_class == "main"){ ?> class="active" <?php } ?>  >Dashboard</a>
+    <a href="<?php echo site_url("kaizen/main/"); ?>" <?php if(!empty($fetch_class) && $fetch_class == "main"){ ?> class="active" <?php } ?>  ><i class="fa fa-home"></i>Dashboard</a>
     </li>
 
  <!--   <li class="listing-application">
     <a href="<?php echo site_url("kaizen/pages"); ?>" <?php if(!empty($fetch_class) && $fetch_class == "pages"){ ?> class="active" <?php } ?>>Pages</a>
     </li> -->
 
-    <li class="listing-list"> <a href="javascript:void(0)">Takeoff<span class="fa fa-chevron-down"></span></a>
+    <li class="listing-list"> <a href="javascript:void(0)"><i class="fa fa-tasks"></i>Takeoff<span class="fa fa-chevron-down"></span></a>
       <div style="<?php if(!empty($active_cls)){ echo 'display:block;'; }?>" class="cat-cont">
         <ul class="category_sub_list">
          
@@ -76,7 +76,7 @@ if(in_array($fetch_class,$comp_arr4)){
  
     
     
-    <li class="listing-list"> <a href="javascript:void(0)">Master Entries<span class="fa fa-chevron-down"></span></a>
+    <li class="listing-list"> <a href="javascript:void(0)"><i class="fa fa-graduation-cap"></i>Master Entries<span class="fa fa-chevron-down"></span></a>
       <div style="<?php if(!empty($active_cls2)){ echo 'display:block;'; }?>" class="cat-cont">
         <ul class="category_sub_list">
          
@@ -94,7 +94,7 @@ if(in_array($fetch_class,$comp_arr4)){
     
     
      <?php if($this->session->userdata('user_level')==1){ ?>
-    <li class="listing-list"> <a href="javascript:void(0)">Admin Management<span class="fa fa-chevron-down"></span></a>
+    <li class="listing-list"> <a href="javascript:void(0)"><i class="fa fa-user"></i>Admin Management<span class="fa fa-chevron-down"></span></a>
       <div style="<?php if(!empty($active_cls3)){ echo 'display:block;'; }?>" class="cat-cont">
         <ul class="category_sub_list">
          

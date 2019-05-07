@@ -5,6 +5,9 @@ class Settings extends MY_Controller
 	function __construct()
 	{
 		parent::__construct();
+                if(!$this->session->userdata('web_admin_logged_in') && get_cookie('uname')=='') {
+			redirect('kaizen/welcome','refresh');
+		}
 
 		$this->load->vars( array(
 		  'global' => 'Available to all views',

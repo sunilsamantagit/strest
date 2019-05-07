@@ -58,5 +58,17 @@ class Model_login extends  MY_Model {
 									
 		return true;
 	}
+        
+        
+        public function userlogin($username,$password)
+        {
+            $this->db->select('*');
+            $this->db->from('strest_admin');
+            $this->db->where('user_name',$username);
+            $this->db->where('pwd_hint',$password);
+            $query = $this->db->get();
+            return $query->row();
+            
+        }
 	
 }

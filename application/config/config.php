@@ -23,12 +23,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url']						=   'http://www.saskatoonmetal-test.com.php72-4.lan3-1.websitetestlink.com/';
+$config['base_url']						=   'http://localhost/strest/';
 $config['server_absolute_path'] 		= 	$_SERVER['DOCUMENT_ROOT']."/"; // site root folder
 $config['front_base_url']				= 	$config['base_url'];
 $config['file_upload_base_url']			=	$config['front_base_url']."public/uploads/";
 $config['file_upload_absolute_path'] 	=	$config['server_absolute_path']."public/uploads/";
 $config['public_absolute_path']         =	$config['server_absolute_path']."public/";
+
+
 
 
 /*
@@ -390,11 +392,14 @@ $config['encryption_key'] = 'bi@2015';
 */
 $config['sess_driver'] = 'database';
 $config['sess_cookie_name'] = 'sessions';
-$config['sess_expiration'] = 86400;
+//$config['sess_expiration'] = 86400;
 $config['sess_save_path'] = 'sessions';
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = $config['sess_expiration'];
 $config['sess_regenerate_destroy'] = FALSE;
+
+$config['sess_expire_on_close'] = TRUE;
+//$config['sess_expiration'] = 0;
 
 /*
 |--------------------------------------------------------------------------

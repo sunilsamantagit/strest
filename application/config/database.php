@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'mariadb-012.wc1.lan3.stabletransit.com', 
-	'username' => '328057_smmetal', 
-	'password' => "+nHpXQG2u'dRfc=8",	
+	'hostname' => 'localhost', 
+	'username' => 'root', 
+	'password' => "",	
 	'database' => '328057_smmetal', 
 	'dbdriver' => 'mysqli',
 	'dbprefix' => 'strest_',
