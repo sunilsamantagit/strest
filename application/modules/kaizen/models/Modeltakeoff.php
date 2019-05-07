@@ -59,15 +59,6 @@ class Modeltakeoff extends MY_Model{
 	    $this->db->insert('strest_takeoff',$add_data);
 	    return $insert_id = $this->db->insert_id();
 
-    }
-/*
-    public function clonedata_insert($id)
-    {
-    	$this->db->get('strest_takeoff');
-    	$idc=$id+1;
-    	$query = $this->db->query('INSERT INTO strest_takeoff SELECT * FROM strest_takeoff WHERE id ='.$id.' ON DUPLICATE KEY UPDATE id='.$idc);
-    	return $query->result();
-    }*/
-	
+    }	
 }
 ?>

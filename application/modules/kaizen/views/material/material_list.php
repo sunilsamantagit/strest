@@ -79,12 +79,12 @@ div.dataTables_length {
               <div class="members-table member-group">
             <?php
     if($this->session->userdata('ERROR_MSG')==TRUE){
-      echo '<div class="notific_error">
+      echo '<div class="notific_error" id="myErrMessage">
           <h2 align="center" style="color:#fff;">'.$this->session->userdata('ERROR_MSG').'</h1></div>';
       $this->session->unset_userdata('ERROR_MSG');
     }
     if($this->session->userdata('SUCC_MSG')==TRUE){
-      echo '<div class="notific_suc"><h2 align="center" style="color:#000;">'.$this->session->userdata('SUCC_MSG').'</h1></div>';
+      echo '<div class="notific_suc" id="mySuccMessage"><h2 align="center" style="color:#000;">'.$this->session->userdata('SUCC_MSG').'</h1></div>';
       $this->session->unset_userdata('SUCC_MSG');
     }
     ?>
@@ -116,7 +116,7 @@ div.dataTables_length {
                             
                             <td style="text-align: center;"><?php echo $i; ?></td>   
               <td style="text-align: center;"><?php if(!empty($row->material_name)) echo $row->material_name; ?></td>
-              <td><?php if(!empty($row->date)) { $originalDate = $row->date;
+              <td style="text-align: center;"><?php if(!empty($row->date)) { $originalDate = $row->date;
               $newDate = date("m-d-Y", strtotime($originalDate)); echo $newDate; } ?></td>
                       
               <!--<td>    
@@ -171,5 +171,8 @@ div.dataTables_length {
         $('html,body').animate({scrollTop: aTag.offset().top},'slow');
     }
     } );
+	
+	$("#mySuccMessage").show().delay(3000).fadeOut();
+	$("#myErrMessage").show().delay(3000).fadeOut();
 } );
 </script>

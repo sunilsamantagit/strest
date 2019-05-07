@@ -58,56 +58,7 @@ class Takeoff extends MY_Controller
 
 		$posting_date=$this->input->post('takeoff_start_date');
         $date=date('Y-m-d',strtotime($posting_date));
-		/*
-		$id = $this->modeltakeoff->insert_row('taskoff',$add_data);
-		if($id) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
-		{
-			//echo "Home Block Inserted Successfully.";
-			$session_data = array("SUCC_MSG"  => "Home Block Inserted Successfully.");
-			$this->session->set_userdata($session_data);
-			redirect('kaizen/takeoff');				
-		}	
-*/
-/*
-'project_no'			=>	takeoff_project_no,
-'quote_no'				=>	takeoff_quate_no,
-'date'					=>	takeoff_start_date,
-'addenda'				=>	takeoff_addenda,
-'pricing_units'			=>	pricing_units,
-'project_title'			=>	takeoff_project_title,
-'erect'					=>	erect,
-'fob'					=>	fob,
-'location'				=>	location,
-'legal'					=>	legal,
-'owner'					=>	takeoff_owner,
-'place'					=>	takeoff_place,
-'tel'					=>	takeoff_tel,
-'fax'					=>	takeoff_fax,
-'mobile'				=>	takeoff_mobile,
-'contact'				=>	takeoff_contact,
-'closing_bid_depository'=>	closing_bid_depository,
-'clo_rulings'			=>	takeoff_rulings,
-'clo_date_time'			=>	takeoff_datetime,
-'clo_place'				=>	takeoff_clo_place,
-'clo_GST'				=>	takeoff_GST,
-'clo_PST'				=>	takeoff_GST,
-'clo_other_tax'			=>  takeoff_othertax,
-'bid_bond'				=>	bid_bond,
-'perform_bond'			=>	perform_bond,
-'lab_mat_bond'			=>	lab_mat_bond,
-'holdback'				=>	takeoff_holdback,
-'architect_name'		=>	takeoff_holdback,
-'architect_place'		=>	takeoff_architect_place,
-'architect_contact'		=>	takeoff_architect_contact,
-'architect_tel'			=>	takeoff_architect_tel,
-'architect_fax'			=>	takeoff_architect_fax,
-'engineer_name'			=>	takeoff_engineer_name,
-'engineer_place'		=>	takeoff_engineer_place,
-'engineer_contact'		=>	takeoff_engineer_contact,
-'engineer_tel'			=>	takeoff_engineer_tel,
-'engineer_fax'			=>	takeoff_engineer_fax,
-'status'				=>	'1'
-*/		
+        	
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('takeoff_project_no', 'takeoff_quate_no', 'trim|required|xss_clean');
 		
@@ -169,12 +120,12 @@ class Takeoff extends MY_Controller
 				$update_where = array('id' => $id);
 				if($this->modeltakeoff->update_row('takeoff',$update_data,$update_where)) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
 				{				
-					$session_data = array("SUCC_MSG"  => "Takeoff - Description Updated Successfully");
+					$session_data = array("SUCC_MSG"  => "Takeoff - Description Entries Updated Successfully");
 					$this->session->set_userdata($session_data);					
 				}			
 				else 
 				{	
-					$session_data = array("ERROR_MSG"  => "Takeoff - Description Not Updated");
+					$session_data = array("ERROR_MSG"  => "Takeoff - Description Entries Not Updated");
 					$this->session->set_userdata($session_data);				
 				}
 			}
@@ -225,18 +176,18 @@ class Takeoff extends MY_Controller
 				$id = $this->modeltakeoff->insert_row('takeoff',$add_data);
 				if($id) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
 				{                   
-					$session_data = array("SUCC_MSG"  => "Takeoff - Description Inserted Successfully");
+					$session_data = array("SUCC_MSG"  => "Takeoff - Description Entries Inserted Successfully");
 					$this->session->set_userdata($session_data);					
 				}			
 				else // IF UPDATE PROCEDURE NOT EXECUTE SUCCESSFULLY
 				{	
-					$session_data = array("ERROR_MSG"  => "Takeoff - Description Not Inserted");
+					$session_data = array("ERROR_MSG"  => "Takeoff - Description Entries Not Inserted");
 					$this->session->set_userdata($session_data);				
 				}
 			}
 			redirect("kaizen/takeoff/doedit/".$id,'refresh');			
 		}
-		else{ echo "validation false";exit;
+		else{
 			if(!empty($id)){
 			$this->doedit();
 			}

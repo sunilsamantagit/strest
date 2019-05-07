@@ -8,6 +8,9 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#cont").validationEngine('attach', { promptPosition: "inline" });
+	
+	$("#mySuccMessage").show().delay(3000).fadeOut();
+	$("#myErrMessage").show().delay(3000).fadeOut();
 	});
 function form_submit(){
     $('#cont').submit();
@@ -28,12 +31,12 @@ function showhide(val){
         <div class="ass_bg">
             <?php
 		if($this->session->userdata('ERROR_MSG')==TRUE){
-			echo '<div class="notific_error">
+			echo '<div class="notific_error" id="myErrMessage">
 					<h2 align="center" style="color:#00f;">'.$this->session->userdata('ERROR_MSG').'</h1></div>';
 			$this->session->unset_userdata('ERROR_MSG');
 		}
 		if($this->session->userdata('SUCC_MSG')==TRUE){
-			echo '<div class="notific_suc"><h2 align="center" style="color:#0a0;">'.$this->session->userdata('SUCC_MSG').'</h1></div>';
+			echo '<div class="notific_suc" id="mySuccMessage"><h2 align="center" style="color:#0a0;">'.$this->session->userdata('SUCC_MSG').'</h1></div>';
 			$this->session->unset_userdata('SUCC_MSG');
 		}
 		?>

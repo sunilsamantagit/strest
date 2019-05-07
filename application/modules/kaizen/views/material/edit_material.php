@@ -88,6 +88,9 @@ $(document).ready(function(){
      $('#labor').keyup(function (){
     this.value = this.value.replace(/[^0-9\.]/g,'');
     });
+	
+	$("#mySuccMessage").show().delay(3000).fadeOut();
+	$("#myErrMessage").show().delay(3000).fadeOut();
 });
 </script>
 
@@ -99,7 +102,7 @@ $(document).ready(function(){
 <div class="rightDiv">
   <div class="right-outer">
     <?php if(isset($details->id) && $details->id >0){?>
-    <h3 class="title">Edit
+    <h3 class="title">Edit - Material Function
       <?php if(isset($details->title)){
 		     $count_e = mb_strlen( $details->title);
 							      $last_space_e = '';
@@ -116,12 +119,12 @@ $(document).ready(function(){
 
       <?php
     if($this->session->userdata('ERROR_MSG')==TRUE){
-      echo '<div class="notific_error">
+      echo '<div class="notific_error" id="myErrMessage">
           <h1 align="center" style="color:#fff;">'.$this->session->userdata('ERROR_MSG').'</h1></div>';
       $this->session->unset_userdata('ERROR_MSG');
     }
     if($this->session->userdata('SUCC_MSG')==TRUE){
-      echo '<div class="notific_suc"><h2 align="center" style="color:#000;">'.$this->session->userdata('SUCC_MSG').'</h1></div>';
+      echo '<div class="notific_suc" id="mySuccMessage"><h2 align="center" style="color:#000;">'.$this->session->userdata('SUCC_MSG').'</h1></div>';
       $this->session->unset_userdata('SUCC_MSG');
     }
     ?>

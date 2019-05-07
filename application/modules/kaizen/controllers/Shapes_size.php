@@ -36,6 +36,9 @@ class Shapes_size extends MY_Controller
 		$data_row = $this->modelshapes_size->select_row('shapes_size',$where,$order_by);
 		$data['records']= $data_row;
 //echo '<pre>';print_r($data['records']);exit;
+		$data_shapes = $this->modelshapes_size->select_row('shapes_management');
+		$data['shapes_management']= $data_shapes;
+//echo '<pre>';print_r($data['shapes_management']);exit;
 		$this->load->view('kaizen/shapes_size/shapes_size_list',$data);	
 	}
 	
@@ -118,12 +121,12 @@ class Shapes_size extends MY_Controller
 				if($this->modelshapes_size->update_row('shapes_size',$update_data,$update_where)) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
 				{
 				
-					$session_data = array("SUCC_MSG"  => "Shapes Size Updated Successfully.");
+					$session_data = array("SUCC_MSG"  => "Shapes Size Entries Updated Successfully.");
 					$this->session->set_userdata($session_data);					
 				}			
 				else 
 				{	
-					$session_data = array("ERROR_MSG"  => "Shapes Size Not Updated.");
+					$session_data = array("ERROR_MSG"  => "Shapes Size Entries Not Updated.");
 					$this->session->set_userdata($session_data);				
 				}
 			}
@@ -150,12 +153,12 @@ class Shapes_size extends MY_Controller
 				if($id) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
 				{ 
                    
-					$session_data = array("SUCC_MSG"  => "Shapes Size Inserted Successfully.");
+					$session_data = array("SUCC_MSG"  => "Shapes Size Entries Inserted Successfully.");
 					$this->session->set_userdata($session_data);					
 				}			
 				else // IF UPDATE PROCEDURE NOT EXECUTE SUCCESSFULLY
 				{	
-					$session_data = array("ERROR_MSG"  => "Shapes Size Not Inserted.");
+					$session_data = array("ERROR_MSG"  => "Shapes Size Entries Not Inserted.");
 					$this->session->set_userdata($session_data);				
 				}
 			}

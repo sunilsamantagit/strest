@@ -1,6 +1,6 @@
 <?php //echo "<pre>";print_r($details);exit; ?>
 <?php $this->load->view($header); ?>
-<?php $this->load->view($left); ?>
+<?php $this->load->view($left); ?> 
 <link rel="stylesheet" href="<?php echo site_url("public/validator/css/validationEngine.jquery.css");?>" type="text/css"/>
 <script src="<?php echo site_url("public/validator/js/languages/jquery.validationEngine-en.js");?>" type="text/javascript" charset="utf-8"></script>
 <script src="<?php echo site_url("public/validator/js/jquery.validationEngine.js");?>" type="text/javascript" charset="utf-8"></script>
@@ -59,6 +59,9 @@ $('#takeoff_othertax').keyup(function (){
 $('.phone_us').mask('(000)-000-0000'); 
 //$('.zip_code').mask('S0S 0S0'); 
 //$("#cont").validationEngine();
+
+	$("#mySuccMessage").show().delay(3000).fadeOut();
+	$("#myErrMessage").show().delay(3000).fadeOut();
   
 	});
         
@@ -85,7 +88,7 @@ function form_submit(){
 <div class="rightDiv">
   <div class="right-outer">
     <?php if(isset($details->id) && $details->id >0){?>
-    <h3 class="title">Edit
+    <h3 class="title">Edit - Takeoff - Description
       <?php if(isset($details->title)){
 		     $count_e = mb_strlen( $details->title);
 							      $last_space_e = '';
@@ -102,12 +105,12 @@ function form_submit(){
 
       <?php
     if($this->session->userdata('ERROR_MSG')==TRUE){
-      echo '<div class="notific_error">
+      echo '<div class="notific_error" id="myErrMessage">
           <h1 align="center" style="color:#fff;">'.$this->session->userdata('ERROR_MSG').'</h1></div>';
       $this->session->unset_userdata('ERROR_MSG');
     }
     if($this->session->userdata('SUCC_MSG')==TRUE){
-      echo '<div class="notific_suc"><h2 align="center" style="color:#0a0;">'.$this->session->userdata('SUCC_MSG').'</h1></div>';
+      echo '<div class="notific_suc" id="mySuccMessage"><h2 align="center" style="color:#0a0;">'.$this->session->userdata('SUCC_MSG').'</h1></div>';
       $this->session->unset_userdata('SUCC_MSG');
     }
     ?>
