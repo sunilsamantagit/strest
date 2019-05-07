@@ -164,7 +164,7 @@ $(document).ready(function(){
 
         <div class="single-column">
               <label class="question-label">Width</label>
-              <input type="text" name="width" id="width" value="<?php //if(isset($details->metric)){echo $details->metric;}?>" class="inputinpt">
+              <input type="text" name="width" id="width" value="<?php if(isset($details->width)){echo $details->width;}?>" class="inputinpt">
         </div>
 
         <div class="single-column">

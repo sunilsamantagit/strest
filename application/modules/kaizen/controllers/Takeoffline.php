@@ -60,127 +60,97 @@ class Takeoffline extends MY_Controller
 	}
 
 	public function addedit()
-	{echo "<pre>";print_r($_POST);exit;
+	{
+		//echo "<pre>";print_r($_POST);exit;
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('resource', 'entry_type', 'trim|required|xss_clean');
-		
-		
+				
 		$this->form_validation->set_error_delimiters('<span class="validation_msg">', '</span>');
 		$id=$this->input->post('takeoffline_id','');
-	 	$takeoffline_detls ='';
+	 	$takeoff_detls ='';
 	 	$uplod_img='';
+
 		if($this->form_validation->run() == TRUE) // IF MENDATORY FIELDS VALIDATION TRUE(SERVER SIDE)  
-		{	
+		{
 			$where = array(
-                           
                             'id' => $id
                         );
+			
                 $takeoffline_detls = $this->modeltakeoffline->select_row('takeoffline',$where);
 				
         		if(!empty($takeoffline_detls)) 
                 {
-                	
-                   
-			                     
-                                $this->title		=$this->input->post('takeoffline_title',TRUE);
-                                $this->excerpt		=$this->input->post('excerpt',TRUE);
-                                $this->htmlfile1             =$this->input->post('htmlfile1',TRUE);
-                                $this->display_order		=$this->input->post('display_order');
-                                 $this->button_text		=$this->input->post('button_text');
-                                $this->button_type		=$this->input->post('button_type',TRUE);
-                                $this->page_link		=$this->input->post('page_link');
-                                $this->external_url		=$this->input->post('external_url');
-                                $this->is_active		=$this->input->post('is_active',TRUE); 
-                                if($this->is_active===false){
-                                        $this->is_active='1';
-                                }
-							
-			 /*    $uplod_img = $this->input->post("htmlfile1",TRUE);
-                             $orgimgpath=$takeoffline_detls[0]->takeoffline_photo;
-							   if(!empty($uplod_img) && $uplod_img!=$orgimgpath)
-								{
-						if(!empty($orgimgpath) && is_file(file_upload_absolute_path().'takeoffline_photo/'.$orgimgpath))
-									{
-								unlink(file_upload_absolute_path().'takeoffline_photo/'.$orgimgpath);
-									}
-                                } */
-								
-                                $update_data = array(
-                                  
-                                    'title'                             => $this->title,
-                                    'excerpt'                             => $this->excerpt,
-                                    'takeoffline_photo'                      => $this->htmlfile1,                                    
-                                    'display_order' 			=> $this->display_order,
-                                    'button'                            => $this->button_text,
-                                    'button_type' 			=> $this->button_type,
-                                    'selected_page_link' 		=> $this->page_link, 
-                                    'external_url' 			=> $this->external_url,
-                                    'is_active' 			=> $this->is_active
-                                );
-                                
-                
-				$update_where = array('id' => $id);
-				if($this->modeltakeoffline->update_row('takeoffline',$update_data,$update_where)) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
+           		$update_data = array(
+                				'resource'			=>	$this->input->post('resource'),
+								'type'				=>	$this->input->post('entry_type'),
+								'shapes_management'	=>	$this->input->post('shapes_management_id'),
+								'size_id'			=>	$this->input->post('size_id'),
+								'width'				=>	$this->input->post('width'),
+								'lens'				=>	$this->input->post('lens'),
+								'connmat'			=>	$this->input->post('connmat'),
+								'weight'			=>	$this->input->post('weight'),
+								'field_bolts'		=>	$this->input->post('field_bolts'),
+								'welds'				=>	$this->input->post('welds'),
+								'mh_t_range'		=>	$this->input->post('mh_t_range'),
+								'mh_t_range_total'	=>	$this->input->post('mh_total_range'),
+								'auxserv_shop'		=>	$this->input->post('auxserv_shop'),
+								'quantity'			=>	$this->input->post('quantity'),
+								'lumbsum'			=>	$this->input->post('lumbsum'),
+								'l_description'		=>	$this->input->post('description'),
+								'amount'			=>	$this->input->post('amount'),
+								'text_description'	=>	$this->input->post('text_description'),
+								'is_active'			=>	$this->input->post('erect')
+							);
+					$update_where = array('id' => $id);
+					if($this->modeltakeoffline->update_row('takeoffline',$update_data,$update_where)) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
+					{				
+						$session_data = array("SUCC_MSG"  => "Takeoffline - Description Entries Updated Successfully");
+						$this->session->set_userdata($session_data);					
+					}			
+					else 
+					{	
+						$session_data = array("ERROR_MSG"  => "Takeoffline - Description Entries Not Updated");
+						$this->session->set_userdata($session_data);				
+					}
+				}
+				else
 				{
-				
-					$session_data = array("SUCC_MSG"  => "Takeoff Line Entries Updated Successfully.");
-					$this->session->set_userdata($session_data);					
-				}			
-				else 
-				{	
-					$session_data = array("ERROR_MSG"  => "Takeoff Line Entries Not Updated.");
-					$this->session->set_userdata($session_data);				
+	              $add_data = array(
+                				'resource'			=>	$this->input->post('resource'),
+								'type'				=>	$this->input->post('entry_type'),
+								'shapes_management'	=>	$this->input->post('shapes_management_id'),
+								'size_id'			=>	$this->input->post('size_id'),
+								'width'				=>	$this->input->post('width'),
+								'lens'				=>	$this->input->post('lens'),
+								'connmat'			=>	$this->input->post('connmat'),
+								'weight'			=>	$this->input->post('weight'),
+								'field_bolts'		=>	$this->input->post('field_bolts'),
+								'welds'				=>	$this->input->post('welds'),
+								'mh_t_range'		=>	$this->input->post('mh_t_range'),
+								'mh_t_range_total'	=>	$this->input->post('mh_total_range'),
+								'auxserv_shop'		=>	$this->input->post('auxserv_shop'),
+								'quantity'			=>	$this->input->post('quantity'),
+								'lumbsum'			=>	$this->input->post('lumbsum'),
+								'l_description'		=>	$this->input->post('description'),
+								'amount'			=>	$this->input->post('amount'),
+								'text_description'	=>	$this->input->post('text_description'),
+								'is_active'			=>	$this->input->post('erect')
+							);
+					$id = $this->modeltakeoffline->insert_row('takeoffline',$add_data);
+					if($id) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
+					{                   
+						$session_data = array("SUCC_MSG"  => "Takeoffline - Entries Inserted Successfully");
+						$this->session->set_userdata($session_data);					
+					}			
+					else // IF UPDATE PROCEDURE NOT EXECUTE SUCCESSFULLY
+					{	
+						$session_data = array("ERROR_MSG"  => "Takeoffline - Entries Not Inserted");
+						$this->session->set_userdata($session_data);				
+					}
 				}
-			}
-			else 
-			{           
-                                $this->title                    =$this->input->post('takeoffline_title',TRUE);
-                                $this->excerpt                    =$this->input->post('excerpt',TRUE);
-                                $this->htmlfile1                =$this->input->post('htmlfile1',TRUE);
-                                $this->display_order		=$this->input->post('display_order');
-                                $this->button_text		=$this->input->post('button_text');
-                                $this->button_type		=$this->input->post('button_type',TRUE);
-                                $this->page_link		=$this->input->post('page_link');
-                                $this->external_url		=$this->input->post('external_url');
-                                $this->is_active		=$this->input->post('is_active',TRUE); 
-                             if($this->is_active===false){
-                                $this->is_active='1';
-                }
-					
-                               /*  $uplod_img = '';	
-				$uplod_img = $this->input->post("htmlfile1",TRUE); */
-			
-              
-                $add_data = array(
-                                    
-                                    'title' 			        => $this->title,
-                                    'excerpt' 			        => $this->excerpt,
-                                    'takeoffline_photo'              => $this->htmlfile1,                                      
-                                    'display_order' 			=> $this->display_order, 
-                                    'button' 			        => $this->button_text,
-                                    'button_type'               => $this->button_type,
-                                    'selected_page_link' 		=> $this->page_link, 
-                                    'external_url'              => $this->external_url,
-                                    'page_link'                 => name_replaceCat('takeoffline',$this->title),
-                                    'is_active'                 => $this->is_active
-                                );
-                                
-				$id = $this->modeltakeoffline->insert_row('takeoffline',$add_data);
-				if($id) // IF UPDATE PROCEDURE EXECUTE SUCCESSFULLY
-				{ 
-                   
-					$session_data = array("SUCC_MSG"  => "Takeoff Line Entries Inserted Successfully.");
-					$this->session->set_userdata($session_data);					
-				}			
-				else // IF UPDATE PROCEDURE NOT EXECUTE SUCCESSFULLY
-				{	
-					$session_data = array("ERROR_MSG"  => "Takeoff Line Entries Not Inserted.");
-					$this->session->set_userdata($session_data);				
-				}
-			}
 			redirect("kaizen/takeoffline/doedit/".$id,'refresh');			
 		}
-		else{
+		else{echo "false";exit;
 			if(!empty($id)){
 			$this->doedit();
 			}
@@ -188,7 +158,7 @@ class Takeoffline extends MY_Controller
 				$this->doadd();
 			}
 		}
-	}
+	}	
 	public function doedit()
 	{
 		$data = array();
@@ -204,11 +174,11 @@ class Takeoffline extends MY_Controller
 			$data['details']->is_active = 1;
 			$data['details']->id = 0;
 		}
-		
-		  $where1 = array('is_active'=>1);
-                $order_by = array('title' => 'asc');
-		$data['page_list'] = $this->modeltakeoffline->select_row('cms_pages',$where1,$order_by);
-		
+		$data_shapesgrade = $this->modeltakeoffline->select_row('shapes_management');
+		$data['shapesgrade']= $data_shapesgrade;
+		$data_lumbsum = $this->modeltakeoffline->select_row('lumbsum');
+		$data['lumbsum']= $data_lumbsum;		
+		  
 		$this->load->view('kaizen/takeoffline/edit_takeoffline',$data);				
 	}
 	
