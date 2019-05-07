@@ -116,7 +116,7 @@ div.dataTables_length {
                             
                             <td style="text-align: center;"><?php echo $i; ?></td>   
               <td style="text-align: center;"><?php if(!empty($row->material_name)) echo $row->material_name; ?></td>
-              <td><?php if(!empty($row->date)) { $originalDate = $row->date;
+              <td style="text-align: center;"><?php if(!empty($row->date)) { $originalDate = $row->date;
               $newDate = date("m-d-Y", strtotime($originalDate)); echo $newDate; } ?></td>
                       
               <!--<td>    
