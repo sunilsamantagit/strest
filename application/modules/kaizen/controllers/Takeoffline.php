@@ -33,31 +33,46 @@ class Takeoffline extends MY_Controller
                
         $order_by = array('display_order' => 'asc');
 		$data_row = $this->modeltakeoffline->select_row('takeoffline',$where,$order_by);
-<<<<<<< HEAD
+
 		$data['records']= $data_row;
 		$data_shapesgrade = $this->modeltakeoffline->select_row('shapes_management');
 		$data['shapesgrade']= $data_shapesgrade;
-=======
-		$data['records']= $data_row;		
->>>>>>> 9fb3c01f02f1a626d1d17081c4b6d2f2e6bda201
+		$data_lumbsum = $this->modeltakeoffline->select_row('lumbsum');
+		$data['lumbsum']= $data_lumbsum;
 		$this->load->view('kaizen/takeoffline/takeoffline_list',$data);		
 	}
 	
 	public function doadd(){
-		$data = array();
-        $data['details']= new stdClass;
-		$takeoffline_id=$this->uri->segment(4);
-		$data['details']->is_active = 1;
-		$data['details']->id = $takeoffline_id;
-
-	    $data_shapesgrade = $this->modeltakeoffline->select_row('shapes_management');
-		$data['shapesgrade']= $data_shapesgrade;
-		$data_lumbsum = $this->modeltakeoffline->select_row('lumbsum');
-		$data['lumbsum']= $data_lumbsum;		
-		$this->load->view('kaizen/takeoffline/edit_takeoffline',$data);		
+                $data = array();
+                $id = $this->input->post("id");
+                if(!empty($id)){
+                    $where=array('id'=>$id);
+                    $product_dtls=$this->modeltakeoffline->selectOne('takeoffline',$where);
+                    $data['id'] = $id;
+                }else{
+                    $data['id'] = $id;
+                }
+                 $this->load->view('kaizen/takeoffline/add_line_entry',$data);
+                
+//		$data = array();
+//                $data['details']= new stdClass;
+//		$takeoffline_id=$this->uri->segment(4);
+//		$data['details']->is_active = 1;
+//		$data['details']->id = $takeoffline_id;
+//
+//	        $data_shapesgrade = $this->modeltakeoffline->select_row('shapes_management');
+//		$data['shapesgrade']= $data_shapesgrade;
+//		$data_lumbsum = $this->modeltakeoffline->select_row('lumbsum');
+//		$data['lumbsum']= $data_lumbsum;		
+//		$this->load->view('kaizen/takeoffline/edit_takeoffline',$data);		
 	}
-    
-	public function shapes_size($shap_id)
+        
+        
+        public function add_new_entry () {
+            pre($_POST);die;
+        }
+
+                public function shapes_size($shap_id)
 	{
 		$where = array('shape'=> $shap_id);
         $order_by = array('id' => 'asc');
@@ -92,7 +107,7 @@ class Takeoffline extends MY_Controller
 								'shapes_management'	=>	$this->input->post('shapes_management_id'),
 								'size_id'			=>	$this->input->post('size_id'),
 								'width'				=>	$this->input->post('width'),
-								'lens'				=>	$this->input->post('lens'),
+								'length'				=>	$this->input->post('length'),
 								'connmat'			=>	$this->input->post('connmat'),
 								'weight'			=>	$this->input->post('weight'),
 								'field_bolts'		=>	$this->input->post('field_bolts'),
@@ -127,7 +142,7 @@ class Takeoffline extends MY_Controller
 								'shapes_management'	=>	$this->input->post('shapes_management_id'),
 								'size_id'			=>	$this->input->post('size_id'),
 								'width'				=>	$this->input->post('width'),
-								'lens'				=>	$this->input->post('lens'),
+								'length'				=>	$this->input->post('length'),
 								'connmat'			=>	$this->input->post('connmat'),
 								'weight'			=>	$this->input->post('weight'),
 								'field_bolts'		=>	$this->input->post('field_bolts'),
