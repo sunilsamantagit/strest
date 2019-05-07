@@ -33,7 +33,11 @@ class Takeoffline extends MY_Controller
                
         $order_by = array('display_order' => 'asc');
 		$data_row = $this->modeltakeoffline->select_row('takeoffline',$where,$order_by);
-		$data['records']= $data_row;		
+		$data['records']= $data_row;
+		$data_shapesgrade = $this->modeltakeoffline->select_row('shapes_management');
+		$data['shapesgrade']= $data_shapesgrade;
+		$data_lumbsum = $this->modeltakeoffline->select_row('lumbsum');
+		$data['lumbsum']= $data_lumbsum;
 		$this->load->view('kaizen/takeoffline/takeoffline_list',$data);		
 	}
 	
@@ -86,7 +90,7 @@ class Takeoffline extends MY_Controller
 								'shapes_management'	=>	$this->input->post('shapes_management_id'),
 								'size_id'			=>	$this->input->post('size_id'),
 								'width'				=>	$this->input->post('width'),
-								'lens'				=>	$this->input->post('lens'),
+								'length'				=>	$this->input->post('length'),
 								'connmat'			=>	$this->input->post('connmat'),
 								'weight'			=>	$this->input->post('weight'),
 								'field_bolts'		=>	$this->input->post('field_bolts'),
@@ -121,7 +125,7 @@ class Takeoffline extends MY_Controller
 								'shapes_management'	=>	$this->input->post('shapes_management_id'),
 								'size_id'			=>	$this->input->post('size_id'),
 								'width'				=>	$this->input->post('width'),
-								'lens'				=>	$this->input->post('lens'),
+								'length'				=>	$this->input->post('length'),
 								'connmat'			=>	$this->input->post('connmat'),
 								'weight'			=>	$this->input->post('weight'),
 								'field_bolts'		=>	$this->input->post('field_bolts'),
