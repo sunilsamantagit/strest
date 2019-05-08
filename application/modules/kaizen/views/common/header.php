@@ -56,9 +56,9 @@ $user_detls = $this->model_home->selectOne('admin',array('id'=>$this->session->u
     <div class="top-right">
         <span><img src="<?php echo base_url("public/images/user-icon.png"); ?>" alt="">Welcome <?php echo $user_detls->first_name; ?>, </span>
     	<ul>
-            <li><a class="user" href="<?php echo site_url("kaizen/user/doedit/".$user_detls->id);?>">My Profile</a></li>
-            <li><a class="setting" href="<?php echo site_url("kaizen/settings");?>">Setting</a></li>
-            <li><a href="<?php echo site_url("kaizen/logout");?>" class="log"> Logout</a></li>
+            <li><a class="" href="<?php echo site_url("kaizen/user/doedit/".$user_detls->id);?>"><i class="fa fa-user" aria-hidden="true"></i> My Profile</a></li>
+            <li><a class="" href="<?php echo site_url("kaizen/settings");?>"><i class="fa fa-cog" aria-hidden="true"></i> Setting</a></li>
+            <li><a href="<?php echo site_url("kaizen/logout");?>" class=""><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
         </ul>
     </div>
     <div class="clear"></div>
@@ -73,6 +73,8 @@ $user_detls = $this->model_home->selectOne('admin',array('id'=>$this->session->u
 .formError.inline { position: absolute !important; left: 100px !important;  bottom: -14px; top: auto !important;}
 .formError.inline .formErrorContent{color: #ee0101;background: none;padding: 0}
 .formError.inline .formErrorContent br{ display:none;}
+.top-right ul li a{ display: inline-block;}
+.top-right ul li a:hover{ text-decoration: none;}
 </style>
 
 <script>

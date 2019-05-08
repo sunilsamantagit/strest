@@ -8,180 +8,91 @@
 <script src="<?php echo base_url("public/validator/js/languages/jquery.validationEngine-en.js");?>" type="text/javascript" charset="utf-8"></script>
 <script src="<?php echo base_url("public/validator/js/jquery.validationEngine.js");?>" type="text/javascript" charset="utf-8"></script>
 <link rel="icon" href="<?php echo base_url("public/default/images/favicon.ico"); ?>" type="image/gif" sizes="16x16" />
-	<style type="text/css">
 
-	::selection{ background-color: #E13300; color: white; }
-	::moz-selection{ background-color: #E13300; color: white; }
-	::webkit-selection{ background-color: #E13300; color: white; }
-
-	body {
-		background-color: #fff;
-		/*margin: 40px;*/
-        margin-top: -100px;
-		font: 13px/20px normal Helvetica, Arial, sans-serif;
-		color: #4F5155;
-	}
-
-	a {
-		color: #003399;
-		background-color: transparent;
-		font-weight: normal;
-	}
-
-	
-	code {
-		font-family: Consolas, Monaco, Courier New, Courier, monospace;
-		font-size: 12px;
-		background-color: #f9f9f9;
-		border: 1px solid #D0D0D0;
-		color: #002166;
-		display: block;
-		margin: 14px 0 14px 0;
-		padding: 12px 10px 12px 10px;
-	}
-
-	#body {
-    	margin: 35px 15px;
-	}
-
-	p.footer{
-		text-align: right;
-		font-size: 11px;
-		border-top: 1px solid #D0D0D0;
-		line-height: 32px;
-		padding: 0 10px 0 10px;
-		margin: 20px 0 0 0;
-	}
-
-	#container{
-		margin: 10px;
-		/*border: 1px solid #D0D0D0;*/
-                padding-top: 20px;
-		margin: 3% auto 0;
-                    padding-bottom: 1%;
-    	text-align: center;
-    	width: 45%;
-		-webkit-box-shadow: 0 0 8px #D0D0D0;
-	}
-h1{    font-family: 'Arial Bold', 'Arial Regular', 'Arial';
-    font-weight: 700;
-    font-style: normal;
-    font-size: 24px;}
-	#uname{
-		border: 1px solid #dddee0;
-		color: #787878;
-		display: block;
-		font-family: "Open Sans",sans-serif;
-		font-size: 12px;
-		font-weight: 400;
-		height: 45px;
-		padding: 0 2%;
-		width: 45%;
-		margin:15px auto 30px;
-
-	}
-	#pwd,#forget_password{
-		border: 1px solid #dddee0;
-		color: #787878;
-		display: block;
-		font-family: "Open Sans",sans-serif;
-		font-size: 12px;
-		font-weight: 400;
-		height: 45px;
-		padding: 0 2%;
-		width: 45%;
-		margin:15px auto 30px;
-	}
-
-	.submitBtn {
-		background-color: #4AA6DB;;
-		border: 2px solid #4AA6DB;;
-		border-radius: 5px;
-		color: #fff;
-		display: inline-block;
-		padding: 5px 20px;
-		font-size:13px;
-		cursor:pointer;
-		transition: all 0.5s ease-in-out 0s;
-		font-weight:700;
-	}
-	.submitBtn:hover {
-		background-color: #000;
-		border: 2px solid #000;
-		color: #fff;
-	}
-	.forgot{
-		color:#535353;
-		padding:8px 20px;
-		text-decoration:none;
-		margin:10px 0 20px;
-		transition: all 0.5s ease-in-out 0s;
-		display:inline-block;
-		font-size:16px;
-		font-weight:700;
-	}
-	.forgot:hover{
-		color:#535353;
-	}
-	#login_frm > div {
-    font-size: 18px;
+<style type="text/css">
+body{ background: #f7f7f7; font: 400 14px Helvetica,Arial,sans-serif; color: #73879C;}
+.login_container{ width: 100%; max-width: 350px;margin: 5% auto 0;}
+.login_title{ font: 400 25px Helvetica,Arial,sans-serif; letter-spacing: -.05em; line-height: 20px; margin: 10px 0 30px;position: relative; text-align: center;text-shadow: 0 1px 0 #fff; color: #73879C; width: 100%;}
+.login_title:after, .login_title:before {
+    content: "";
+    height: 1px;
+    position: absolute;
+    top: 10px;
+    width: 20%;
+    background: #7e7e7e;
+    background: linear-gradient(right,#7e7e7e 0,#fff 100%);
 }
+.login_title:before { left: 0;}
+.login_title:after { right: 0;}
+.form-group{ margin-bottom: 20px; }
+.form-group .form-control{ box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0,0,0,.08) inset; border: 1px solid #c8c8c8; width: 100%; border-radius: 3px; height: 34px; padding: 6px 12px; font-size: 14px; color: #73879C; box-sizing: border-box;}
+.form-group .form-control:focus{-ms-box-shadow:0 0 2px #ed1c24 inset;-o-box-shadow:0 0 2px #ed1c24 inset;box-shadow:0 0 2px #A97AAD inset;background-color:#fff;border:1px solid #A878AF;outline:0}
+.button_sec{ display: flex; justify-content: space-between;}
+.submitBtn{color: #333;
+    background-color: #fff;
+    border-radius: 3px;
+    padding: 6px 12px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    cursor: pointer;
+    border: 1px solid #ccc;}
+.submitBtn:hover, .submitBtn:focus{ color: #333; background-color: #d4d4d4; border-color: #8c8c8c;}
+.forgot_link{ display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 13px;}
+.back_login{ text-align: center; margin-top: 15px; font-size: 13px;}
+.forgot_link .lost-password, .back_login a{ color: #007dff; display: inline-block; text-decoration: underline; }
+.footer_sec{ border-top: 1px solid #D8D8D8; margin-top: 15px; padding-top: 10px; text-align: center;}
+.footer_sec p{ font-size: 13px; }
+.forgot_btn{ text-align: center; }
+.forgot_text{ font-size: 14px; color: #868686; margin-bottom: 30px; text-align: center;}
+</style>
 
-	</style>
-        
-        <script>
-        var sss = '<?php echo get_cookie('uname'); ?>';
-        if(sss!=''){window.location.href = '<?php echo site_url("kaizen/main"); ?>';}
-        </script>
 </head>
 <body>
-    <div class="body-header">
+<!--     <div class="body-header">
                 <h1>STREST</h1>
     <h1>Stractural Steel Estimating Program</h1>
-    </div>
-<div id="container">
-    <div class="text-login">
-            <p>User Login Area</p>
-          </div>
+    </div> -->
+
+
 <!--	<h1>Welcome to <?php echo $this->config->item('COMPANY_NAME'); ?></h1>-->
 <!--        <image src="<?php echo base_url("public/images/logo.png"); ?>"/>-->
 
-    <div id="body">
+    <div id="body" class="login_container">
+        
+        <div id="loginDiv">
+          <div class="login_title">Login</div>  
             <div id="err_div" style="color:red;"></div>
             <span id="error_div"></span>
         <span id="success_div"></span>
             <!-- <form  method="post" action="<?php echo base_url("kaizen/welcome/authentication/"); ?>" id="login_frm" /> -->
 						<?php $attributes = array('id' => 'login_frm'); ?>
 						<?php echo form_open('kaizen/welcome/authentication/',$attributes); ?>
+
         <div class="form-group">
-            <div class="label-sty">User Name</div>
-            <div class="form-box"><input type="text" name="uname" id="uname" value="<?php if(get_cookie('uname')){ echo get_cookie('uname');}?>" class="validate[required]" /></div>
-        </div>
-                <div class="form-group">
-            <div class="label-sty">User No</div>
-            <div class="form-box"><input type="text" name="uno" id="uname" value="<?php if(get_cookie('uno')){ echo get_cookie('uno');}?>" class="validate[required]" /></div>
+            <input type="text" name="uname" id="uname" value="" class="form-control validate[required]" placeholder="User Name" />
         </div>
         <div class="form-group">
-        <div class="label-sty">Password</div>
-        <div class="form-box"> <input type="password" name="pwd" id="pwd" value="<?php if(get_cookie('pwd')){ echo get_cookie('pwd');}?>" class="validate[required]" /></div>
+            <input type="text" name="uno" id="uname" value="" class="form-control validate[required]" placeholder="User No" />
         </div>
         <div class="form-group">
-            <div class="label-sty"></div>
-            <div class="form-box"> 
-        <div class="checkbox check-box-sty">
-            <div class="text">
-                <input type="checkbox" name="ckbx" id="ckbx" value="1"><span>Remember me</span>
-            </div>
+        	<input type="password" name="pwd" id="pwd" value="" class="form-control validate[required]" placeholder="Password" />
         </div>
+        <div class="forgot_link">
+            <label>
+               <input type="checkbox" value="checkbox"><span>Remember me</span>
+            </label>
+	   		<a href="javascript:void(0);" class="lost-password" onclick="showHideDiv();">Lost your password?</a>
         </div>
-        </div>
-        <div class="button-sec">
-            <div class="button-sub-sty">   <input name="" type="submit" class="submitBtn" value="Login" /></div>
-            <div class="button-sub-sty">   <input name="" type="submit" class="submitBtn submitBtn1" value="Cancel" /></div>
-            <div class="button-sub-sty pading-forget"> <a href="" class="lost-password">Lost your password?</a></div>
-            
-        </div>
-        <div class="clear-fix"></div> 
+         <div class="button_sec">
+         	<div class="button-sub-sty"><input name="" type="submit" class="submitBtn submitBtn1" value="Cancel" /></div>
+            <div class="button-sub-sty"><input name="" type="submit" class="submitBtn" value="Login" /></div>
+        </div>   
+        
+    </div>
+        
+       
+        
+        <div id="frogotPassDiv">
         <!-- </form> -->
 				<?php echo form_close(); ?>
            <!-- <a href="javascript:void(0);" class="forgot" onclick="showHideDiv();">Forgot Password</a>-->
@@ -190,90 +101,58 @@ h1{    font-family: 'Arial Bold', 'Arial Regular', 'Arial';
 							'id' => 'forgetpassword',
 							'style' => 'display:none;'
 						); ?>
-				<?php echo form_open('kaizen/welcome/forgetpassword',$attributes); ?>
-          <div class="fgt">
-            <input type="text" placeholder="Enter your Registered email ID" id="forget_password" name="forget_password" class="validate[required,custom[email]]"/>
+				<?php echo form_open('kaizen/welcome/forgetpassword',$attributes); ?> 
+				<div class="login_title">Reset Password</div>
+				<div class="forgot_text">Enter your registered email to receive a reset link.</div> 
+          <div class="form-group">
+            <input type="text" placeholder="Enter your Registered email ID" id="forget_password" name="forget_password" class="form-control validate[required,custom[email]]"/>
           </div>
-          <input type="submit" value="Submit" class="memberLogin"/>
+          <div class="forgot_btn">
+	          <input type="submit" value="Submit" class="submitBtn memberLogin"/>
+	      </div>
+          
+          <div class="back_login"> 
+          	<a href="javascript:void(0);" class="lost-password" onclick="showHideDiv2();">Go to login page?</a>
+          </div>
         <!-- </form> -->
 				<?php echo form_close(); ?>
+        
+        </div>
+        
+        <div class="footer_sec">
+        	 <div class="login_title">STREST</div>
+        	 <p>Stractural Steel Estimating Program</p>  
+        </div>
+
 	</div>
+    
+    
+    <script>
+            $(".submitBtn1").click(function() {
+                $(this).closest('login_frm').find("input[type=text], textarea").val("");
+            });
+            
+         function showHideDiv(){
+		$('#forgetpassword').show();
+		$('.ccc').show();
+                $('#loginDiv').hide();
+                $('.aaa').hide();
+                $('.bbb').hide();
+		}
+                
+                function showHideDiv2(){
+		$('#loginDiv').show();
+                 $('#forgetpassword').hide();
+                 $('.ccc').hide();
+                 $('.aaa').show();
+                 $('.bbb').show();
+		}
 
-    <style>
-    .body-header{		/*border: 1px solid #D0D0D0;*/
-                padding-top: 20px;
-		margin: 10% auto 0;
-    	text-align: center;
-    	width: 45%; }    
-      .form-box{width: 70%;
-    float: left;}      
-    .label-sty{width: 30%;
-    float: left;
-        margin-top: 7px;
-    font-size: 14px;
-    color: #000;
-    }  
-    #uname,#pwd {
-    border: 1px solid #dddee0;
-    display: block;
-    font-family: "Open Sans",sans-serif;
-    font-size: 12px;
-    font-weight: 400;
-    height: 28px;
-    padding: 0 2%;
-    width: 85%;
-    margin:6px 0px;
-    background: #fff!important;
-}
-#container {
-    background-color: rgba(215, 215, 215, 1);
-    -webkit-box-shadow: none;}
-.check-box-sty{ float:left; margin-left: -3px;}
-#login_frm > div {
-    font-size: 14px;
-}
-.button-sub-sty{ width:33%; float:left;}
-.submitBtn {
-    background-color: #4AA6DB;
-    border: 2px solid #4AA6DB;
-    border-radius: 4px;
-    margin-top: 10px;
-    color: #fff;
-    display: inline-block;
-    padding: 9px 39px;
-    font-size: 13px;
-    cursor: pointer;
-    transition: all 0.5s ease-in-out 0s;
-    font-weight: 700;
-}
-.submitBtn:hover {
-    background-color:#fff ;
-    color: #4AA6DB;
-      border: 1px solid #000;
-   
-}
-.submitBtn1 {
-    background-color: #fff;
-    border: 1px solid #4AA6DB; color:#4AA6DB;}
-.submitBtn1:hover {
-    background-color:#4AA6DB ;
-    color: #fff;
-      border: 1px solid #000;
-   
-}
-.pading-forget{ padding-top: 17px;}
-.lost-password{ color: #169BD5; text-align:center;
-    text-decoration: none;}
-.clear-fix{ clear:both;}
-.text-login p{ text-align:center;  font-size: 20px;
-    font-weight: 600;}
-</style>
 
+    </script>
 
   <script type="text/javascript">
-    function showHideDiv(){
-		$('#forgetpassword').show();
-		}
+    
 		// Called once the server replies to the ajax form validation request
 		function ajaxValidationCallback(status, form, json, options){
 			if (status === true) {
@@ -290,6 +169,7 @@ h1{    font-family: 'Arial Bold', 'Arial Regular', 'Arial';
 		}
 
 		jQuery(document).ready(function(){
+                     $('.ccc').hide();
 			jQuery("#login_frm").validationEngine('attach',{
 				relative: true,
 				overflownDIV:"#divOverflown",

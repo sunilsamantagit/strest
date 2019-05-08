@@ -43,20 +43,42 @@ class Takeoffline extends MY_Controller
 	}
 	
 	public function doadd(){
-		$data = array();
-        $data['details']= new stdClass;
-		$takeoffline_id=$this->uri->segment(4);
-		$data['details']->is_active = 1;
-		$data['details']->id = $takeoffline_id;
+                $data = array();
+                $id = $this->input->post("id");
+                if(!empty($id)){
+                    $where=array('id'=>$id);
+                    $product_dtls=$this->modeltakeoffline->selectOne('takeoffline',$where);
+                    $data['id'] = $id;
+                }else{
+                    $data['id'] = $id;
+                }
+                $data_shapesgrade = $this->modeltakeoffline->select_row('shapes_management');
+				$data['shapesgrade']= $data_shapesgrade;
+				//pre($data['shapesgrade']);
+				$data_lumbsum = $this->modeltakeoffline->select_row('lumbsum');
+				$data['lumbsum']= $data_lumbsum;
 
-	    $data_shapesgrade = $this->modeltakeoffline->select_row('shapes_management');
-		$data['shapesgrade']= $data_shapesgrade;
-		$data_lumbsum = $this->modeltakeoffline->select_row('lumbsum');
-		$data['lumbsum']= $data_lumbsum;		
-		$this->load->view('kaizen/takeoffline/edit_takeoffline',$data);		
+                 $this->load->view('kaizen/takeoffline/add_line_entry',$data);
+                
+//		$data = array();
+//                $data['details']= new stdClass;
+//		$takeoffline_id=$this->uri->segment(4);
+//		$data['details']->is_active = 1;
+//		$data['details']->id = $takeoffline_id;
+//
+//	    $data_shapesgrade = $this->modeltakeoffline->select_row('shapes_management');
+//		$data['shapesgrade']= $data_shapesgrade;
+//		$data_lumbsum = $this->modeltakeoffline->select_row('lumbsum');
+//		$data['lumbsum']= $data_lumbsum;		
+//		$this->load->view('kaizen/takeoffline/edit_takeoffline',$data);		
 	}
-    
-	public function shapes_size($shap_id)
+        
+        
+        public function add_new_entry () {
+            pre($_POST);die;
+        }
+
+                public function shapes_size($shap_id)
 	{
 		$where = array('shape'=> $shap_id);
         $order_by = array('id' => 'asc');
