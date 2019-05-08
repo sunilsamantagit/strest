@@ -8,7 +8,9 @@
 
       <a class="new-survey-btn-blue " href="<?php echo site_url("kaizen/".$fetch_class."/doadd/0"); ?>" <?php if ($fetch_class=='blog_comments' || $fetch_class=='order') { echo "style='display:none'" ;}?>  ><span><?php if($fetch_class=='takeoffline') {?>Add Line Entry<?php }elseif($fetch_class=='takeoff') {?>Add New Takeoff Entry<?php }elseif($fetch_class=='lumbsum') {?>Add New Lumbsum Entry<?php }elseif($fetch_class=='shapes_management') {?>Add New Shape<?php }elseif($fetch_class=='shapes_size') {?>Add New Shape Size<?php }else{ ?>Add New<?php }?>
          
-          </span></a><br><br>
+          </span></a>
+
+          <br><br>
       
       <?php } ?>
 

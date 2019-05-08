@@ -10,19 +10,19 @@
         height: '800'
     });
     
-      function addAnothercontent(id){
-          $(document.body).addClass('modal_open');
+function addAnothercontent(id){alert(id);
+  $(document.body).addClass('modal_open');
 	jQuery.ajax({
-			   type: "POST",
-                           async: false,
+			  type: "POST",
+        async: false,
 				url : '<?php echo site_url("kaizen/takeoffline/doadd");?>',
-                     data: {id:id},
+        data: {id:id},
 				dataType : "html",
 				success: function(data)
 				{
 					if(data)
 					{
-							jQuery("#add_content").prepend(data);
+							jQuery("#add_content").prepend(data); 
 					}
 					else
 					{
@@ -112,6 +112,8 @@
                              <td><?php if(!empty($row->mhs)) echo $row->mhs; ?></td>
                              
                 	    <td class="action_btn">
+                         <a class="" href="javascript:void(0);" onclick="addAnothercontent('<?php echo $row->id; ?>');"><span>Edit</span></a>
+
                 	     <a class="" href="<?php echo site_url("kaizen/takeoffline/doedit/".$row->id);?>"><span>Edit</span></a> 
                          <a href="javascript:void(0);" title="Delete" onclick="rowdelete('<?php echo $row->id; ?>','takeoffline');" class=""><span>Delete</span></a>
                                 </a>

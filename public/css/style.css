@@ -7198,7 +7198,7 @@ a {
     box-sizing: border-box;
 }
  #webcont-form form .single-column {
- 	width: 50%;
+ 	width: 70%;
     padding-right: 35px;
     box-sizing: border-box;
     margin-bottom: 15px;
@@ -7213,7 +7213,7 @@ width:100px;
     box-sizing: border-box;
 }
 #webcont-form .single-column .inputinpt {
-   width: calc(100% - 100px) !important;
+   width: calc(100% - 100px) !important; background: #fff; border: 1px solid #ccc;
    float: right;
 }
 #webcont-form .single-column #takeoff_start_date.inputinpt + img,
@@ -7225,7 +7225,7 @@ width:100px;
 .bottonserright .web-red-btn.cancil{background: white; color: black;  border: 1px solid #000;}
 .bottonserright .web-red-btn.save{ background: #159bd5; color: #fff;  border: 1px solid #159bd5; }
 .bottonserright .web-red-btn.next{ background: #159bd5; color: #fff;   border: 1px solid #159bd5;}
-#webcont-form .single-column select{ height:30px;box-shadow: inset 0 1px 1px rgba(0,0,0,.075); border: 1px solid #ccc; }
+#webcont-form .single-column select{ height:30px;/*box-shadow: inset 0 1px 1px rgba(0,0,0,.075); border: 1px solid #ccc*// }
 #webcont-form .single-column input[type="text"], #webcont-form .single-column input[type="password"], #webcont-form .single-column input[type="email"]{ box-shadow: inset 0 1px 1px rgba(0,0,0,.075); border: 1px solid #ccc; height: 30px; box-sizing: border-box; }
 #webcont-form .clear{ width: 100%; }
 .single-column .inner_column{ width: 50%; box-sizing: border-box; display: flex; align-items: center; }
@@ -7248,8 +7248,9 @@ width:100px;
     border: none;
     border-radius: 5px;
     color: #fff!important;
+
 }
-}
+.member-sty-texctarea{ height: 100px!important; }
 .right-outer h3.title{ font-size: 24px; font-weight: bold; color:#000;}
 .header{ 
 	display: flex; 
@@ -7331,14 +7332,13 @@ width:100px;
 .sidebar_close .header, .sidebar_close .rightDiv{ padding-left: 70px; }
 .leftDiv:before { content: ""; background: #2A3F54; width: 16%;left: 0; top: 0; height: 100%; position: fixed; z-index: -1;}
 .sidebar_close .leftDiv:before{ width: 70px; }
-
 .half-colum{ width: 50%!important;
     float: left;
     height: 30px;
     padding: 0px;}
  .half-colum .inputinpt{ margin-left: 5px; }
- .nameing-sec{ width: 29%!important; }
- .input-value{ width: 50%!important; }
- .half-sec-per{ width: 20%; }
- .qutity-sty{width: 24%!important; }
+ /*.nameing-sec{ width: 29%!important; }*/ 
+ .input-value{ width: 36%!important; }
+ /*.half-sec-per{ width: 20%; }*/
+ .qutity-sty{width: 32%!important; }
  .eract-marg-top{ margin-top: 20px; }
