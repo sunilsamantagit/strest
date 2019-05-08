@@ -32,6 +32,11 @@ function form_submit(){
 </script>
 
 <style>
+
+	.form-group-sty{ width:100%;}
+	@media screen and (min-width: 768px){
+	.single-size{ padding-right:6px !important;}
+}
 .maxlength-feedback {
     color: #D3332F;
 }
@@ -114,8 +119,9 @@ function form_submit(){
 		
 			 
 		<div class="single-column">
-				<b> Size Short </b>
-				<div class="single-column">
+				
+				<!--<div class="single-column">
+				<h4> Size Short </h4>
               <label class="question-label">Inches</label>
               <input type="text" name="inches_short" id="inches_short" value="<?php if(isset($details->inches_short)){echo $details->inches_short;}?>" class="inputinpt" />
             </div>
@@ -123,21 +129,33 @@ function form_submit(){
             <div class="single-column">
               <label class="question-label">Metric</label>
               <input type="text" name="metric_short" id="metric_short" value="<?php if(isset($details->metric_short)){echo $details->metric_short;}?>" class="inputinpt">
-            </div>
-		 </div>		
-				
-			
-		<div class="single-column">
-				<b> Size Long </b>
-				<div class="single-column">
+            </div>-->	
+			<div class="form-group-sty">
+			<h3> Size Short</h3>
+			<div class="single-column single-size">
               <label class="question-label">Inches</label>
-              <input type="text" name="inches_long" id="inches_long" value="<?php if(isset($details->inches_long)){echo $details->inches_long;}?>" class="inputinpt" />
+              <input type="text" name="inches_short" id="inches_short" value="<?php if(isset($details->inches_short)){echo $details->inches_short;}?>" class="inputinpt" />
             </div>
-
-            <div class="single-column">
-              <label class="question-label">Metric</label>
-              <input type="text" name="metric_long" id="metric_long" value="<?php if(isset($details->metric_long)){echo $details->metric_long;}?>" class="inputinpt">
+			<div class="single-column single-size">
+               <label class="question-label">Metric</label>
+               <input type="text" name="metric_short" id="metric_short" value="<?php if(isset($details->metric_short)){echo $details->metric_short;}?>" class="inputinpt">
             </div>
+		 </div>	
+		 
+			</div>	
+		
+		<div class="single-column">
+				<div class="form-group-sty">
+			<h3> Size Long</h3>
+			<div class="single-column single-size">
+              <label class="question-label">Inches</label>
+              <input type="text" name="inches_short" id="inches_short" value="<?php if(isset($details->inches_short)){echo $details->inches_short;}?>" class="inputinpt" />
+            </div>
+			<div class="single-column single-size">
+               <label class="question-label">Metric</label>
+               <input type="text" name="metric_short" id="metric_short" value="<?php if(isset($details->metric_short)){echo $details->metric_short;}?>" class="inputinpt">
+            </div>
+		 </div>	
 		</div>	
 
             <div class="single-column">
@@ -159,15 +177,13 @@ function form_submit(){
               <label class="question-label">Surface(sq.ft./lin.ft.)</label>
              <input type="text" name="surface" id="surface" value="<?php if(isset($details->surface)){echo $details->surface;}?>" class="inputinpt">
             </div>
-
+<div class="clear"></div>
             <div class="single-column">
               <label class="question-label">Labor(hr./lb.)</label>
               <input type="text" name="labor" id="labor" value="<?php if(isset($details->labor)){echo $details->labor;}?>" class="inputinpt">
             </div>
 
-				
-				
-					
+
 			<div class="single-column" >
                     <label class="single-column">Status<span></span></label>
                     <select name="shape_status" id="shape_status"  class="inputinpt validate[required]">

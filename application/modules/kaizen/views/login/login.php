@@ -84,8 +84,9 @@ body{ background: #f7f7f7; font: 400 14px Helvetica,Arial,sans-serif; color: #73
 	   		<a href="javascript:void(0);" class="lost-password" onclick="showHideDiv();">Lost your password?</a>
         </div>
          <div class="button_sec">
-         	<div class="button-sub-sty"><input name="" type="submit" class="submitBtn submitBtn1" value="Cancel" /></div>
-            <div class="button-sub-sty"><input name="" type="submit" class="submitBtn" value="Login" /></div>
+             <div class="button-sub-sty"><input name="" type="submit" class="submitBtn" value="Login" /></div>
+            <div class="button-sub-sty"><input name="" type="reset" class="submitBtn submitBtn1" value="Clear" /></div>
+            
         </div>   
         
     </div>

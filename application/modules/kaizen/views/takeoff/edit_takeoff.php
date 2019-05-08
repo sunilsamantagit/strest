@@ -153,8 +153,8 @@ function form_submit(){
             <div class="single-column">
               <label class="question-label">Pricing Units<span> *</span></label>
               <select id="pricing_units" name="pricing_units" class="inputinpt">
-                <option value="English"<?php if(isset($details->addenda)){if($details->addenda=="English"){ ?> selected <?php }}?>>English</option>
-                <option value="Metric"<?php if(isset($details->addenda)){if($details->addenda=="Metric"){ ?> selected <?php  }}?>>Metric</option>
+            <option value="English"<?php if(isset($details->pricing_units)){if($details->pricing_units=="English"){ ?> selected <?php }}?>>English</option>
+            <option value="Metric"<?php if(isset($details->pricing_units)){if($details->pricing_units=="Metric"){ ?> selected <?php  }}?>>Metric</option>
               </select>
             </div>
             <div class="clear"></div>

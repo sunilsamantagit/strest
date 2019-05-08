@@ -122,7 +122,7 @@ function addAnotherFile(url,predifine_link,sequence,social_settings_id){
                         </ul>
                     </div>
 
-                         <div class="single-column">
+                         <div class="single-column" style="display:none;">
                         <ul>
                             <li class="fullWidth">
                                 <label class="labelname">Password: </label>
@@ -152,7 +152,7 @@ function addAnotherFile(url,predifine_link,sequence,social_settings_id){
                         <div class="single-column">
                         <ul>
                             <li class="fullWidth">
-                                <label class="labelname">Contact form email:* </label>
+                                <label class="labelname" style="width: 120px;">Contact email:*</label>
                                 <input type="text" name="contact_email" id="contact_email" value="<?php if(isset($details->contact_email)){echo $details->contact_email;}?>" class="validate[required,custom[email]]"/>
                             </li>
                         </ul>
@@ -167,7 +167,7 @@ function addAnotherFile(url,predifine_link,sequence,social_settings_id){
                         </ul>
                     </div>
 
-                    <div class="single-column" >
+                    <div class="single-column" style="display:none;">
                         <label class="labelname">Header logo <span class="sizetxt">- Size Requirement:  190 X 147 px ( W x H )</span></label>
                         <input id="header_logo" name="header_logo" value="<?php if(!empty($details->header_logo)) echo $details->header_logo; ?>" type="text">
                         <a href="<? echo front_base_url().'filemanager/dialog.php?type=1&field_id=header_logo&relative_url=1'?>?>" class="btn iframe-btn" type="button">Open File Manager</a>
@@ -182,7 +182,7 @@ function addAnotherFile(url,predifine_link,sequence,social_settings_id){
                       </div>
                     </div>
 
-                    <div class="single-column" >
+                    <div class="single-column" style="display:none;">
                         <label class="labelname">Footer logo <span class="sizetxt">- Size Requirement:  190 X 147 px ( W x H )</span></label>
                         <input id="footer_logo" name="footer_logo" value="<?php if(!empty($details->footer_logo)) echo $details->footer_logo; ?>" type="text">
                         <a href="<? echo front_base_url().'filemanager/dialog.php?type=1&field_id=footer_logo&relative_url=1'?>?>" class="btn iframe-btn" type="button">Open File Manager</a>
@@ -230,7 +230,7 @@ function addAnotherFile(url,predifine_link,sequence,social_settings_id){
                 
                 
                 
-                <div class="single-column">
+                <div class="single-column" style="display:none;">
                         <ul>
                             <li class="fullWidth">
                                 <label class="labelname">Header Button Text:</label>
@@ -239,7 +239,7 @@ function addAnotherFile(url,predifine_link,sequence,social_settings_id){
                         </ul>
                     </div>
                 
-                <div class="single-column">
+                <div class="single-column" style="display:none;">
                         <ul>
                             <li class="fullWidth">
                                 <label class="labelname">Header Button URL: </label>
@@ -248,7 +248,7 @@ function addAnotherFile(url,predifine_link,sequence,social_settings_id){
                         </ul>
                     </div>
                 
-                <div class="single-column">
+                <div class="single-column" style="display:none;">
                         <ul>
                             <li class="fullWidth">
                                 <label class="labelname">Is Show Header Button?: </label>
@@ -256,7 +256,7 @@ function addAnotherFile(url,predifine_link,sequence,social_settings_id){
                             </li>
                         </ul>
                     </div>
-                <div class="single-column">
+                <div class="single-column" style="display:none;">
                         <ul>
                             <li class="fullWidth">
                                 <label class="labelname">Second Header Button Text:</label>
@@ -265,7 +265,7 @@ function addAnotherFile(url,predifine_link,sequence,social_settings_id){
                         </ul>
                     </div>
                 
-                <div class="single-column">
+                <div class="single-column" style="display:none;">
                         <ul>
                             <li class="fullWidth">
                                 <label class="labelname">Second Header Button URL: </label>
@@ -278,7 +278,7 @@ function addAnotherFile(url,predifine_link,sequence,social_settings_id){
                 
                 
                 
-                <div class="single-column">
+                <div class="single-column" style="display:none;">
                         <ul>
                             <li class="fullWidth">
                                 <label class="labelname">Partner Link: </label>
@@ -286,7 +286,7 @@ function addAnotherFile(url,predifine_link,sequence,social_settings_id){
                             </li>
                         </ul>
                     </div>
-                <div class="single-column">
+                <div class="single-column" style="display:none;">
                         <ul>
                             <li class="fullWidth">
                                 <label class="labelname">Sponsor Link: </label>
@@ -298,7 +298,7 @@ function addAnotherFile(url,predifine_link,sequence,social_settings_id){
                 
                 
                 
-                <div class="single-column">
+                <div class="single-column" style="display:none;">
                         <ul>
                             <li class="fullWidth">
                                 <label class="labelname">Is Show Second Header Button?: </label>
@@ -309,7 +309,7 @@ function addAnotherFile(url,predifine_link,sequence,social_settings_id){
                 
                 
                 
-                 <div class="single-column">
+                 <div class="single-column" style="display:none;">
                         <ul>
                             <li class="fullWidth">
                                 <label class="labelname">Edition:</label>
@@ -318,7 +318,7 @@ function addAnotherFile(url,predifine_link,sequence,social_settings_id){
                         </ul>
                     </div>
                 
-                 <div class="single-column">
+                 <div class="single-column" style="display:none;">
                         <ul>
                             <li class="fullWidth">
                                 <label class="labelname">Last Update:</label>
@@ -398,7 +398,7 @@ function addAnotherFile(url,predifine_link,sequence,social_settings_id){
 
 		<?php echo form_hidden("sbmt","1");?> </div>
 </div>
-                    <div class="seopan">
+                    <div class="seopan" style="display:none;">
                         <h2><a href="javascript:showseopanel('droplistsocialmedia');" class="expandable">Social Media</a></h2>
                         <div class="droplists" id="droplistsocialmedia" style="display:none;">
                             <a onclick="addAnotherFile('','')" href="javascript:void(0);" class="temp-btn" style="width:15%"><img style="float: left;margin-top: 3px;margin-left: 10px;width: 22px;" src="<?php echo base_url(); ?>public/images/plus-icon.png">Add Social Media</a>
