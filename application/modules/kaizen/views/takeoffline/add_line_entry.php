@@ -57,14 +57,13 @@ $("#cont").validationEngine('attach', { promptPosition: "inline" });
 });
 </script>
 <div class="popup" id="close_div">
-        <h2>Here i am</h2>
         <a class="close" href="#" onclick="closediv();" >&times;</a>
         <div class="content">
           <div class="right-outer">
         <h3 class="title">Add Line Entry</h3>
         <div class="clear"></div>
     <div class="padbot40">
-        <?php foreach ($shapesgrade as $rows) { 
+        <?php foreach ($shapesgrade as $rows) {
          // echo $rows->id; die;
         }?>
       <div class="mid-content web-cont-mid" style="border-radius: 25px;background-color: lightgray;">
@@ -183,11 +182,11 @@ $("#cont").validationEngine('attach', { promptPosition: "inline" });
 
             <div class="single-column lump-text-area">
               <label class="question-label">Entry Type</label>
-              <select id="lumbsum" name="lumbsum" class="inputinpt validate[required]" />
+              <select id="lumbsum" name="lumbsum" class="inputinpt validate[required]" >
                 <option value="Select Option"></option>
-                 <?php /* foreach ($lumbsum as $lumb) { ?>
+                 <?php  foreach ($lumbsum as $lumb) { ?>
                       <option value="<?php echo $lumb->id;?>"><?php echo $lumb->lumbsum_name; ?></option>
-               <?php }*/?>
+               <?php }?>
               </select>
             </div>
 
