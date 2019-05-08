@@ -3,15 +3,6 @@
 <link rel="stylesheet" href="<?php echo site_url("public/validator/css/validationEngine.jquery.css");?>" type="text/css"/>
 <script src="<?php echo site_url("public/validator/js/languages/jquery.validationEngine-en.js");?>" type="text/javascript" charset="utf-8"></script>
 <script src="<?php echo site_url("public/validator/js/jquery.validationEngine.js");?>" type="text/javascript" charset="utf-8"></script>
-<script src="<?php echo base_url("public/js/jquery.fancybox.js");?>" type="text/javascript" charset="utf-8"></script>
-<link rel="stylesheet" href="<?php echo base_url("public/css/jquery.fancybox.css");?>" type="text/css"/>
-<?php //echo "<pre>";print_r($data);?>  <?php //echo "<pre>";print_r($category2);exit; ?>
-<script>
-$('.fancybox').fancybox({
-  width:'1200',
-  height: '800'
-});
-</script>
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#cont").validationEngine('attach', { promptPosition: "inline" });
@@ -20,16 +11,6 @@ $(document).ready(function(){
 function form_submit(){
     $('#cont').submit();
 }
-</script>
-<script type="text/javascript">
-     $(function() {
-     $('.iframe-btn').fancybox({	
-      	'width'		: 900,
-      	'height'	: 600,
-      	'type'		: 'iframe',
-              'autoScale'    	: false
-          });
-    });
 </script>
 
 <style>
@@ -43,6 +24,7 @@ function form_submit(){
 .add_lumbsum .bottonserright{ padding:0 15px; box-sizing: border-box; margin-top:100px;}
 .add_lumbsum .bottonserright .back_dash{ color:#159bd5;}
 </style>
+
 <div class="rightDiv">
   <div class="right-outer add_lumbsum">
     <?php if(isset($details->id) && $details->id >0){?>
@@ -101,7 +83,11 @@ function form_submit(){
 
 		 <a href="<?php echo site_url('kaizen/lumbsum'); ?>" class="web-red-btn cancil" onClick="form_submit();"><span>Cancel</span></a> <?php //echo form_close();?>
 
-		 <a href="javascript:void(0);" class="web-red-btn save" onClick="form_submit();"><span>Save</span></a> <?php echo form_close();?> 
+		 <a href="javascript:void(0);" class="web-red-btn save" onClick="form_submit();"><span>Save</span></a> 
+                 
+                 <a href="javascript:void(0);" class="web-red-btn save" onClick="form_print();"><span>Print</span></a>
+                     
+                     <?php echo form_close();?> 
 
 	</div>
 

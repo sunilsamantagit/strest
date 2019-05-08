@@ -3,7 +3,7 @@
 <script src="<?php echo site_url("public/validator/js/jquery.validationEngine.js"); ?>" type="text/javascript" charset="utf-8"></script>
 <script>
      function closediv(){
-          $(document.body).removeClass('modal_open');
+          $(document.body).removeClass('modal_open'); 
         $('#close_div').remove();
         
     }
@@ -57,15 +57,15 @@ $("#cont").validationEngine('attach', { promptPosition: "inline" });
 });
 </script>
 <div class="popup" id="close_div">
-        <h2>Here i am</h2>
         <a class="close" href="#" onclick="closediv();" >&times;</a>
         <div class="content">
           <div class="right-outer">
         <h3 class="title">Add Line Entry</h3>
         <div class="clear"></div>
     <div class="padbot40">
-
-      
+        <?php foreach ($shapesgrade as $rows) {
+         // echo $rows->id; die;
+        }?>
       <div class="mid-content web-cont-mid" style="border-radius: 25px;background-color: lightgray;">
         <div id="webcont-form">
           <div id="member-form" class="midarea">
@@ -94,15 +94,14 @@ $("#cont").validationEngine('attach', { promptPosition: "inline" });
                 <option value="Text">Text</option>
               </select>
             </div>
-
-  <div id="mainMumbr" style="display: show;width: 100%;background-color: darkgray; padding: 15px;">
+  <div id="mainMumbr" style="display: show;width: 100%; border: 1px solid #ccc; padding: 15px;">
       <b>Main Mmbr</b>
         <div class="single-column">
               <label class="question-label">Shape</label>
-              <select id="shapes_management_id" name="shapes_management_id" class="inputinpt validate[required]" />
+              <select id="shapes_management_id" name="shapes_management_id" class="inputinpt validate[required]">
                 <option value="">Select Option</option>
                  <?php foreach ($shapesgrade as $rows) { ?>
-                      <option value="<?php echo $rows->id;?>"><?php echo $rows->shape_specification; ?></option>
+                      <option value="<?php echo $rows->id;?>"><?php echo $rows->shape_name.": ".$rows->shape_specification; ?></option>
                <?php }?>
               </select>
         </div>
@@ -178,37 +177,37 @@ $("#cont").validationEngine('attach', { promptPosition: "inline" });
   </div>
 
 
-  <div id="lumpsum" style="display: none;width: 100%;background-color: darkgray;">
-          <b>Lump Sum Entry</b>
+  <div id="lumpsum" style="display: none;width: 100%; border: 1px solid #ccc;" class="lumpsum">
+          <h2><b>Lump Sum Entry</b></h2>
 
-            <div class="single-column">
+            <div class="single-column lump-text-area">
               <label class="question-label">Entry Type</label>
-              <select id="lumbsum" name="lumbsum" class="inputinpt validate[required]" />
-                <option value="">Select Option</option>
-                 <?php foreach ($lumbsum as $lumb) { ?>
+              <select id="lumbsum" name="lumbsum" class="inputinpt validate[required]" >
+                <option value="Select Option"></option>
+                 <?php  foreach ($lumbsum as $lumb) { ?>
                       <option value="<?php echo $lumb->id;?>"><?php echo $lumb->lumbsum_name; ?></option>
-               <?php }?>               
+               <?php }?>
               </select>
             </div>
 
-            <div class="single-column">
+            <div class="single-column lump-text-area">
               <label class="question-label">Description</label>
               <input type="text" name="description" id="description" value="<?php if(isset($details->l_description)){echo $details->l_description;}?>" class="inputinpt">
             </div>
 
-            <div class="single-column">
+            <div class="single-column lump-text-area">
               <label class="question-label">Amount</label>
               $<input type="text" name="amount" id="amount" value="<?php if(isset($details->amount)){echo $details->amount;}?>" class="inputinpt">MHs
             </div>
 
   </div>
 
-  <div id="text" style="display: none;width: 100%;background-color: darkgray;">              
+  <div id="text" style="display: none;width: 100%; border: 1px solid #ccc; padding: 15px;" >              
             <b>Text</b>
 
-              <div class="single-column">
+              <div class="single-column description-sty">
               <label class="question-label">Description</label>
-              <textarea id="text_description" name="text_description" value="" class="inputinpt"></textarea>
+              <textarea id="text_description" name="text_description" value="" class="inputinpt member-sty-texctarea"></textarea>
             </div>
 
   </div>
@@ -223,9 +222,9 @@ $("#cont").validationEngine('attach', { promptPosition: "inline" });
             </div>          
 
 
-
-<input type="submit" name="submit" value="Add / Update">
-<input type="submit" name="submit" onclick="closediv();" value="Cancel">
+ <div class="clear"></div>
+<input type="submit" name="submit" value="Add / Update" class="button-sry">
+<input type="submit" name="submit" onclick="closediv();" value="Cancel" class="button-sry1">
     </form></div>    
   </div>
   <div class="clear"></div>
@@ -233,3 +232,41 @@ $("#cont").validationEngine('attach', { promptPosition: "inline" });
  </div></div></div>
         </div>
     </div>
+<style type="text/css">
+  .button-sry{border-width: 0px;
+    left: 0px;
+    top: 0px;
+    width: 140px;
+    height: 40px;
+    background: inherit;
+    background-color: rgba(22, 155, 213, 1);
+    border: none;
+    border-radius: 5px;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none; color: #fff; margin-right: 5px;}
+     .button-sry1{border-width: 0px;
+    left: 0px;
+    top: 0px;
+    width: 140px;
+    height: 40px;
+    background: inherit;
+    background-color:#fff;
+    border: none;
+    border-radius: 5px;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none; color: #000; border: #555 solid 1px;}
+    .web-cont-mid {
+    padding-bottom: 39px !important;
+}
+.lumpsum h2{ padding: 10px;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 14px;
+ }
+ .lump-text-area{ margin-bottom: 22px!important;
+    padding: 0px 10px 0px !important; }
+  .description-sty{ width: 100% !important; }  
+  .member-sty-texctarea{ height: 100px; }
+</style>

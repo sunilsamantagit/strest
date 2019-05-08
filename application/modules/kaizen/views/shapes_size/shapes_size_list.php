@@ -109,7 +109,7 @@ div.dataTables_length {
         							<?php
         			  }
         			  else{
-        			  $i=1;
+        			  $i=1; //echo "<pre>";print_r($records);
         			  foreach($records as $row){
 				
         			  ?>
@@ -118,7 +118,7 @@ div.dataTables_length {
                             <td style="text-align: center;"><?php echo $i; ?></td>   
 							<td style="text-align: center;"><?php if(!empty($row->size_name)) echo $row->size_name; ?></td>
 			
-		<?php foreach($shapes_management as $rows){
+		<?php /*echo "<pre>";print_r($shapes_management);exit;*/ foreach($shapes_management as $rows){
 		if($rows->id==$row->shape)  { ?>
 							<td style="text-align: center;"><?php if(!empty($row->shape)) echo $rows->shape_specification; } } ?></td>
 							

@@ -4,6 +4,7 @@ $comp_arr = array('membership'         => 'membership',
                     'banner'           => 'banner',
                     'takeoff'           => 'takeoff',
                     'takeoffline'           => 'takeoffline',
+                    'takeoff_price'           => 'takeoff_price',
                     'home_block'       => 'home_block'
             );
 
